@@ -64,7 +64,7 @@ Reverse lookup
 
 .. code-block:: sh
 
-   $ cihai lookup library
+   $ cihai reverse library
    char: 圕
    kCantonese: syu1
    kDefinition: library
@@ -86,7 +86,7 @@ Partial match within any field:
 
 .. code-block::
 
-   $ cihai lookup hào
+   $ cihai reverse hào
    char: 㕸
    kCantonese: lai6 lap1 lap6
    kDefinition: sound of rolling a boat
