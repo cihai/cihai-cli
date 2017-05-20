@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-
+import yaml
 from click.testing import CliRunner
+
 from cihai_cli import cli
 
 
@@ -25,11 +26,8 @@ def test_cli_reflects_after_bootstrap(tmpdir, tmpdb_file, unihan_options):
         'unihan_options': unihan_options
     }
     config_file = tmpdir.join('config.yml')
-    import yaml
     config_file.write(yaml.dump(config, default_flow_style=False))
     runner = CliRunner()
-    # result = runner.invoke(cli.cli, ['-c', str(config_file)])
-    # WTF: https://github.com/pallets/click/issues/792
     result = runner.invoke(cli.cli, ['-c', str(config_file), 'info', u'㐀'])
     assert 'Bootstrapping Unihan database' in result.output
     assert result.exit_code == 0
