@@ -8,8 +8,6 @@ import sys
 import click
 import yaml
 
-from sqlalchemy import or_
-
 from .__about__ import __version__
 from cihai._compat import PY2
 from cihai.core import Cihai
@@ -69,8 +67,7 @@ def cli(ctx, config, log_level):
 @click.pass_context
 def command_info(ctx, char, show_all):
     c = ctx.obj['c']
-    Unihan = c.base.classes.Unihan
-    query = c.session.query(Unihan).filter_by(char=char).first()
+    query = c.lookup_char(char).first()
     attrs = {}
     if not query:
         click.echo("No records found for %s" % char, err=True)
@@ -98,11 +95,7 @@ def command_info(ctx, char, show_all):
 @click.pass_context
 def command_reverse(ctx, char, show_all):
     c = ctx.obj['c']
-    Unihan = c.base.classes.Unihan
-    columns = Unihan.__table__.columns
-    query = c.session.query(Unihan).filter(
-        or_(*[column.contains(char) for column in columns])
-    )
+    query = c.reverse_lookup([char])
     if not query.count():
         click.echo("No records found for %s" % char, err=True)
         sys.exit()
