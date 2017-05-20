@@ -1,4 +1,4 @@
-*cihai-cli* - Command line interface to the `cihai`_ `CJK`_-llanguage library
+*cihai-cli* - Command line interface to the `cihai`_ `CJK`_-language library
 
 |pypi| |docs| |build-status| |coverage| |license|
 
