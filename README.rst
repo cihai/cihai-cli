@@ -151,9 +151,9 @@ Docs            https://cihai-cli.git-pull.com
 Changelog       https://cihai-cli.git-pull.com/en/latest/history.html
 API             https://cihai-cli.git-pull.com/en/latest/api.html
 Issues          https://github.com/cihai/cihai-cli/issues
-Travis          https://travis-ci.org/cihai/cihai
-Test coverage   https://codecov.io/gh/cihai/cihai
-pypi            https://pypi.python.org/pypi/cihai
+Travis          https://travis-ci.org/cihai/cli
+Test coverage   https://codecov.io/gh/cihai/cli
+pypi            https://pypi.python.org/pypi/cihai-cli
 OpenHub         https://www.openhub.net/p/cihai
 License         MIT
 git repo        .. code-block:: bash
