@@ -8,6 +8,8 @@ import sys
 import click
 import yaml
 
+from sqlalchemy import or_
+
 from .__about__ import __version__
 from cihai._compat import PY2
 from cihai.core import Cihai
@@ -18,12 +20,16 @@ from cihai.bootstrap import bootstrap_unihan
 @click.version_option(
     __version__, '-V', '--version', message='%(prog)s %(version)s'
 )
-@click.option('-c', '--config', type=click.Path(exists=True))
-@click.option('--log_level', default='INFO',
+@click.option('-c', '--config', type=click.Path(exists=True),
+              metavar='<config-file>', help="path to custom config file")
+@click.option('--log_level', default='INFO', metavar='<log-level>',
               help='Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)')
 @click.pass_context
 def cli(ctx, config, log_level):
-    """For help and example usage, see documentation:
+    """Retrieve CJK information via CLI.
+
+    For help and example usage, see documentation:
+
     https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
     setup_logger(
         level=log_level.upper()
@@ -42,7 +48,7 @@ def cli(ctx, config, log_level):
 
 
 @cli.command(name='info', short_help='Get details on a CJK character')
-@click.argument('char')
+@click.argument('char', metavar='<character>')
 @click.pass_context
 def command_info(ctx, char):
     c = ctx.obj['c']
@@ -64,12 +70,10 @@ def command_info(ctx, char):
     )
 
 
-@cli.command(name='lookup', short_help='Search character matching details')
-@click.argument('char')
+@cli.command(name='lookup', short_help='Search for character matching details')
+@click.argument('char', metavar='<character>')
 @click.pass_context
 def command_lookup(ctx, char):
-
-    from sqlalchemy import or_
     c = ctx.obj['c']
     Unihan = c.base.classes.Unihan
     columns = Unihan.__table__.columns
