@@ -89,12 +89,12 @@ def command_info(ctx, char, show_all):
     )
 
 
-@cli.command(name='lookup', short_help='Search for character matching details')
+@cli.command(name='reverse', short_help='Search character matching details')
 @click.argument('char', metavar='<character>')
 @click.option('-a', '--all', 'show_all', is_flag=True,
               help="Show all character details")
 @click.pass_context
-def command_lookup(ctx, char, show_all):
+def command_reverse(ctx, char, show_all):
     c = ctx.obj['c']
     Unihan = c.base.classes.Unihan
     columns = Unihan.__table__.columns
