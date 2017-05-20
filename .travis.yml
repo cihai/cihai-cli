@@ -1,0 +1,20 @@
+language: python
+sudo: false
+python:
+  - 2.7
+  - 3.5
+  - 3.6
+  - pypy
+  - pypy3.3-5.2-alpha1
+before_install:
+  - export PIP_USE_MIRRORS=true
+  - pip install -U pip setuptools
+  - pip install -U pytest mock # https://github.com/travis-ci/travis-ci/issues/4873
+  - pip install coveralls
+  - git config --global user.name 'travis-ci'
+  - git config --global user.email 'travis@nowhere.edu'
+install:
+  - "pip install -e ."
+script: coverage run --source=cihai_cli setup.py test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
