@@ -15,6 +15,20 @@ from cihai._compat import PY2
 from cihai.core import Cihai
 from cihai.bootstrap import bootstrap_unihan
 
+#: fields which are human friendly
+HUMAN_UNIHAN_FIELDS = [
+    'char',
+    'ucn',
+    'kDefinition',
+    'kCantonese',
+    'kHangul',
+    'kJapaneseOn',
+    'kKorean',
+    'kMandarin',
+    'kTang',
+    'kTotalStrokes',
+]
+
 
 @click.group(context_settings={'obj': {}})
 @click.version_option(
@@ -60,13 +74,15 @@ def command_info(ctx, char):
         sys.exit()
     for c in query.__table__.columns._data.keys():
         value = getattr(query, c)
-        if value:
+        if value and str(c) in HUMAN_UNIHAN_FIELDS:
             if PY2:
                 value = value.encode('utf-8')
 
             attrs[str(c)] = value
-    print(
-        yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False)
+    click.echo(
+        yaml.safe_dump(
+            attrs, allow_unicode=True, default_flow_style=False
+        ).strip('\n')
     )
 
 
@@ -84,17 +100,17 @@ def command_lookup(ctx, char):
         click.echo("No records found for %s" % char, err=True)
         sys.exit()
     for k in query:
-        print('--------')
         attrs = {}
         for c in k.__table__.columns._data.keys():
             value = getattr(k, c)
-            if value:
+            if value and str(c) in HUMAN_UNIHAN_FIELDS:
                 if PY2:
                     value = value.encode('utf-8')
                 attrs[str(c)] = value
-        print(
-            yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False)
-        )
+        click.echo(yaml.safe_dump(
+            attrs, allow_unicode=True, default_flow_style=False
+        ).strip('\n'))
+        click.echo('--------')
 
 
 def setup_logger(logger=None, level='INFO'):
