@@ -61,7 +61,8 @@ def cli(ctx, config, log_level):
     ctx.obj['c'] = c  # pass Cihai object down to other commands
 
 
-@cli.command(name='info', short_help='Get details on a CJK character')
+@cli.command(name='info',
+             short_help='Get details on a CJK character, e.g. "好"')
 @click.argument('char', metavar='<character>')
 @click.option('-a', '--all', 'show_all', is_flag=True,
               help="Show all character details")
@@ -89,7 +90,8 @@ def command_info(ctx, char, show_all):
     )
 
 
-@cli.command(name='reverse', short_help='Search character matching details')
+@cli.command(name='reverse',
+             short_help='Search all info for character matches, e.g. "good"')
 @click.argument('char', metavar='<character>')
 @click.option('-a', '--all', 'show_all', is_flag=True,
               help="Show all character details")
