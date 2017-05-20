@@ -95,7 +95,7 @@ def command_info(ctx, char, show_all):
 @click.pass_context
 def command_reverse(ctx, char, show_all):
     c = ctx.obj['c']
-    query = c.reverse_lookup([char])
+    query = c.reverse_char([char])
     if not query.count():
         click.echo("No records found for %s" % char, err=True)
         sys.exit()
