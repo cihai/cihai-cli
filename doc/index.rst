@@ -1,8 +1,8 @@
 .. _index:
 
-#####
-cihai
-#####
+#########
+cihai-cli
+#########
 
 .. include:: ../README.rst
 

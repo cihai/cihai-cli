@@ -138,7 +138,6 @@ Quick links
 -----------
 
 - `Usage`_
-- `Datasets`_ a full list of current and future data sets
 - Python `API`_
 - `2017 roadmap <https://cihai.git-pull.com/en/latest/design-and-planning/2017/spec.html>`_
 
