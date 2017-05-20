@@ -1,4 +1,4 @@
-# -*- coding: utf8 - *-
+# -*- encoding: utf8 - *-
 from __future__ import (absolute_import, division, print_function,
                         with_statement)
 
@@ -62,7 +62,7 @@ def cli(ctx, config, log_level):
 
 
 @cli.command(name='info',
-             short_help='Get details on a CJK character, e.g. "好"')
+             short_help=u'Get details on a CJK character, e.g. "好"')
 @click.argument('char', metavar='<character>')
 @click.option('-a', '--all', 'show_all', is_flag=True,
               help="Show all character details")
