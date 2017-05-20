@@ -161,7 +161,7 @@ git repo        .. code-block:: bash
                     $ git clone https://github.com/cihai/cli.git
 install stable  .. code-block:: bash
 
-                    $ pip install cihai_cli
+                    $ pip install cihai-cli
 install dev     .. code-block:: bash
 
                     $ git clone https://github.com/cihai/cli.git cihai-cli
