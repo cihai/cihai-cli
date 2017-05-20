@@ -12,83 +12,27 @@ Installation
 
    $ pip install --user cihai-cli
 
-Command line
-""""""""""""
+Character lookup
+----------------
 
-Character lookup:
+See `CLI`_ in the documentation for full usage information.
 
 .. code-block:: sh
 
    $ cihai info 好
    char: 好
-   kCangjie: VND
    kCantonese: hou2 hou3
-   kCihaiT: '378.103'
    kDefinition: good, excellent, fine; well
-   kFenn: 552A
-   kFourCornerCode: '4744.7'
-   kFrequency: '1'
-   kGradeLevel: '1'
-   kHKGlyph: 0871
    kHangul: 호
-   kHanyuPinlu: hǎo(6060) hāo(142) hào(115)
-   kHanyuPinyin: 21028.010:hǎo,hào
-   kJapaneseKun: KONOMU SUKU YOI
    kJapaneseOn: KOU
    kKorean: HO
    kMandarin: hǎo
-   kPhonetic: '481'
-   kRSAdobe_Japan1_6: C+1975+38.3.3 C+1975+39.3.3
-   kRSKangXi: '38.3'
    kTang: '*xɑ̀u *xɑ̌u'
    kTotalStrokes: '6'
-   kVietnamese: háo
-   kXHC1983: 0445.030:hǎo 0448.030:hào
    ucn: U+597D
 
-Reverse lookup:
-
-.. code-block:: sh
-
-   $ cihai lookup library
-   --------
-   char: 圕
-   kCangjie: WLGA
-   kCantonese: syu1
-   kCihaiT: '308.302'
-   kDefinition: library
-   kJapaneseOn: TOSHOKAN SHO
-   kMandarin: tú
-   kPhonetic: 1235 1364
-   kRSAdobe_Japan1_6: C+14418+31.3.10
-   kRSKangXi: '31.10'
-   kSemanticVariant: U+5716<kMatthews
-   kTotalStrokes: '13'
-   kXHC1983: 1163.040:tú
-   ucn: U+5715
-
-   --------
-   char: 嫏
-   kCangjie: VIIL
-   kCantonese: long4
-   kCihaiT: '390.506'
-   kDefinition: the place where the supreme stores his books; library
-   kHanyuPinyin: 21062.030:láng
-   kJapaneseOn: ROU
-   kMandarin: láng
-   kPhonetic: '832'
-   kRSAdobe_Japan1_6: C+21424+38.3.10
-   kRSKangXi: '38.9'
-   kTotalStrokes: '11'
-   kXHC1983: 0674.090:láng
-   ucn: U+5ACF
-
-Works with any field:
-
-.. code-block:: sh
-
-   $ cihai lookup hào
-   --------
+   # retrieve all character information (including book indices)
+   $ cihai info 好 -a
    char: 好
    kCangjie: VND
    kCantonese: hou2 hou3
@@ -115,24 +59,55 @@ Works with any field:
    kXHC1983: 0445.030:hǎo 0448.030:hào
    ucn: U+597D
 
+Reverse lookup
+--------------
+
+.. code-block:: sh
+
+   $ cihai lookup library
+   char: 圕
+   kCantonese: syu1
+   kDefinition: library
+   kJapaneseOn: TOSHOKAN SHO
+   kMandarin: tú
+   kTotalStrokes: '13'
+   ucn: U+5715
    --------
-   char: 妞
-   kCangjie: VNG
-   kCantonese: nau2
-   kCihaiT: '380.503'
-   kDefinition: girl
-   kFenn: 676H
-   kFourCornerCode: '4741.5'
-   kFrequency: '5'
-   kHKGlyph: 0876
-   kHanyuPinyin: 21033.100:hào,niū
-   kJapaneseOn: JUU NYU CHUU
-   kMandarin: niū
-   kPhonetic: '90'
-   kRSKangXi: '38.4'
+   char: 嫏
+   kCantonese: long4
+   kDefinition: the place where the supreme stores his books; library
+   kJapaneseOn: ROU
+   kMandarin: láng
+   kTotalStrokes: '11'
+   ucn: U+5ACF
+   --------
+
+Partial match within any field also:
+
+.. code-block::
+
+   $ cihai lookup hào
+   char: 㕸
+   kCantonese: lai6 lap1 lap6
+   kDefinition: sound of rolling a boat
+   kMandarin: lì
+   kTotalStrokes: '8'
+   ucn: U+3578
+   --------
+   char: 㘞
+   kCantonese: deot1
+   kDefinition: sound of yelling while towing a boat; (Sanskrit) to call out
+   kMandarin: huò
+   kTotalStrokes: '5'
+   ucn: U+361E
+   --------
+   char: 㚓
+   kCantonese: loi4 loi4
+   kDefinition: tie-beams of a small boat
+   kMandarin: lǎi
    kTotalStrokes: '7'
-   kXHC1983: 0836.060:niū
-   ucn: U+599E
+   ucn: U+3693
+   --------
 
 Quick links
 -----------
@@ -143,6 +118,7 @@ Quick links
 
 .. _API: https://cihai-cli.git-pull.com/en/latest/api.html
 .. _Usage: https://cihai-cli.git-pull.com/en/latest/usage.html
+.. _CLI: https://cihai-cli.git-pull.com/en/latest/cli.html
 
 ==============  ==========================================================
 Python support  Python 2.7, >= 3.5, pypy
