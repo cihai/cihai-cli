@@ -82,7 +82,7 @@ Reverse lookup
    ucn: U+5ACF
    --------
 
-Partial match within any field also:
+Partial match within any field:
 
 .. code-block::
 
