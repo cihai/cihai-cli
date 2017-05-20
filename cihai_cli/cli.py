@@ -63,8 +63,10 @@ def cli(ctx, config, log_level):
 
 @cli.command(name='info', short_help='Get details on a CJK character')
 @click.argument('char', metavar='<character>')
+@click.option('-a', '--all', 'show_all', is_flag=True,
+              help="Show all character details")
 @click.pass_context
-def command_info(ctx, char):
+def command_info(ctx, char, show_all):
     c = ctx.obj['c']
     Unihan = c.base.classes.Unihan
     query = c.session.query(Unihan).filter_by(char=char).first()
@@ -74,10 +76,11 @@ def command_info(ctx, char):
         sys.exit()
     for c in query.__table__.columns._data.keys():
         value = getattr(query, c)
-        if value and str(c) in HUMAN_UNIHAN_FIELDS:
+        if value:
             if PY2:
                 value = value.encode('utf-8')
-
+            if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
+                continue
             attrs[str(c)] = value
     click.echo(
         yaml.safe_dump(
@@ -88,8 +91,10 @@ def command_info(ctx, char):
 
 @cli.command(name='lookup', short_help='Search for character matching details')
 @click.argument('char', metavar='<character>')
+@click.option('-a', '--all', 'show_all', is_flag=True,
+              help="Show all character details")
 @click.pass_context
-def command_lookup(ctx, char):
+def command_lookup(ctx, char, show_all):
     c = ctx.obj['c']
     Unihan = c.base.classes.Unihan
     columns = Unihan.__table__.columns
@@ -103,9 +108,11 @@ def command_lookup(ctx, char):
         attrs = {}
         for c in k.__table__.columns._data.keys():
             value = getattr(k, c)
-            if value and str(c) in HUMAN_UNIHAN_FIELDS:
+            if value:
                 if PY2:
                     value = value.encode('utf-8')
+                if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
+                    continue
                 attrs[str(c)] = value
         click.echo(yaml.safe_dump(
             attrs, allow_unicode=True, default_flow_style=False
