@@ -4,8 +4,9 @@ from __future__ import absolute_import, unicode_literals
 
 import sys
 import pytest
-from cihai import cli
+
 from click.testing import CliRunner
+from cihai_cli import cli
 
 
 def test_cli(test_config_file):
