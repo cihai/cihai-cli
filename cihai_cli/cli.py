@@ -24,7 +24,7 @@ from cihai.bootstrap import bootstrap_unihan
 @click.pass_context
 def cli(ctx, config, log_level):
     """For help and example usage, see documentation:
-    https://cihai.git-pull.com"""
+    https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
     setup_logger(
         level=log_level.upper()
     )
