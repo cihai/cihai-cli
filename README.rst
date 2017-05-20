@@ -82,33 +82,6 @@ Reverse lookup
    ucn: U+5ACF
    --------
 
-Partial match within any field:
-
-.. code-block::
-
-   $ cihai reverse hào
-   char: 㕸
-   kCantonese: lai6 lap1 lap6
-   kDefinition: sound of rolling a boat
-   kMandarin: lì
-   kTotalStrokes: '8'
-   ucn: U+3578
-   --------
-   char: 㘞
-   kCantonese: deot1
-   kDefinition: sound of yelling while towing a boat; (Sanskrit) to call out
-   kMandarin: huò
-   kTotalStrokes: '5'
-   ucn: U+361E
-   --------
-   char: 㚓
-   kCantonese: loi4 loi4
-   kDefinition: tie-beams of a small boat
-   kMandarin: lǎi
-   kTotalStrokes: '7'
-   ucn: U+3693
-   --------
-
 Quick links
 -----------
 
