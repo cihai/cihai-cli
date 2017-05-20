@@ -4,5 +4,9 @@ Changelog
 
 Here you can find the recent changes to cihai-cli.
 
+- :release:`0.2.1 <2017-05-20>`
+- :support:`-` CLI variable tweaks
+- :support:`-` Fix package dependency
+
 - :release:`0.2.0 <2017-05-20>`
 - :feature:`-` Initial project
