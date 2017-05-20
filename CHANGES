@@ -5,6 +5,8 @@ Changelog
 Here you can find the recent changes to cihai-cli.
 
 - :support:`-` Output human-friendly fields only by default
+- :support:`-` Use ``-a`` or ``--all`` to show all fields
+- :support:`-` Rename ``lookup`` command to ``reverse``
 - :support:`-` Remove newlines, use click.echo for printing to CLI
 
 - :release:`0.2.1 <2017-05-20>`
