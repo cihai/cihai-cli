@@ -4,6 +4,9 @@ Changelog
 
 Here you can find the recent changes to cihai-cli.
 
+- :release:`0.3.1 <2017-05-20>`
+- :support:`-` Bump cihai version to 0.7.2
+
 - :release:`0.3.0 <2017-05-20>`
 - :support:`-` Output human-friendly fields only by default
 - :support:`-` Use ``-a`` or ``--all`` to show all fields
