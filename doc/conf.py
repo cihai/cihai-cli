@@ -2,7 +2,7 @@
 
 import os
 import sys
-import alabaster
+import alagitpull
 
 
 # Get the project root dir, which is the parent dir of this
@@ -23,7 +23,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'releases',
-    'alabaster',
+    'alagitpull',
     'sphinx_click.ext',           # sphinx-click
 ]
 
@@ -48,13 +48,12 @@ exclude_patterns = ['_build']
 
 pygments_style = 'sphinx'
 
-html_theme_path = [alabaster.get_path()]
+html_theme_path = [alagitpull.get_path()]
 html_favicon = 'favicon.ico'
-html_theme = 'alabaster'
+html_theme = 'alagitpull'
 html_sidebars = {
     '**': [
         'about.html',
-        'star.html',
         'navigation.html',
         'relations.html',
         'more.html',
@@ -64,6 +63,12 @@ html_sidebars = {
 
 html_theme_options = {
     'logo': 'img/cihai.svg',
+    'github_user': 'cihai',
+    'github_repo': 'cli',
+    'github_type': 'star',
+    'github_banner': True,
+    'projects': alagitpull.projects,
+    'project_name': 'cli',
 }
 
 html_theme_path = ['_themes']
