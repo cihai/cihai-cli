@@ -1,4 +1,4 @@
-# -*- coding: utf8 - *-
+# -*- encoding: utf8 - *-
 from __future__ import (absolute_import, division, print_function,
                         with_statement)
 
@@ -13,17 +13,35 @@ from cihai._compat import PY2
 from cihai.core import Cihai
 from cihai.bootstrap import bootstrap_unihan
 
+#: fields which are human friendly
+HUMAN_UNIHAN_FIELDS = [
+    'char',
+    'ucn',
+    'kDefinition',
+    'kCantonese',
+    'kHangul',
+    'kJapaneseOn',
+    'kKorean',
+    'kMandarin',
+    'kTang',
+    'kTotalStrokes',
+]
+
 
 @click.group(context_settings={'obj': {}})
 @click.version_option(
     __version__, '-V', '--version', message='%(prog)s %(version)s'
 )
-@click.option('-c', '--config', type=click.Path(exists=True))
-@click.option('--log_level', default='INFO',
+@click.option('-c', '--config', type=click.Path(exists=True),
+              metavar='<config-file>', help="path to custom config file")
+@click.option('--log_level', default='INFO', metavar='<log-level>',
               help='Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)')
 @click.pass_context
 def cli(ctx, config, log_level):
-    """For help and example usage, see documentation:
+    """Retrieve CJK information via CLI.
+
+    For help and example usage, see documentation:
+
     https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
     setup_logger(
         level=log_level.upper()
@@ -41,13 +59,15 @@ def cli(ctx, config, log_level):
     ctx.obj['c'] = c  # pass Cihai object down to other commands
 
 
-@cli.command(name='info', short_help='Get details on a CJK character')
-@click.argument('char')
+@cli.command(name='info',
+             short_help=u'Get details on a CJK character, e.g. "好"')
+@click.argument('char', metavar='<character>')
+@click.option('-a', '--all', 'show_all', is_flag=True,
+              help="Show all character details")
 @click.pass_context
-def command_info(ctx, char):
+def command_info(ctx, char, show_all):
     c = ctx.obj['c']
-    Unihan = c.base.classes.Unihan
-    query = c.session.query(Unihan).filter_by(char=char).first()
+    query = c.lookup_char(char).first()
     attrs = {}
     if not query:
         click.echo("No records found for %s" % char, err=True)
@@ -57,40 +77,42 @@ def command_info(ctx, char):
         if value:
             if PY2:
                 value = value.encode('utf-8')
-
+            if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
+                continue
             attrs[str(c)] = value
-    print(
-        yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False)
+    click.echo(
+        yaml.safe_dump(
+            attrs, allow_unicode=True, default_flow_style=False
+        ).strip('\n')
     )
 
 
-@cli.command(name='lookup', short_help='Search character matching details')
-@click.argument('char')
+@cli.command(name='reverse',
+             short_help='Search all info for character matches, e.g. "good"')
+@click.argument('char', metavar='<character>')
+@click.option('-a', '--all', 'show_all', is_flag=True,
+              help="Show all character details")
 @click.pass_context
-def command_lookup(ctx, char):
-
-    from sqlalchemy import or_
+def command_reverse(ctx, char, show_all):
     c = ctx.obj['c']
-    Unihan = c.base.classes.Unihan
-    columns = Unihan.__table__.columns
-    query = c.session.query(Unihan).filter(
-        or_(*[column.contains(char) for column in columns])
-    )
+    query = c.reverse_char([char])
     if not query.count():
         click.echo("No records found for %s" % char, err=True)
         sys.exit()
     for k in query:
-        print('--------')
         attrs = {}
         for c in k.__table__.columns._data.keys():
             value = getattr(k, c)
             if value:
                 if PY2:
                     value = value.encode('utf-8')
+                if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
+                    continue
                 attrs[str(c)] = value
-        print(
-            yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False)
-        )
+        click.echo(yaml.safe_dump(
+            attrs, allow_unicode=True, default_flow_style=False
+        ).strip('\n'))
+        click.echo('--------')
 
 
 def setup_logger(logger=None, level='INFO'):
