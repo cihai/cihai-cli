@@ -49,6 +49,7 @@ exclude_patterns = ['_build']
 pygments_style = 'sphinx'
 
 html_theme_path = [alagitpull.get_path()]
+html_static_path = ['_static']
 html_favicon = 'favicon.ico'
 html_theme = 'alagitpull'
 html_sidebars = {
@@ -71,8 +72,11 @@ html_theme_options = {
     'project_name': 'cli',
 }
 
-html_theme_path = ['_themes']
-html_static_path = ['_static']
+alagitpull_internal_hosts = [
+    'cihai-cli.git-pull.com',
+    '0.0.0.0',
+]
+alagitpull_external_hosts_new_window = True
 
 htmlhelp_basename = '%sdoc' % about['__title__']
 
