@@ -22,6 +22,7 @@ with open("../cihai_cli/__about__.py") as fp:
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    'sphinxcontrib.napoleon',
     'releases',
     'alagitpull',
     'sphinx_click.ext',           # sphinx-click
