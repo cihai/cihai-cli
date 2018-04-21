@@ -1,6 +1,5 @@
 # -*- encoding: utf8 - *-
-from __future__ import (absolute_import, division, print_function,
-                        with_statement)
+from __future__ import absolute_import, print_function
 
 import logging
 import sys
@@ -8,10 +7,11 @@ import sys
 import click
 import yaml
 
-from .__about__ import __version__
 from cihai._compat import PY2
-from cihai.core import Cihai
 from cihai.bootstrap import bootstrap_unihan
+from cihai.core import Cihai
+
+from .__about__ import __version__
 
 #: fields which are human friendly
 HUMAN_UNIHAN_FIELDS = [
