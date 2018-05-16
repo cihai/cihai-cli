@@ -23,6 +23,7 @@ HUMAN_UNIHAN_FIELDS = [
     'kJapaneseOn',
     'kKorean',
     'kMandarin',
+    'kVietnamese',
     'kTang',
     'kTotalStrokes',
 ]
