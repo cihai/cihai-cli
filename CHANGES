@@ -6,6 +6,7 @@ Here you can find the recent changes to cihai-cli.
 
 - :support:`-` Mute warning where tests would display click's `unicode_literals`
   warning
+- :support:`-` Add vietnamese phonetic to default output in ``info`` command
 
 - :release:`0.3.2 <2017-05-26>`
 - :support:`-` Bump cihai version to 0.7.4
