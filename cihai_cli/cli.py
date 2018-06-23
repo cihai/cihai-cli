@@ -13,6 +13,10 @@ from cihai.core import Cihai
 
 from .__about__ import __version__
 
+
+#: Disable click unicode warning
+click.disable_unicode_literals_warning = True
+
 #: fields which are human friendly
 HUMAN_UNIHAN_FIELDS = [
     'char',
