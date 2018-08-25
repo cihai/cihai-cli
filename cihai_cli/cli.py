@@ -30,13 +30,20 @@ HUMAN_UNIHAN_FIELDS = [
 
 
 @click.group(context_settings={'obj': {}})
-@click.version_option(
-    __version__, '-V', '--version', message='%(prog)s %(version)s'
+@click.version_option(__version__, '-V', '--version', message='%(prog)s %(version)s')
+@click.option(
+    '-c',
+    '--config',
+    type=click.Path(exists=True),
+    metavar='<config-file>',
+    help="path to custom config file",
 )
-@click.option('-c', '--config', type=click.Path(exists=True),
-              metavar='<config-file>', help="path to custom config file")
-@click.option('--log_level', default='INFO', metavar='<log-level>',
-              help='Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)')
+@click.option(
+    '--log_level',
+    default='INFO',
+    metavar='<log-level>',
+    help='Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)',
+)
 @click.pass_context
 def cli(ctx, config, log_level):
     """Retrieve CJK information via CLI.
@@ -44,9 +51,7 @@ def cli(ctx, config, log_level):
     For help and example usage, see documentation:
 
     https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
-    setup_logger(
-        level=log_level.upper()
-    )
+    setup_logger(level=log_level.upper())
     if config:
         c = Cihai.from_file(config)
     else:
@@ -60,11 +65,11 @@ def cli(ctx, config, log_level):
     ctx.obj['c'] = c  # pass Cihai object down to other commands
 
 
-@cli.command(name='info',
-             short_help=u'Get details on a CJK character, e.g. "好"')
+@cli.command(name='info', short_help=u'Get details on a CJK character, e.g. "好"')
 @click.argument('char', metavar='<character>')
-@click.option('-a', '--all', 'show_all', is_flag=True,
-              help="Show all character details")
+@click.option(
+    '-a', '--all', 'show_all', is_flag=True, help="Show all character details"
+)
 @click.pass_context
 def command_info(ctx, char, show_all):
     c = ctx.obj['c']
@@ -82,17 +87,17 @@ def command_info(ctx, char, show_all):
                 continue
             attrs[str(c)] = value
     click.echo(
-        yaml.safe_dump(
-            attrs, allow_unicode=True, default_flow_style=False
-        ).strip('\n')
+        yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip('\n')
     )
 
 
-@cli.command(name='reverse',
-             short_help='Search all info for character matches, e.g. "good"')
+@cli.command(
+    name='reverse', short_help='Search all info for character matches, e.g. "good"'
+)
 @click.argument('char', metavar='<character>')
-@click.option('-a', '--all', 'show_all', is_flag=True,
-              help="Show all character details")
+@click.option(
+    '-a', '--all', 'show_all', is_flag=True, help="Show all character details"
+)
 @click.pass_context
 def command_reverse(ctx, char, show_all):
     c = ctx.obj['c']
@@ -110,9 +115,11 @@ def command_reverse(ctx, char, show_all):
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                     continue
                 attrs[str(c)] = value
-        click.echo(yaml.safe_dump(
-            attrs, allow_unicode=True, default_flow_style=False
-        ).strip('\n'))
+        click.echo(
+            yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip(
+                '\n'
+            )
+        )
         click.echo('--------')
 
 
