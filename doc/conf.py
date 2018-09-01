@@ -29,8 +29,8 @@ extensions = [
 
 releases_unstable_prehistory = True
 releases_document_name = "history"
-releases_issue_uri = "https://github.com/cihai/cli/issues/%s"
-releases_release_uri = "https://github.com/cihai/cli/tree/v%s"
+releases_issue_uri = "https://github.com/cihai/cihai-cli/issues/%s"
+releases_release_uri = "https://github.com/cihai/cihai-cli/tree/v%s"
 
 templates_path = ['_templates']
 
@@ -65,7 +65,7 @@ html_sidebars = {
 html_theme_options = {
     'logo': 'img/cihai.svg',
     'github_user': 'cihai',
-    'github_repo': 'cli',
+    'github_repo': 'cihai-cli',
     'github_type': 'star',
     'github_banner': True,
     'projects': alagitpull.projects,

@@ -95,25 +95,25 @@ Quick links
 
 ==============  ==========================================================
 Python support  Python 2.7, >= 3.5, pypy
-Source          https://github.com/cihai/cli
+Source          https://github.com/cihai/cihai-cli
 Docs            https://cihai-cli.git-pull.com
 Changelog       https://cihai-cli.git-pull.com/en/latest/history.html
 API             https://cihai-cli.git-pull.com/en/latest/api.html
 Issues          https://github.com/cihai/cihai-cli/issues
-Travis          https://travis-ci.org/cihai/cli
-Test coverage   https://codecov.io/gh/cihai/cli
+Travis          https://travis-ci.org/cihai/cihai-cli
+Test coverage   https://codecov.io/gh/cihai/cihai-cli
 pypi            https://pypi.python.org/pypi/cihai-cli
-OpenHub         https://www.openhub.net/p/cihai
+OpenHub         https://www.openhub.net/p/cihai-cli
 License         MIT
 git repo        .. code-block:: bash
 
-                    $ git clone https://github.com/cihai/cli.git
+                    $ git clone https://github.com/cihai/cihai-cli.git
 install stable  .. code-block:: bash
 
                     $ pip install cihai-cli
 install dev     .. code-block:: bash
 
-                    $ git clone https://github.com/cihai/cli.git cihai-cli
+                    $ git clone https://github.com/cihai/cihai-cli.git cihai-cli
                     $ cd ./cihai-cli
                     $ virtualenv .env
                     $ source .env/bin/activate
@@ -127,15 +127,15 @@ tests           .. code-block:: bash
     :alt: Python Package
     :target: http://badge.fury.io/py/cihai_cli
 
-.. |build-status| image:: https://img.shields.io/travis/cihai/cli.svg
+.. |build-status| image:: https://img.shields.io/travis/cihai/cihai-cli.svg
    :alt: Build Status
-   :target: https://travis-ci.org/cihai/cli
+   :target: https://travis-ci.org/cihai/cihai-cli
 
-.. |coverage| image:: https://codecov.io/gh/cihai/cli/branch/master/graph/badge.svg
+.. |coverage| image:: https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg
     :alt: Code Coverage
-    :target: https://codecov.io/gh/cihai/cli
+    :target: https://codecov.io/gh/cihai/cihai-cli
 
-.. |license| image:: https://img.shields.io/github/license/cihai/cli.svg
+.. |license| image:: https://img.shields.io/github/license/cihai/cihai-cli.svg
     :alt: License 
 
 .. |docs| image:: https://readthedocs.org/projects/cihai-cli/badge/?version=latest
