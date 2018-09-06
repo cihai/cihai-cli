@@ -8,7 +8,7 @@ import click
 import yaml
 
 from cihai._compat import PY2
-from cihai.bootstrap import bootstrap_unihan
+from cihai.data.unihan.bootstrap import bootstrap_unihan
 from cihai.core import Cihai
 
 from .__about__ import __version__
@@ -57,10 +57,9 @@ def cli(ctx, config, log_level):
     else:
         c = Cihai()
 
-    if not c.is_bootstrapped:
+    if not c.unihan.is_bootstrapped:
         click.echo("Bootstrapping Unihan database")
-        bootstrap_unihan(c.metadata, c.config.get('unihan_options', {}))
-        c.reflect_db()
+        c.unihan.bootstrap(options=c.config.get('unihan_options', {}))
 
     ctx.obj['c'] = c  # pass Cihai object down to other commands
 
@@ -73,7 +72,7 @@ def cli(ctx, config, log_level):
 @click.pass_context
 def command_info(ctx, char, show_all):
     c = ctx.obj['c']
-    query = c.lookup_char(char).first()
+    query = c.unihan.lookup_char(char).first()
     attrs = {}
     if not query:
         click.echo("No records found for %s" % char, err=True)
@@ -101,7 +100,7 @@ def command_info(ctx, char, show_all):
 @click.pass_context
 def command_reverse(ctx, char, show_all):
     c = ctx.obj['c']
-    query = c.reverse_char([char])
+    query = c.unihan.reverse_char([char])
     if not query.count():
         click.echo("No records found for %s" % char, err=True)
         sys.exit()
