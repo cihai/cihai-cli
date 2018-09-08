@@ -7,11 +7,12 @@ import sys
 import click
 import yaml
 
+import cihai
 from cihai._compat import PY2
 from cihai.data.unihan.bootstrap import bootstrap_unihan
 from cihai.core import Cihai
 
-from .__about__ import __version__
+from .__about__ import __title__, __version__
 
 #: fields which are human friendly
 HUMAN_UNIHAN_FIELDS = [
@@ -30,7 +31,12 @@ HUMAN_UNIHAN_FIELDS = [
 
 
 @click.group(context_settings={'obj': {}})
-@click.version_option(__version__, '-V', '--version', message='%(prog)s %(version)s')
+@click.version_option(
+    __version__, '-V', '--version',
+    message='{prog} %(version)s, cihai {cihai_version}'.format(
+        prog=__title__, cihai_version=cihai.__version__
+    )
+)
 @click.option(
     '-c',
     '--config',
