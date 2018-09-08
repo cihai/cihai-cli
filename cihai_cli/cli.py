@@ -9,7 +9,6 @@ import yaml
 
 import cihai
 from cihai._compat import PY2
-from cihai.data.unihan.bootstrap import bootstrap_unihan
 from cihai.core import Cihai
 
 from .__about__ import __title__, __version__
