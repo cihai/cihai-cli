@@ -4,6 +4,9 @@ Changelog
 
 Here you can find the recent changes to cihai-cli.
 
+- :release:`0.5.0 <2018-09-08>`
+- :feature:`91` ``-v`` / ``-version`` now shows the cihai backend version.
+
 - :release:`0.4.1 <2018-07-21>`
 - :support:`-` Update Sphinx 1.7.5. to 1.7.6
 - :support:`-` Update cihai 0.8.0 to 0.8.1
