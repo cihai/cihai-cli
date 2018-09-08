@@ -10,6 +10,7 @@ import yaml
 import cihai
 from cihai._compat import PY2
 from cihai.core import Cihai
+from unihan_etl.__about__ import __version__ as __unihan_etl_version__
 
 from .__about__ import __title__, __version__
 
@@ -31,10 +32,16 @@ HUMAN_UNIHAN_FIELDS = [
 
 @click.group(context_settings={'obj': {}})
 @click.version_option(
-    __version__, '-V', '--version',
-    message='{prog} %(version)s, cihai {cihai_version}'.format(
-        prog=__title__, cihai_version=cihai.__version__
-    )
+    __version__,
+    '-V',
+    '--version',
+    message='''
+{prog} %(version)s, cihai {cihai_version}, unihan-etl {unihan_etl_version}
+'''.format(
+        prog=__title__,
+        cihai_version=cihai.__version__,
+        unihan_etl_version=__unihan_etl_version__,
+    ).strip(),
 )
 @click.option(
     '-c',
