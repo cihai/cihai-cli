@@ -43,7 +43,7 @@ setup(
     name=about['__title__'],
     version=about['__version__'],
     url='https://cihai-cli.git-pull.com',
-    download_url='https://pypi.python.org/pypi/cihai_cli',
+    download_url=about['__github__'],
     license=about['__license__'],
     author=about['__author__'],
     author_email=about['__email__'],
