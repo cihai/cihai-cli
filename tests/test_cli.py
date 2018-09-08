@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
+import pytest
+
 import yaml
 from click.testing import CliRunner
 
@@ -31,3 +33,12 @@ def test_cli_reflects_after_bootstrap(tmpdir, tmpdb_file, unihan_options):
     assert result.exit_code == 0
 
     result = runner.invoke(cli.cli, ['-c', str(config_file)], 'info')
+
+
+@pytest.mark.parametrize('flag', ['-V', '--version'])
+def test_cli_version(flag):
+    runner = CliRunner()
+    result = runner.invoke(cli.cli, [flag])
+    assert 'cihai-cli' in result.output
+    assert 'cihai' in result.output
+    assert 'unihan-etl' in result.output
