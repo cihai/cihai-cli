@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcihai%2Fcihai-cli.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcihai%2Fcihai-cli?ref=badge_shield)
+
 *cihai-cli* - Command line interface to the `cihai`_ `CJK`_-language library
 
 |pypi| |docs| |build-status| |coverage| |license|
@@ -149,3 +151,6 @@ tests           .. code-block:: bash
 .. _cihai: https://cihai.git-pull.com
 .. _CJK: https://cihai.git-pull.com/en/latest/glossary.html#term-cjk
 .. _UNIHAN: http://unicode.org/charts/unihan.html
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcihai%2Fcihai-cli.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcihai%2Fcihai-cli?ref=badge_large)
