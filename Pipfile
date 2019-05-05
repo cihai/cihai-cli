@@ -4,20 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-alagitpull = "==0.0.21"
+alagitpull = "==0.0.22"
 releases = "==1.6.1"
-sphinx-click = "==1.4.1"
+sphinx-click = "==2.0.1"
 sphinxcontrib-napoleon = "==0.7"
-Sphinx = "==1.8.3"
-isort = "==4.3.4"
-flake8 = "==3.6.0"
-pytest = "==4.0.2"
+Sphinx = "==2.0.0"
+isort = "==4.3.16"
+flake8 = "==3.7.7"
+pytest = "==4.3.1"
 cihai-cli = {editable = true,path = "."}
 
 [packages]
 cihai = ">=0.9.0a2"
 click = "==6.7"
-PyYAML = ">=3.12,<4"
+PyYAML = "<6,>=3.12"
 
 [requires]
 python_version = "3"
