@@ -12,6 +12,7 @@ flake8 = "*"
 pytest = "*"
 cihai-cli = {path = ".",editable = true}
 black = "==19.3b0"
+sphinx-issues = "*"
 
 [packages]
 cihai = ">=0.9.0a3"

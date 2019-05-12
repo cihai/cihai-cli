@@ -28,12 +28,15 @@ extensions = [
     'sphinx.ext.napoleon',
     'alagitpull',
     'sphinx_click.ext',  # sphinx-click
+    'sphinx_issues',
 ]
 
 releases_unstable_prehistory = True
 releases_document_name = ["history"]
 releases_issue_uri = "https://github.com/cihai/cihai-cli/issues/%s"
 releases_release_uri = "https://github.com/cihai/cihai-cli/tree/v%s"
+
+issues_github_path = about['__github__']
 
 templates_path = ['_templates']
 
