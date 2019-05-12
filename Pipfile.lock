@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "917bdbfca56f233c1ed211c86c70f44a346946d626874f67e994c60745a5ef94"
+            "sha256": "873cdcd94cf17b9dd3d40af78d887b65dba6e2e61e1dfceb28f5c5f11c8416a6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -303,13 +303,6 @@
             ],
             "version": "==0.11.0"
         },
-        "pockets": {
-            "hashes": [
-                "sha256:109eb91588e9cf722de98c98d300e1c5896e877f5704dc61176fa09686ca635b",
-                "sha256:21a2405543c439ac091453ed187f558cf5294d3f85f15310f214ad4de057e0af"
-            ],
-            "version": "==0.7.2"
-        },
         "py": {
             "hashes": [
                 "sha256:64f65755aee5b381cea27766a3a147c3f15b9b6b9ac88676de66ba2ae36793fa",
@@ -441,14 +434,6 @@
                 "sha256:a9925e4a4587247ed2191a22df5f6970656cb8ca2bd6284309578f2153e0c4b8"
             ],
             "version": "==1.0.1"
-        },
-        "sphinxcontrib-napoleon": {
-            "hashes": [
-                "sha256:407382beed396e9f2d7f3043fad6afda95719204a1e1a231ac865f40abcbfcf8",
-                "sha256:711e41a3974bdf110a484aec4c1a556799eb0b3f3b897521a018ad7e2db13fef"
-            ],
-            "index": "pypi",
-            "version": "==0.7"
         },
         "sphinxcontrib-qthelp": {
             "hashes": [
