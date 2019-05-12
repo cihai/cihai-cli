@@ -11,7 +11,7 @@ Sphinx = "==2.0.1"
 isort = "==4.3.18"
 flake8 = "==3.7.7"
 pytest = "==4.4.1"
-cihai-cli = {editable = true,path = "."}
+cihai-cli = {path = ".",editable = true}
 
 [packages]
 cihai = ">=0.9.0a2"
@@ -20,3 +20,6 @@ PyYAML = "<6,>=3.12"
 
 [requires]
 python_version = "3"
+
+[pipenv]
+allow_prereleases = true
