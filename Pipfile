@@ -4,17 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-alagitpull = ">=0.0.22"
-sphinx-click = "==2.1.0"
-Sphinx = ">=2.0.1"
-isort = "==4.3.18"
-flake8 = "==3.7.7"
-pytest = "==4.4.1"
+alagitpull = "*"
+sphinx-click = "*"
+Sphinx = ">=2.0.0"
+isort = "*"
+flake8 = "*"
+pytest = "*"
 cihai-cli = {path = ".",editable = true}
+black = "==19.3b0"
 
 [packages]
 cihai = ">=0.9.0a3"
-click = "==6.7"
+click = "<7"
 PyYAML = "<6,>=3.12"
 
 [requires]
