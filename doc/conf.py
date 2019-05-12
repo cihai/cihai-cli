@@ -25,7 +25,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.linkcode',
-    'sphinxcontrib.napoleon',
+    'sphinx.ext.napoleon',
     'alagitpull',
     'sphinx_click.ext',  # sphinx-click
 ]
