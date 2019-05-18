@@ -4,20 +4,23 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-alagitpull = "==0.0.22"
-releases = "==1.6.1"
-sphinx-click = "==2.1.0"
-sphinxcontrib-napoleon = "==0.7"
-Sphinx = "==2.0.1"
-isort = "==4.3.18"
-flake8 = "==3.7.7"
-pytest = "==4.4.1"
-cihai-cli = {editable = true,path = "."}
+alagitpull = "*"
+sphinx-click = "*"
+Sphinx = ">=2.0.0"
+isort = "*"
+flake8 = "*"
+pytest = "*"
+cihai-cli = {path = ".",editable = true}
+black = "==19.3b0"
+sphinx-issues = "*"
 
 [packages]
-cihai = ">=0.9.0a2"
-click = "==6.7"
+cihai = ">=0.9.0a3"
+click = "<7"
 PyYAML = "<6,>=3.12"
 
 [requires]
 python_version = "3"
+
+[pipenv]
+allow_prereleases = true
