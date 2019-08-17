@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9ae5d05870e087703ed8698656e02693bc04a962d32e8d8550b9b50d67d63348"
+            "sha256": "79984cc0381fb3812e9a77ed62b6fd4f46f19eaa2783df5347e15a29e5006c9b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -25,10 +25,10 @@
         },
         "cihai": {
             "hashes": [
-                "sha256:9f7452b18f4eaa2161df77a1416c61fe09c01cda0b1d2c62466351b4d5c740d4"
+                "sha256:fead42bdbc86c48ce49bbc578cbb4314710e4efd8b3035abddc1420679e6e62e"
             ],
             "index": "pypi",
-            "version": "==0.9.0a3"
+            "version": "==0.9.0a4"
         },
         "click": {
             "hashes": [
@@ -40,10 +40,10 @@
         },
         "colorama": {
             "hashes": [
-                "sha256:463f8483208e921368c9f306094eb6f725c6ca42b0f97e313cb5d5512459feda",
-                "sha256:48eb22f4f8461b1df5734a074b57042430fb06e1d61bd1e11b078c0fe6d7a1f1"
+                "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d",
+                "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"
             ],
-            "version": "==0.3.9"
+            "version": "==0.4.1"
         },
         "kaptan": {
             "hashes": [
@@ -162,10 +162,10 @@
         },
         "cihai": {
             "hashes": [
-                "sha256:9f7452b18f4eaa2161df77a1416c61fe09c01cda0b1d2c62466351b4d5c740d4"
+                "sha256:fead42bdbc86c48ce49bbc578cbb4314710e4efd8b3035abddc1420679e6e62e"
             ],
             "index": "pypi",
-            "version": "==0.9.0a3"
+            "version": "==0.9.0a4"
         },
         "cihai-cli": {
             "editable": true,
@@ -181,10 +181,10 @@
         },
         "colorama": {
             "hashes": [
-                "sha256:463f8483208e921368c9f306094eb6f725c6ca42b0f97e313cb5d5512459feda",
-                "sha256:48eb22f4f8461b1df5734a074b57042430fb06e1d61bd1e11b078c0fe6d7a1f1"
+                "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d",
+                "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"
             ],
-            "version": "==0.3.9"
+            "version": "==0.4.1"
         },
         "docutils": {
             "hashes": [
