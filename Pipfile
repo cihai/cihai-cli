@@ -16,7 +16,7 @@ sphinx-issues = "*"
 
 [packages]
 cihai = ">=0.9.0a3"
-click = "<7"
+click = ">=7<8"
 PyYAML = "<6,>=3.12"
 
 [requires]
