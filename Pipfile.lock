@@ -25,10 +25,10 @@
         },
         "cihai": {
             "hashes": [
-                "sha256:fead42bdbc86c48ce49bbc578cbb4314710e4efd8b3035abddc1420679e6e62e"
+                "sha256:33719417ff442b0b6bf735977debe08abec2a7328463aeb5ca4cb5e2aa65799f"
             ],
             "index": "pypi",
-            "version": "==0.9.0a4"
+            "version": "==0.9.0a5"
         },
         "click": {
             "hashes": [
@@ -162,10 +162,10 @@
         },
         "cihai": {
             "hashes": [
-                "sha256:fead42bdbc86c48ce49bbc578cbb4314710e4efd8b3035abddc1420679e6e62e"
+                "sha256:33719417ff442b0b6bf735977debe08abec2a7328463aeb5ca4cb5e2aa65799f"
             ],
             "index": "pypi",
-            "version": "==0.9.0a4"
+            "version": "==0.9.0a5"
         },
         "cihai-cli": {
             "editable": true,
