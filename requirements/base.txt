@@ -1,4 +1,4 @@
-cihai>=0.9.0a4
+cihai>=0.9.0a5
 pyyaml>=3.12,<6
 click>=7<8
 
