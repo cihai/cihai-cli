@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.6.0 <2019-08-18>
+0.5.0 <2019-08-18>
 ------------------
 - Add ``project_urls`` to setup.py
 - Installation is now done via ``pip --user install cihai[cli]``
@@ -10,8 +10,8 @@ Changelog
 - Miscellaneous package updates for pytest, other support packages
 - Loosening of version requirements
 
-0.5.0 <2018-09-08>
-------------------
+0.5.0a <2018-09-08>
+-------------------
 - :issue:`91`  ``-V`` / ``-version`` now shows the cihai backend version.
 
 0.4.1 <2018-07-21>
