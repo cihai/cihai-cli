@@ -11,7 +11,7 @@ Installation
 
 .. code-block:: sh
 
-   $ pip install --user cihai_cli
+   $ pip install --user cihai[cli]
 
 Configuration
 -------------

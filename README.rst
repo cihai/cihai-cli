@@ -110,7 +110,7 @@ git repo        .. code-block:: bash
                     $ git clone https://github.com/cihai/cihai-cli.git
 install stable  .. code-block:: bash
 
-                    $ pip install cihai-cli
+                    $ pip install cihai[cli]
 install dev     .. code-block:: bash
 
                     $ git clone https://github.com/cihai/cihai-cli.git cihai-cli
