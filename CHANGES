@@ -4,6 +4,8 @@ Changelog
 
 Here you can find the recent changes to cihai-cli.
 
+- Add ``project_urls`` to setup.py
+
 0.5.0 <2018-09-08>
 - :issue:`91`  ``-V`` / ``-version`` now shows the cihai backend version.
 
