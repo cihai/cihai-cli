@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "79984cc0381fb3812e9a77ed62b6fd4f46f19eaa2783df5347e15a29e5006c9b"
+            "sha256": "a3057f1d05255b81851049a754c3342188742ffd6823f211d9ffa813a673a6ae"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -25,10 +25,10 @@
         },
         "cihai": {
             "hashes": [
-                "sha256:33719417ff442b0b6bf735977debe08abec2a7328463aeb5ca4cb5e2aa65799f"
+                "sha256:10dd83a3f7daed06a534e71bf479fa1610e03381b989a2ddc66f88cd9e31dd94"
             ],
             "index": "pypi",
-            "version": "==0.9.0a5"
+            "version": "==0.9.0"
         },
         "click": {
             "hashes": [
@@ -84,9 +84,9 @@
         },
         "unihan-etl": {
             "hashes": [
-                "sha256:e693ffb5130654e945088713638c25acf04e339e81745b3f9b030c990dbb8530"
+                "sha256:1f2451616002659141c10e62beedc6ad6d1afb5224a380d52ac09214b56b19ad"
             ],
-            "version": "==0.10.2"
+            "version": "==0.10.3"
         },
         "zhon": {
             "hashes": [
@@ -162,10 +162,10 @@
         },
         "cihai": {
             "hashes": [
-                "sha256:33719417ff442b0b6bf735977debe08abec2a7328463aeb5ca4cb5e2aa65799f"
+                "sha256:10dd83a3f7daed06a534e71bf479fa1610e03381b989a2ddc66f88cd9e31dd94"
             ],
             "index": "pypi",
-            "version": "==0.9.0a5"
+            "version": "==0.9.0"
         },
         "cihai-cli": {
             "editable": true,
@@ -496,9 +496,9 @@
         },
         "unihan-etl": {
             "hashes": [
-                "sha256:e693ffb5130654e945088713638c25acf04e339e81745b3f9b030c990dbb8530"
+                "sha256:1f2451616002659141c10e62beedc6ad6d1afb5224a380d52ac09214b56b19ad"
             ],
-            "version": "==0.10.2"
+            "version": "==0.10.3"
         },
         "urllib3": {
             "hashes": [
