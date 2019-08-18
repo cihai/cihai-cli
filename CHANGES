@@ -2,9 +2,13 @@
 Changelog
 =========
 
-Here you can find the recent changes to cihai-cli.
-
+0.6.0 <2019-08-18>
+------------------
 - Add ``project_urls`` to setup.py
+- Installation is now done via ``pip --user install cihai[cli]``
+- README Fixed to use plain reStructuredText
+- Miscellaneous package updates for pytest, other support packages
+- Loosening of version requirements
 
 0.5.0 <2018-09-08>
 ------------------
