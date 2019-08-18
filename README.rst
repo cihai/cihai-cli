@@ -10,11 +10,7 @@ Installation
 
 .. code-block:: sh
 
-   # stable
-   $ pip install --user cihai-cli
-
-   # pre-release
-   $ pip install --user --pre cihai[cli]
+   $ pip install --user cihai[cli]
 
 Character lookup
 ----------------
