@@ -11,7 +11,7 @@ isort = "*"
 flake8 = "*"
 pytest = "*"
 cihai-cli = {path = ".",editable = true}
-black = "==19.3b0"
+black = "==19.10b0"
 sphinx-issues = "*"
 
 [packages]
