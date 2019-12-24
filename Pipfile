@@ -13,6 +13,8 @@ pytest = "*"
 cihai-cli = {path = ".",editable = true}
 black = "==19.10b0"
 sphinx-issues = "*"
+pytest-cov = "*"
+coverage = "*"
 
 [packages]
 cihai = "~=0.9.0"
