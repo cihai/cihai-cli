@@ -76,7 +76,14 @@ def cli(ctx, config, log_level):
     ctx.obj['c'] = c  # pass Cihai object down to other commands
 
 
-@cli.command(name='info', short_help=u'Get details on a CJK character, e.g. "好"')
+INFO_SHORT_HELP = (
+    u'Get details on a CJK character'
+    if PY2
+    else u'Get details on a CJK character, e.g. "好"'
+)
+
+
+@cli.command(name='info', short_help=INFO_SHORT_HELP)
 @click.argument('char', metavar='<character>')
 @click.option(
     '-a', '--all', 'show_all', is_flag=True, help="Show all character details"
