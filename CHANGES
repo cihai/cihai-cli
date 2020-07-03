@@ -2,6 +2,11 @@
 Changelog
 =========
 
+Update next
+-----------
+- :issue:`247` - Move from Pipfile to Poetry
+- Fixed bug in Python 2.x when showing help / "cihai"
+
 0.5.0 <2019-08-18>
 ------------------
 - Add ``project_urls`` to setup.py
