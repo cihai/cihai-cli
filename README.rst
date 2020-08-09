@@ -86,9 +86,9 @@ Developing
 ----------
 `poetry`_ is a required package to develop.
 
-``git clone https://github.com/cihai/unihan-etl.git``
+``git clone https://github.com/cihai/cihai-cli.git``
 
-``cd unihan-etl``
+``cd cihai-cli``
 
 ``poetry install -E "docs test coverage lint format"``
 
@@ -96,7 +96,6 @@ Makefile commands prefixed with ``watch_`` will watch files and rerun.
 
 Tests
 """""
-
 ``poetry run py.test``
 
 Helpers: ``make test``
@@ -147,7 +146,6 @@ Update `__version__` in `__about__.py` and `pyproject.toml`::
 
 Quick links
 -----------
-
 - `Usage`_
 - Python `API`_
 - `2017 roadmap <https://cihai.git-pull.com/design-and-planning/2017/spec.html>`_
