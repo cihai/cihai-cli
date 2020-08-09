@@ -2,8 +2,8 @@
 Changelog
 =========
 
-current
--------
+cihai-cli 0.6.0 (2020-08-09)
+----------------------------
 - :issue:`249` Move packaging / publishing to poetry
 - :issue:`248` Self host docs
 - :issue:`248` Add metadata / icons / etc. for doc site
