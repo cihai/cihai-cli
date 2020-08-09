@@ -115,7 +115,7 @@ description = "Library for CJK (chinese, japanese, korean) language data."
 name = "cihai"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "0.10.0a3"
+version = "0.10.0"
 
 [package.dependencies]
 appdirs = "*"
@@ -1049,7 +1049,7 @@ lint = []
 test = []
 
 [metadata]
-content-hash = "77ae34272f9c99d1ceba5957942c31b984b17a6dd0a32fb30591e14e09868ca0"
+content-hash = "7a82f4fc2d432d3b1ad13ba7563b3d0523849c358b34cc008b6da1505512ad2c"
 lock-version = "1.0"
 python-versions = "~2.7 || ^3.5"
 
@@ -1095,8 +1095,8 @@ chardet = [
     {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
 ]
 cihai = [
-    {file = "cihai-0.10.0a3-py2.py3-none-any.whl", hash = "sha256:f6c5e92f6ebaced2e2c3656e5e6a563ed5abf6141e9fc769598c1b3a3f6951fe"},
-    {file = "cihai-0.10.0a3.tar.gz", hash = "sha256:e99cdb2e2a8b2cc3c070dd5c4d93842c8a9b5f7516fae172557adf938bf7fda2"},
+    {file = "cihai-0.10.0-py2.py3-none-any.whl", hash = "sha256:df0eb60130be6deaa3893cf4b183889b16f08df2b0b69269eef1a57317d79c06"},
+    {file = "cihai-0.10.0.tar.gz", hash = "sha256:119e16ba5e86de9e34fbc48473cb5b5d7a45e0fb1b5a1d6511012f751432d717"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
