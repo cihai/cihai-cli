@@ -76,6 +76,9 @@ isort = [
 ### Lint ###
 flake8 = "*"
 
+[tool.poetry.scripts]
+cihai = 'cihai_cli.cli:cli'
+
 [tool.poetry.extras]
 docs = ["sphinx", "sphinx-issues", "sphinx-click", "alagitpull"]
 test = ["pytest", "pathlib2", "pytest-rerunfailures"]
