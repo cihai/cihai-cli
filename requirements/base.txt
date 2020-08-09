@@ -1,4 +1,0 @@
-cihai~=0.9.0
-unihan-etl>=0.10.4
-pyyaml>=3.12,<6
-click>=7<8

@@ -3,7 +3,7 @@ skip-string-normalization = true
 
 [tool.poetry]
 name = "cihai-cli"
-version = "0.5.1"
+version = "0.6.0a3"
 description = "Command line frontend for the cihai CJK language library"
 license = "MIT"
 authors = ["Tony Narlock <tony@git-pull.com>"]
@@ -37,7 +37,7 @@ Repository = "https://github.com/cihai/cihai-cli"
 [tool.poetry.dependencies]
 python = "~2.7 || ^3.5"
 click = ">=7<8"
-cihai = "~=0.9.0"
+cihai = { version="~=0.10.0" }
 PyYAML = "<6,>=3.12"
 
 [tool.poetry.dev-dependencies]
@@ -75,6 +75,9 @@ isort = [
 
 ### Lint ###
 flake8 = "*"
+
+[tool.poetry.scripts]
+cihai = 'cihai_cli.cli:cli'
 
 [tool.poetry.extras]
 docs = ["sphinx", "sphinx-issues", "sphinx-click", "alagitpull"]
