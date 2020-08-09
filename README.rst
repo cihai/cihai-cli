@@ -93,35 +93,16 @@ Quick links
 .. _Usage: https://cihai-cli.git-pull.com/en/latest/usage.html
 .. _CLI: https://cihai-cli.git-pull.com/en/latest/cli.html
 
-==============  ==========================================================
-Python support  Python 2.7, >= 3.5, pypy
-Source          https://github.com/cihai/cihai-cli
-Docs            https://cihai-cli.git-pull.com
-Changelog       https://cihai-cli.git-pull.com/en/latest/history.html
-API             https://cihai-cli.git-pull.com/en/latest/api.html
-Issues          https://github.com/cihai/cihai-cli/issues
-Travis          https://travis-ci.org/cihai/cihai-cli
-Test coverage   https://codecov.io/gh/cihai/cihai-cli
-pypi            https://pypi.python.org/pypi/cihai-cli
-OpenHub         https://www.openhub.net/p/cihai-cli
-License         MIT
-git repo        .. code-block:: bash
-
-                    $ git clone https://github.com/cihai/cihai-cli.git
-install stable  .. code-block:: bash
-
-                    $ pip install cihai[cli]
-install dev     .. code-block:: bash
-
-                    $ git clone https://github.com/cihai/cihai-cli.git cihai-cli
-                    $ cd ./cihai-cli
-                    $ virtualenv .env
-                    $ source .env/bin/activate
-                    $ pip install -e .
-tests           .. code-block:: bash
-
-                    $ python setup.py test
-==============  ==========================================================
+- Python support: Python 2.7, >= 3.5, pypy
+- Source: https://github.com/cihai/cihai-cli
+- Docs: https://cihai-cli.git-pull.com
+- Changelog: https://cihai-cli.git-pull.com/history.html
+- API: https://cihai-cli.git-pull.com/api.html
+- Issues: https://github.com/cihai/cihai-cli/issues
+- Test coverage   https://codecov.io/gh/cihai/cihai-cli
+- pypi: https://pypi.python.org/pypi/cihai-cli
+- OpenHub: https://www.openhub.net/p/cihai-cli
+- License: MIT
 
 .. |pypi| image:: https://img.shields.io/pypi/v/cihai_cli.svg
     :alt: Python Package
