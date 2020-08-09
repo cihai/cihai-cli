@@ -2,6 +2,14 @@
 Changelog
 =========
 
+current
+-------
+- :issue:`249` Move packaging / publishing to poetry
+- :issue:`247` Self host docs
+- :issue:`247` Add metadata / icons / etc. for doc site
+- :issue:`247` Move travis -> github actions
+- :issue:`247` Overhaul Makefiles
+
 cihai-cli 0.5.1 (2020-07-03)
 ----------------------------
 - :issue:`247` - Move from Pipfile to Poetry
