@@ -173,9 +173,9 @@ Quick links
    :alt: Docs
    :target: https://github.com/cihai/cihai-cli/actions?query=workflow%3A"Publish+Docs"
 
-.. |build-status| image:: https://github.com/cihai/cihai-cli/workflows/test/badge.svg
+.. |build-status| image:: https://github.com/cihai/cihai-cli/workflows/tests/badge.svg
    :alt: Build Status
-   :target: https://github.com/cihai/cihai-cli/actions?query=workflow%3A"test"
+   :target: https://github.com/cihai/cihai-cli/actions?query=workflow%3A"tests"
 
 .. |coverage| image:: https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg
     :alt: Code Coverage
