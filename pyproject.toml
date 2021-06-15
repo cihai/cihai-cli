@@ -29,6 +29,7 @@ packages = [
 ]
 
 homepage = "https://cihai-cli.git-pull.com"
+readme = "README.rst"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/cihai/cihai-cli/issues"
