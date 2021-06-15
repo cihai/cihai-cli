@@ -6,6 +6,10 @@ current
 -------
 - Add unreleased commits here
 
+cihai-cli 0.7.1 (2021-06-15)
+----------------------------
+- Fix README in packaging
+
 cihai-cli 0.7.0 (2021-06-15)
 ----------------------------
 - Update `black` to 21.6b0
