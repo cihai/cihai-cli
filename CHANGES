@@ -6,6 +6,10 @@ current
 -------
 - Add unreleased commits here
 
+cihai-cli 0.7.2 (2021-06-15)
+----------------------------
+- Set cihai to 0.11.1+ to fix sqlalchemy issue
+
 cihai-cli 0.7.1 (2021-06-15)
 ----------------------------
 - Fix README in packaging

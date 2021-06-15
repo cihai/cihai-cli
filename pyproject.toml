@@ -3,7 +3,7 @@ skip-string-normalization = true
 
 [tool.poetry]
 name = "cihai-cli"
-version = "0.7.1"
+version = "0.7.2"
 description = "Command line frontend for the cihai CJK language library"
 license = "MIT"
 authors = ["Tony Narlock <tony@git-pull.com>"]
@@ -39,7 +39,7 @@ Repository = "https://github.com/cihai/cihai-cli"
 [tool.poetry.dependencies]
 python = "^3.6"
 click = ">=7<8"
-cihai = "~=0.11.0"
+cihai = "~=0.11.1"
 PyYAML = "<6,>=3.12"
 
 [tool.poetry.dev-dependencies]
