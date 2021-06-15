@@ -4,8 +4,14 @@ Changelog
 
 current
 -------
+- Add unreleased commits here
+
+cihai-cli 0.7.0 (2021-06-15)
+----------------------------
 - Update `black` to 21.6b0
 - Update trove classifiers to 3.9
+- :issue:`251` Drop python 2.7 and 3.5. Remove deprecated ``__future__``
+  and modesets
 
 cihai-cli 0.6.0 (2020-08-09)
 ----------------------------
