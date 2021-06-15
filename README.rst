@@ -154,7 +154,7 @@ Quick links
 .. _Usage: https://cihai-cli.git-pull.com/usage.html
 .. _CLI: https://cihai-cli.git-pull.com/cli.html
 
-- Python support: Python 2.7, >= 3.5, pypy
+- Python support: >= 3.6, pypy
 - Source: https://github.com/cihai/cihai-cli
 - Docs: https://cihai-cli.git-pull.com
 - Changelog: https://cihai-cli.git-pull.com/history.html
