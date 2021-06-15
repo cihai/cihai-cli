@@ -2,6 +2,11 @@
 Changelog
 =========
 
+current
+-------
+- Update `black` to 21.6b0
+- Update trove classifiers to 3.9
+
 cihai-cli 0.6.0 (2020-08-09)
 ----------------------------
 - :issue:`249` Move packaging / publishing to poetry
