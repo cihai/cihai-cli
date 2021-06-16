@@ -4,7 +4,11 @@
 
 - Add unreleased commits here
 
-## cihai-cli 0.8.0 (2021-06-15)
+## cihai-cli 0.8.1 (2021-06-16)
+
+- Update cihai to 0.12
+
+## cihai-cli 0.8.0 (2021-06-16)
 
 - {issue}`252`: Convert to markdown
 
