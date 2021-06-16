@@ -1,66 +1,64 @@
-=========
-Changelog
-=========
+# Changelog
 
-current
--------
+## current
+
 - Add unreleased commits here
 
-cihai-cli 0.7.2 (2021-06-15)
-----------------------------
+## cihai-cli 0.7.2 (2021-06-15)
+
 - Set cihai to 0.11.1+ to fix sqlalchemy issue
 
-cihai-cli 0.7.1 (2021-06-15)
-----------------------------
+## cihai-cli 0.7.1 (2021-06-15)
+
 - Fix README in packaging
 
-cihai-cli 0.7.0 (2021-06-15)
-----------------------------
-- Update `black` to 21.6b0
+## cihai-cli 0.7.0 (2021-06-15)
+
+- Update {}`black` to 21.6b0
 - Update trove classifiers to 3.9
-- :issue:`251` Drop python 2.7 and 3.5. Remove deprecated ``__future__``
+- {issue}`251` Drop python 2.7 and 3.5. Remove deprecated `__future__`
   and modesets
 
-cihai-cli 0.6.0 (2020-08-09)
-----------------------------
-- :issue:`249` Move packaging / publishing to poetry
-- :issue:`248` Self host docs
-- :issue:`248` Add metadata / icons / etc. for doc site
-- :issue:`248` Move travis -> github actions
-- :issue:`248` Overhaul Makefiles
+## cihai-cli 0.6.0 (2020-08-09)
 
-cihai-cli 0.5.1 (2020-07-03)
-----------------------------
-- :issue:`247` - Move from Pipfile to Poetry
+- {issue}`249` Move packaging / publishing to poetry
+- {issue}`248` Self host docs
+- {issue}`248` Add metadata / icons / etc. for doc site
+- {issue}`248` Move travis -> github actions
+- {issue}`248` Overhaul Makefiles
+
+## cihai-cli 0.5.1 (2020-07-03)
+
+- {issue}`247` - Move from Pipfile to Poetry
 - Fixed bug in Python 2.x when showing help / "cihai"
 
-cihai-cli 0.5.0 (2019-08-18)
-----------------------------
-- Add ``project_urls`` to setup.py
-- Installation is now done via ``pip --user install cihai[cli]``
+## cihai-cli 0.5.0 (2019-08-18)
+
+- Add `project_urls` to setup.py
+- Installation is now done via `pip --user install cihai[cli]`
 - README Fixed to use plain reStructuredText
 - Miscellaneous package updates for pytest, other support packages
 - Loosening of version requirements
 
-cihai-cli 0.5.0a (2018-09-08)
------------------------------
-- :issue:`91`  ``-V`` / ``-version`` now shows the cihai backend version.
+## cihai-cli 0.5.0a (2018-09-08)
 
-cihai-cli 0.4.1 (2018-07-21)
-----------------------------
+- {issue}`91` `-V` / `-version` now shows the cihai backend version.
+
+## cihai-cli 0.4.1 (2018-07-21)
+
 - Update Sphinx 1.7.5. to 1.7.6
 - Update cihai 0.8.0 to 0.8.1
 
   This should fix dependency issues with kaptan / pyyaml
 
-cihai-cli 0.4.0 (2018-06-24)
-----------------------------
-- Add vietnamese phonetic to default output in ``info`` command
+## cihai-cli 0.4.0 (2018-06-24)
+
+- Add vietnamese phonetic to default output in `info` command
 - Switch tmuxp config to use pipenv
 - Add configuration / make tests for isort, flake8
-- Add *Pipfile*
-- Add ``make sync_pipfile`` task to sync *requirements/\*.txt* files
-  with *Pipfile*
+- Add _Pipfile_
+- Add `make sync_pipfile` task to sync _requirements/_.txt* files
+  with *Pipfile\*
 - Base package updates
 
   - cihai 0.7.4 to 0.8.0
@@ -85,31 +83,33 @@ cihai-cli 0.4.0 (2018-06-24)
 - Move documentation over to numpy-style
 - Update LICENSE New BSD to MIT
 - All future commits and contributions are licensed to the
-  *cihai software foundation*. This includes commits by Tony Narlock (creator).
+  _cihai software foundation_. This includes commits by Tony Narlock (creator).
 
-cihai-cli 0.3.2 (2017-05-26)
-----------------------------
+## cihai-cli 0.3.2 (2017-05-26)
+
 - Bump cihai version to 0.7.4
 
-cihai-cli 0.3.1 (2017-05-20)
-----------------------------
+## cihai-cli 0.3.1 (2017-05-20)
+
 - Bump cihai version to 0.7.2
 
-cihai-cli 0.3.0 (2017-05-20)
-----------------------------
+## cihai-cli 0.3.0 (2017-05-20)
+
 - Output human-friendly fields only by default
-- Use ``-a`` or ``--all`` to show all fields
-- Rename ``lookup`` command to ``reverse``
+- Use `-a` or `--all` to show all fields
+- Rename `lookup` command to `reverse`
 - Remove newlines, use click.echo for printing to CLI
 - Fix unicode issues on 2.7 in tests and cli
 
-cihai-cli 0.2.1 (2017-05-20)
-----------------------------
+## cihai-cli 0.2.1 (2017-05-20)
+
 - CLI variable tweaks
 - Fix package dependency
 
-cihai-cli 0.2.0 (2017-05-20)
-----------------------------
+## cihai-cli 0.2.0 (2017-05-20)
+
 - Initial project
 
-.. vim: set filetype=rst:
+<!---
+vim: set filetype=markdown:
+-->
