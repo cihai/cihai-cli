@@ -27,7 +27,7 @@ def test_cli_reflects_after_bootstrap(tmpdir, tmpdb_file, unihan_options):
     runner = CliRunner()
     result = runner.invoke(cli.cli, ['-c', str(config_file), 'info', u'㐀'])
     assert 'Bootstrapping Unihan database' in result.output
-    assert result.exit_code == 1
+    assert result.exit_code == 0
 
     result = runner.invoke(cli.cli, ['-c', str(config_file)], 'info')
 
