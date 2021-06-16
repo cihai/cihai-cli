@@ -16,5 +16,3 @@
 .. automodule:: cihai_cli.cli
    :members:
 ```
-
-

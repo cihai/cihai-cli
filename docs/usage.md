@@ -15,5 +15,3 @@ $ pip install --user cihai[cli]
 ## Configuration
 
 See {ref}`cihai's configuration <cihai:configuration>` documentation.
-
-
