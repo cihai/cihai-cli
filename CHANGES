@@ -4,6 +4,10 @@
 
 - Add unreleased commits here
 
+## cihai-cli 0.8.0 (2021-06-15)
+
+- {issue}`252`: Convert to markdown
+
 ## cihai-cli 0.7.2 (2021-06-15)
 
 - Set cihai to 0.11.1+ to fix sqlalchemy issue
