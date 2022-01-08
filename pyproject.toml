@@ -46,7 +46,6 @@ PyYAML = "<6,>=3.12"
 ### Docs ###
 sphinx = "*"
 alagitpull = "^0.1.0"
-sphinx-issues = "^1.2.0"
 sphinx-click = "*"
 sphinx-autodoc-typehints = "^1.12.0"
 myst_parser = "~0.16.1"
@@ -71,7 +70,7 @@ flake8 = "*"
 cihai = 'cihai_cli.cli:cli'
 
 [tool.poetry.extras]
-docs = ["sphinx", "myst_parser", "sphinx-issues", "sphinx-click", "alagitpull", "sphinx-autodoc-typehints"]
+docs = ["sphinx", "myst_parser", "sphinx-click", "alagitpull", "sphinx-autodoc-typehints"]
 test = ["pytest", "pytest-rerunfailures"]
 coverage = ["codecov", "coverage", "pytest-cov"]
 format = ["black", "isort"]
