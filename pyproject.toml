@@ -23,13 +23,15 @@ classifiers = [
   "Topic :: System :: Shells",
   "Topic :: Utilities"
 ]
-
+homepage = "https://cihai-cli.git-pull.com"
+readme = "README.md"
 packages = [
     { include = "cihai_cli" }
 ]
+include = [
+    { path = "tests", format = "sdist" }
+]
 
-homepage = "https://cihai-cli.git-pull.com"
-readme = "README.md"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/cihai/cihai-cli/issues"
