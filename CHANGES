@@ -3,9 +3,16 @@
 ## current
 
 - Add unreleased commits here
-- #255: Update poetry to 1.1
-  - CI: Use poetry 1.1.7 and `install-poetry.py` installer
+
+#### Compatibility
+- Remove python 3.6 support (#269)
+- Add python 3.10 support (#269)
+
+#### Development
+- Update poetry to 1.1
+  - CI: Use poetry 1.1.12 and `install-poetry.py` installer (#255 + #269)
   - Relock poetry.lock at 1.1 (w/ 1.1.7's fix)
+- Add `.pre-commit-config.yaml` (#269)
 
 ## cihai-cli 0.8.1 (2021-06-16)
 
