@@ -47,7 +47,7 @@ PyYAML = "<6,>=3.12"
 sphinx = "*"
 alagitpull = "^0.1.0"
 sphinx-click = "*"
-sphinx-autodoc-typehints = "^1.12.0"
+sphinx-autodoc-typehints = "~1.14.1"
 myst_parser = "~0.16.1"
 
 ### Testing ###
