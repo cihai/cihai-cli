@@ -153,7 +153,7 @@ class="title-ref">\_\_about\_\_.py</span> and \`pyproject.toml\`:
 - Python [API](https://cihai-cli.git-pull.com/api.html)
 - [2017
   roadmap](https://cihai.git-pull.com/design-and-planning/2017/spec.html)
-- Python support: >= 3.6, pypy
+- Python support: >= 3.7, pypy
 - Source: <https://github.com/cihai/cihai-cli>
 - Docs: <https://cihai-cli.git-pull.com>
 - Changelog: <https://cihai-cli.git-pull.com/history.html>
