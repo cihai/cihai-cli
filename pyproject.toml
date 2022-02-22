@@ -1,6 +1,3 @@
-[tckool.black]
-skip-string-normalization = true
-
 [tool.poetry]
 name = "cihai-cli"
 version = "0.8.1"
