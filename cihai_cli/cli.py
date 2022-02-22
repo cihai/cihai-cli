@@ -13,45 +13,45 @@ from .__about__ import __title__, __version__
 
 #: fields which are human friendly
 HUMAN_UNIHAN_FIELDS = [
-    'char',
-    'ucn',
-    'kDefinition',
-    'kCantonese',
-    'kHangul',
-    'kJapaneseOn',
-    'kKorean',
-    'kMandarin',
-    'kVietnamese',
-    'kTang',
-    'kTotalStrokes',
+    "char",
+    "ucn",
+    "kDefinition",
+    "kCantonese",
+    "kHangul",
+    "kJapaneseOn",
+    "kKorean",
+    "kMandarin",
+    "kVietnamese",
+    "kTang",
+    "kTotalStrokes",
 ]
 
 
-@click.group(context_settings={'obj': {}})
+@click.group(context_settings={"obj": {}})
 @click.version_option(
     __version__,
-    '-V',
-    '--version',
-    message='''
+    "-V",
+    "--version",
+    message="""
 {prog} %(version)s, cihai {cihai_version}, unihan-etl {unihan_etl_version}
-'''.format(
+""".format(
         prog=__title__,
         cihai_version=cihai.__version__,
         unihan_etl_version=__unihan_etl_version__,
     ).strip(),
 )
 @click.option(
-    '-c',
-    '--config',
+    "-c",
+    "--config",
     type=click.Path(exists=True),
-    metavar='<config-file>',
+    metavar="<config-file>",
     help="path to custom config file",
 )
 @click.option(
-    '--log_level',
-    default='INFO',
-    metavar='<log-level>',
-    help='Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)',
+    "--log_level",
+    default="INFO",
+    metavar="<log-level>",
+    help="Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
 )
 @click.pass_context
 def cli(ctx, config, log_level):
@@ -68,26 +68,26 @@ def cli(ctx, config, log_level):
 
     if not c.unihan.is_bootstrapped:
         click.echo("Bootstrapping Unihan database")
-        c.unihan.bootstrap(options=c.config.get('unihan_options', {}))
+        c.unihan.bootstrap(options=c.config.get("unihan_options", {}))
 
-    ctx.obj['c'] = c  # pass Cihai object down to other commands
+    ctx.obj["c"] = c  # pass Cihai object down to other commands
 
 
 INFO_SHORT_HELP = (
-    u'Get details on a CJK character'
+    "Get details on a CJK character"
     if PY2
-    else u'Get details on a CJK character, e.g. "好"'
+    else 'Get details on a CJK character, e.g. "好"'
 )
 
 
-@cli.command(name='info', short_help=INFO_SHORT_HELP)
-@click.argument('char', metavar='<character>')
+@cli.command(name="info", short_help=INFO_SHORT_HELP)
+@click.argument("char", metavar="<character>")
 @click.option(
-    '-a', '--all', 'show_all', is_flag=True, help="Show all character details"
+    "-a", "--all", "show_all", is_flag=True, help="Show all character details"
 )
 @click.pass_context
 def command_info(ctx, char, show_all):
-    c = ctx.obj['c']
+    c = ctx.obj["c"]
     query = c.unihan.lookup_char(char).first()
     attrs = {}
     if not query:
@@ -97,25 +97,25 @@ def command_info(ctx, char, show_all):
         value = getattr(query, c)
         if value:
             if PY2:
-                value = value.encode('utf-8')
+                value = value.encode("utf-8")
             if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                 continue
             attrs[str(c)] = value
     click.echo(
-        yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip('\n')
+        yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip("\n")
     )
 
 
 @cli.command(
-    name='reverse', short_help='Search all info for character matches, e.g. "good"'
+    name="reverse", short_help='Search all info for character matches, e.g. "good"'
 )
-@click.argument('char', metavar='<character>')
+@click.argument("char", metavar="<character>")
 @click.option(
-    '-a', '--all', 'show_all', is_flag=True, help="Show all character details"
+    "-a", "--all", "show_all", is_flag=True, help="Show all character details"
 )
 @click.pass_context
 def command_reverse(ctx, char, show_all):
-    c = ctx.obj['c']
+    c = ctx.obj["c"]
     query = c.unihan.reverse_char([char])
     if not query.count():
         click.echo("No records found for %s" % char, err=True)
@@ -126,19 +126,19 @@ def command_reverse(ctx, char, show_all):
             value = getattr(k, c)
             if value:
                 if PY2:
-                    value = value.encode('utf-8')
+                    value = value.encode("utf-8")
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                     continue
                 attrs[str(c)] = value
         click.echo(
             yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip(
-                '\n'
+                "\n"
             )
         )
-        click.echo('--------')
+        click.echo("--------")
 
 
-def setup_logger(logger=None, level='INFO'):
+def setup_logger(logger=None, level="INFO"):
     """Setup logging for CLI use.
 
     :param logger: instance of logger
