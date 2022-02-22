@@ -1,4 +1,4 @@
-[tool.black]
+[tckool.black]
 skip-string-normalization = true
 
 [tool.poetry]
@@ -62,7 +62,7 @@ coverage = "*"
 pytest-cov = "*"
 
 ### Format ###
-black = "==21.12b0"
+black = "*"
 isort = "*"
 
 ### Lint ###
