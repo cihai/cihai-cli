@@ -15,6 +15,9 @@ isort:
 black:
 	poetry run black `${PY_FILES}`
 
+start:
+	$(MAKE) test && poetry run ptw .
+
 test:
 	poetry run py.test $(test)
 
@@ -35,6 +38,12 @@ serve_docs:
 
 dev_docs:
 	$(MAKE) -j watch_docs serve_docs
+
+start_docs:
+	$(MAKE) -C docs start
+
+design_docs:
+	$(MAKE) -C docs design
 
 flake8:
 	poetry run flake8
