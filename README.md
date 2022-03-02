@@ -7,7 +7,7 @@ library
 [![Docs](https://github.com/cihai/cihai-cli/workflows/Publish%20Docs/badge.svg)](https://github.com/cihai/cihai-cli/actions?query=workflow%3A%22Publish+Docs%22)
 [![Build Status](https://github.com/cihai/cihai-cli/workflows/tests/badge.svg)](https://github.com/cihai/cihai-cli/actions?query=workflow%3A%22tests%22)
 [![Code Coverage](https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/cihai/cihai-cli)
-![License](https://img.shields.io/github/license/cihai/cihai-cli.svg)
+[![License](https://img.shields.io/github/license/cihai/cihai-cli.svg)](https://github.com/cihai/cihai-cli/blob/master/LICENSE)
 
 This project is under active development. Follow our progress and check
 back for updates!
