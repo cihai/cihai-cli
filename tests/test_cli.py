@@ -19,7 +19,7 @@ def test_cli(test_config_file):
 
 def test_cli_reflects_after_bootstrap(tmpdir, tmpdb_file, unihan_options):
     config = {
-        "database": {"url": "sqlite:///{tmpdb_file}s".format(tmpdb_file=tmpdb_file)},
+        "database": {"url": f"sqlite:///{tmpdb_file}s"},
         "unihan_options": unihan_options,
     }
     config_file = tmpdir.join("config.yml")
