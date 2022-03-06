@@ -1,7 +1,5 @@
-_cihai-cli_ - Command line interface to the
-[cihai](https://cihai.git-pull.com)
-[CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language
-library
+_cihai-cli_ - Command line interface to the [cihai](https://cihai.git-pull.com)
+[CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language library
 
 [![Python Package](https://img.shields.io/pypi/v/cihai_cli.svg)](http://badge.fury.io/py/cihai_cli)
 [![Docs](https://github.com/cihai/cihai-cli/workflows/Publish%20Docs/badge.svg)](https://github.com/cihai/cihai-cli/actions?query=workflow%3A%22Publish+Docs%22)
@@ -9,8 +7,7 @@ library
 [![Code Coverage](https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/cihai/cihai-cli)
 [![License](https://img.shields.io/github/license/cihai/cihai-cli.svg)](https://github.com/cihai/cihai-cli/blob/master/LICENSE)
 
-This project is under active development. Follow our progress and check
-back for updates!
+This project is under active development. Follow our progress and check back for updates!
 
 ## Installation
 
@@ -20,8 +17,7 @@ $ pip install --user cihai[cli]
 
 ## Character lookup
 
-See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation
-for full usage information.
+See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation for full usage information.
 
 ```sh
 $ cihai info 好
@@ -103,8 +99,8 @@ Makefile commands prefixed with `watch_` will watch files and rerun.
 
 `poetry run py.test`
 
-Helpers: `make test` Rerun tests on file change: `make watch_test`
-(requires [entr(1)](http://eradman.com/entrproject/))
+Helpers: `make test` Rerun tests on file change: `make watch_test` (requires
+[entr(1)](http://eradman.com/entrproject/))
 
 ### Documentation
 
@@ -114,28 +110,24 @@ Default preview server: <http://localhost:8037>
 
 Helpers: `make build_docs`, `make serve_docs`
 
-Rebuild docs on file change: `make watch_docs` (requires
-[entr(1)](http://eradman.com/entrproject/))
+Rebuild docs on file change: `make watch_docs` (requires [entr(1)](http://eradman.com/entrproject/))
 
-Rebuild docs and run server via one terminal: `make dev_docs` (requires
-above, and a `make(1)` with `-J` support, e.g. GNU Make)
+Rebuild docs and run server via one terminal: `make dev_docs` (requires above, and a `make(1)` with
+`-J` support, e.g. GNU Make)
 
 ### Formatting / Linting
 
-The project uses [black](https://github.com/psf/black) and
-[isort](https://pypi.org/project/isort/) (one after the other) and runs
-[flake8](https://flake8.pycqa.org/) via CI. See the configuration in
+The project uses [black](https://github.com/psf/black) and [isort](https://pypi.org/project/isort/)
+(one after the other) and runs [flake8](https://flake8.pycqa.org/) via CI. See the configuration in
 <span class="title-ref">pyproject.toml</span> and \`setup.cfg\`:
 
-`make black isort`: Run `black` first, then `isort` to handle import
-nuances `make flake8`, to watch (requires `entr(1)`):
-`make watch_flake8`
+`make black isort`: Run `black` first, then `isort` to handle import nuances `make flake8`, to watch
+(requires `entr(1)`): `make watch_flake8`
 
 ### Releasing
 
-As of 0.6, [poetry](https://python-poetry.org/) handles virtualenv
-creation, package requirements, versioning, building, and publishing.
-Therefore there is no setup.py or requirements files.
+As of 0.6, [poetry](https://python-poetry.org/) handles virtualenv creation, package requirements,
+versioning, building, and publishing. Therefore there is no setup.py or requirements files.
 
 Update <span class="title-ref">\_\_version\_\_</span> in <span
 class="title-ref">\_\_about\_\_.py</span> and \`pyproject.toml\`:
@@ -151,8 +143,7 @@ class="title-ref">\_\_about\_\_.py</span> and \`pyproject.toml\`:
 
 - [Usage](https://cihai-cli.git-pull.com/usage.html)
 - Python [API](https://cihai-cli.git-pull.com/api.html)
-- [2017
-  roadmap](https://cihai.git-pull.com/design-and-planning/2017/spec.html)
+- [2017 roadmap](https://cihai.git-pull.com/design-and-planning/2017/spec.html)
 - Python support: >= 3.7, pypy
 - Source: <https://github.com/cihai/cihai-cli>
 - Docs: <https://cihai-cli.git-pull.com>
