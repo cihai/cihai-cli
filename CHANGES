@@ -5,10 +5,12 @@
 - Add unreleased commits here
 
 #### Compatibility
+
 - Remove python 3.6 support (#269)
 - Add python 3.10 support (#269)
 
 #### Development
+
 - Update poetry to 1.1
   - CI: Use poetry 1.1.12 and `install-poetry.py` installer (#255 + #269)
   - Relock poetry.lock at 1.1 (w/ 1.1.7's fix)
@@ -34,8 +36,7 @@
 
 - Update {}`black` to 21.6b0
 - Update trove classifiers to 3.9
-- {issue}`251` Drop python 2.7 and 3.5. Remove deprecated `__future__`
-  and modesets
+- {issue}`251` Drop python 2.7 and 3.5. Remove deprecated `__future__` and modesets
 
 ## cihai-cli 0.6.0 (2020-08-09)
 
@@ -75,8 +76,7 @@
 - Switch tmuxp config to use pipenv
 - Add configuration / make tests for isort, flake8
 - Add _Pipfile_
-- Add `make sync_pipfile` task to sync _requirements/_.txt* files
-  with *Pipfile\*
+- Add `make sync_pipfile` task to sync _requirements/_.txt* files with *Pipfile\*
 - Base package updates
 
   - cihai 0.7.4 to 0.8.0
@@ -100,8 +100,8 @@
 
 - Move documentation over to numpy-style
 - Update LICENSE New BSD to MIT
-- All future commits and contributions are licensed to the
-  _cihai software foundation_. This includes commits by Tony Narlock (creator).
+- All future commits and contributions are licensed to the _cihai software foundation_. This
+  includes commits by Tony Narlock (creator).
 
 ## cihai-cli 0.3.2 (2017-05-26)
 
