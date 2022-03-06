@@ -15,6 +15,15 @@
   - CI: Use poetry 1.1.12 and `install-poetry.py` installer (#255 + #269)
   - Relock poetry.lock at 1.1 (w/ 1.1.7's fix)
 - Add `.pre-commit-config.yaml` (#269)
+- pyupgrade to python 3.7
+
+#### Tests
+
+- Refactor `tmpdir` -> `tmp_path`
+
+#### Documentation
+
+- Use `furo` theme
 
 ## cihai-cli 0.8.1 (2021-06-16)
 
