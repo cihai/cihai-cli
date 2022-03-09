@@ -11,7 +11,7 @@ This project is under active development. Follow our progress and check back for
 
 ## Installation
 
-```sh
+```console
 $ pip install --user cihai[cli]
 ```
 
@@ -19,7 +19,7 @@ $ pip install --user cihai[cli]
 
 See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation for full usage information.
 
-```sh
+```console
 $ cihai info 好
 char: 好
 kCantonese: hou2 hou3
@@ -63,7 +63,7 @@ ucn: U+597D
 
 ## Reverse lookup
 
-```sh
+```console
 $ cihai reverse library
 char: 圕
 kCantonese: syu1
