@@ -16,7 +16,7 @@ black:
 	poetry run black `${PY_FILES}`
 
 start:
-	$(MAKE) test && poetry run ptw .
+	$(MAKE) test; poetry run ptw .
 
 test:
 	poetry run py.test $(test)
