@@ -33,6 +33,9 @@ You can test the unpublished version of cihai-cli before its released.
 
   Then use `cihai@next info 好`.
 
+For more information see [developmental
+releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases)
+
 ## Character lookup
 
 See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation for full usage information.
