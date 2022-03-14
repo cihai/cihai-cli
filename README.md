@@ -159,7 +159,7 @@ class="title-ref">\_\_about\_\_.py</span> and \`pyproject.toml\`:
 
 ## Quick links
 
-- [Usage](https://cihai-cli.git-pull.com/usage.html)
+- [Quickstart](https://cihai-cli.git-pull.com/quickstart.html)
 - Python [API](https://cihai-cli.git-pull.com/api.html)
 - [2017 roadmap](https://cihai.git-pull.com/design-and-planning/2017/spec.html)
 - Python support: >= 3.7, pypy
