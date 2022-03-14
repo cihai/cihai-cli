@@ -1,6 +1,23 @@
 # Changelog
 
-## current
+You can test the unpublished version of cihai-cli before its released, see
+[developmental releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases).
+
+- [pip](https://pip.pypa.io/en/stable/):
+
+  ```console
+  $ pip install --user --upgrade --pre cihai[cli]
+  ```
+
+- [pipx](https://pypa.github.io/pipx/docs/):
+
+  ```console
+  $ pipx install --suffix=@next 'cihai[cli]' --pip-args '\--pre' --include-deps --force
+  ```
+
+  Then use `cihai@next info 好`.
+
+## current - unreleased
 
 - Add unreleased commits here
 
