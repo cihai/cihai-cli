@@ -1,6 +1,6 @@
 (cli)=
 
-# Command Line Interface
+# Commands
 
 ```{eval-rst}
 .. click:: cihai_cli.cli:cli
