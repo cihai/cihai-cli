@@ -11,7 +11,13 @@
 
 quickstart
 cli
-api
-history
 
+```
+
+```{toctree}
+:caption: Project
+:hidden:
+
+history
+GitHub <https://github.com/cihai/cihai-cli>
 ```
