@@ -1,4 +1,6 @@
-_cihai-cli_ - Command line interface to the [cihai](https://cihai.git-pull.com)
+# cihai-cli
+
+Command line interface to the [cihai](https://cihai.git-pull.com)
 [CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language library
 
 [![Python Package](https://img.shields.io/pypi/v/cihai_cli.svg)](http://badge.fury.io/py/cihai_cli)
@@ -33,8 +35,8 @@ You can test the unpublished version of cihai-cli before its released.
 
   Then use `cihai@next info 好`.
 
-For more information see [developmental
-releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases)
+For more information see
+[developmental releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases)
 
 ## Character lookup
 

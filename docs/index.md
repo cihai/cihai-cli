@@ -1,7 +1,5 @@
 (index)=
 
-# cihai-cli
-
 ```{include} ../README.md
 
 ```
