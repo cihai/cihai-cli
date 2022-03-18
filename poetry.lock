@@ -797,6 +797,17 @@ python-versions = ">=3.6"
 sphinx = ">=2.0"
 
 [[package]]
+name = "sphinxext-rediraffe"
+version = "0.2.7"
+description = "Sphinx Extension that redirects non-existent pages to working pages."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+sphinx = ">=2.0"
+
+[[package]]
 name = "sqlalchemy"
 version = "1.3.24"
 description = "Database Abstraction Library"
@@ -923,7 +934,7 @@ test = []
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "ca8d01f0740bf4820b8c7bc6fc448d8b66409e26e5936adc012a8da2eec58838"
+content-hash = "4cc75469be18a50dec9cb5fc103eaf7856aa966339f2c55ed113d46e9feb1ccc"
 
 [metadata.files]
 alabaster = [
@@ -1309,6 +1320,10 @@ sphinxcontrib-serializinghtml = [
 sphinxext-opengraph = [
     {file = "sphinxext-opengraph-0.6.2.tar.gz", hash = "sha256:30d4dbe345da991c210626795c05918c3f9ad9f7d14d9c48812ccfa7a1ec4bab"},
     {file = "sphinxext_opengraph-0.6.2-py3-none-any.whl", hash = "sha256:bed3df675b0717b294e274fc59602ee43ccfb758418d5f194d2908c3592605e9"},
+]
+sphinxext-rediraffe = [
+    {file = "sphinxext-rediraffe-0.2.7.tar.gz", hash = "sha256:651dcbfae5ffda9ffd534dfb8025f36120e5efb6ea1a33f5420023862b9f725d"},
+    {file = "sphinxext_rediraffe-0.2.7-py3-none-any.whl", hash = "sha256:9e430a52d4403847f4ffb3a8dd6dfc34a9fe43525305131f52ed899743a5fd8c"},
 ]
 sqlalchemy = [
     {file = "SQLAlchemy-1.3.24-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:87a2725ad7d41cd7376373c15fd8bf674e9c33ca56d0b8036add2d634dba372e"},
