@@ -4,7 +4,7 @@ Command line interface to the [cihai](https://cihai.git-pull.com)
 [CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language library
 
 [![Python Package](https://img.shields.io/pypi/v/cihai_cli.svg)](https://pypi.org/project/cihai-cli/)
-[![Docs](https://github.com/cihai/cihai-cli/workflows/Publish%20Docs/badge.svg)](https://cihai-cli.git-pull.com/)
+[![Docs](https://github.com/cihai/cihai-cli/workflows/docs/badge.svg)](https://cihai-cli.git-pull.com/)
 [![Build Status](https://github.com/cihai/cihai-cli/workflows/tests/badge.svg)](https://github.com/cihai/cihai-cli/actions?query=workflow%3A%22tests%22)
 [![Code Coverage](https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/cihai/cihai-cli)
 [![License](https://img.shields.io/github/license/cihai/cihai-cli.svg)](https://github.com/cihai/cihai-cli/blob/master/LICENSE)
