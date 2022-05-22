@@ -34,6 +34,8 @@ include = [
 "Bug Tracker" = "https://github.com/cihai/cihai-cli/issues"
 Documentation = "https://cihai-cli.git-pull.com"
 Repository = "https://github.com/cihai/cihai-cli"
+"Release notes" = "https://github.com/cihai/cihai-cli/blob/master/CHANGES"
+"Q & A" = "https://github.com/cihai/cihai-cli/discussions"
 
 [tool.poetry.dependencies]
 python = "^3.7"
