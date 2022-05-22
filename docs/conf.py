@@ -27,6 +27,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_click.ext",  # sphinx-click
     "sphinx_inline_tabs",
+    "sphinx_issues",
     "sphinx_copybutton",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
@@ -97,6 +98,9 @@ copybutton_prompt_text = (
 )
 copybutton_prompt_is_regexp = True
 copybutton_remove_prompts = True
+
+# sphinx-issues
+issues_github_path = "cihai/cihai-cli"
 
 # sphinxext-rediraffe
 rediraffe_redirects = "redirects.txt"
