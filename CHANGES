@@ -17,7 +17,7 @@ You can test the unpublished version of cihai-cli before its released, see
 
   Then use `cihai@next info 好`.
 
-## current - unreleased
+## cihai-cli 0.9.x (unreleased)
 
 - Add unreleased commits here
 
