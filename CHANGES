@@ -21,12 +21,12 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - Add unreleased commits here
 
-#### Compatibility
+### Compatibility
 
 - Remove python 3.6 support (#269)
 - Add python 3.10 support (#269)
 
-#### Development
+### Development
 
 - Update poetry to 1.1
   - CI: Use poetry 1.1.12 and `install-poetry.py` installer (#255 + #269)
@@ -34,11 +34,11 @@ You can test the unpublished version of cihai-cli before its released, see
 - Add `.pre-commit-config.yaml` (#269)
 - pyupgrade to python 3.7
 
-#### Tests
+### Tests
 
 - Refactor `tmpdir` -> `tmp_path`
 
-#### Documentation
+### Documentation
 
 - Use `furo` theme
 
