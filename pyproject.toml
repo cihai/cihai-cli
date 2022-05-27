@@ -19,18 +19,34 @@ classifiers = [
   "Topic :: Software Development :: Internationalization",
   "Topic :: Software Development :: Localization",
   "Topic :: System :: Shells",
-  "Topic :: Utilities"
+  "Topic :: Utilities",
 ]
-keywords = ["unihan", "sqlalchemy", "library", "cjk", "unicode", "dictionary", "dataset", "encyclopedia", "chinese", "japanese", "korean", "languages", "study", "cli", "terminal", "shell"]
+keywords = [
+  "unihan",
+  "sqlalchemy",
+  "library",
+  "cjk",
+  "unicode",
+  "dictionary",
+  "dataset",
+  "encyclopedia",
+  "chinese",
+  "japanese",
+  "korean",
+  "languages",
+  "study",
+  "cli",
+  "terminal",
+  "shell",
+]
 homepage = "https://cihai-cli.git-pull.com"
 readme = "README.md"
 packages = [
-    { include = "cihai_cli" }
+  { include = "cihai_cli" },
 ]
 include = [
-    { path = "tests", format = "sdist" }
+  { path = "tests", format = "sdist" },
 ]
-
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/cihai/cihai-cli/issues"
@@ -80,7 +96,19 @@ flake8 = "*"
 cihai = 'cihai_cli.cli:cli'
 
 [tool.poetry.extras]
-docs = ["sphinx", "sphinx-issues", "sphinx-click", "sphinx-autodoc-typehints", "sphinx-autobuild", "sphinx-copybutton", "sphinxext-opengraph", "sphinx-inline-tabs", "sphinxext-rediraffe", "myst_parser", "furo"]
+docs = [
+  "sphinx",
+  "sphinx-issues",
+  "sphinx-click",
+  "sphinx-autodoc-typehints",
+  "sphinx-autobuild",
+  "sphinx-copybutton",
+  "sphinxext-opengraph",
+  "sphinx-inline-tabs",
+  "sphinxext-rediraffe",
+  "myst_parser",
+  "furo",
+]
 test = ["pytest", "pytest-rerunfailures", "pytest-watcher"]
 coverage = ["codecov", "coverage", "pytest-cov"]
 format = ["black", "isort"]
