@@ -17,9 +17,11 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: Implementation :: PyPy",
   "Topic :: Software Development :: Internationalization",
+  "Topic :: Software Development :: Localization",
   "Topic :: System :: Shells",
   "Topic :: Utilities"
 ]
+keywords = ["unihan", "sqlalchemy", "library", "cjk", "unicode", "dictionary", "dataset", "encyclopedia", "chinese", "japanese", "korean", "languages", "study", "cli", "terminal", "shell"]
 homepage = "https://cihai-cli.git-pull.com"
 readme = "README.md"
 packages = [
