@@ -49,5 +49,6 @@ docs/_build
 
 .*env*/
 .cache/
+.mypy_cache/
 .pytest_cache/
 .eggs/
