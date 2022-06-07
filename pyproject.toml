@@ -74,6 +74,7 @@ sphinxext-opengraph = "*"
 sphinx-copybutton = "*"
 sphinxext-rediraffe = "*"
 myst_parser = "*"
+docutils = "~0.18.0"
 
 ### Testing ###
 pytest = "*"
@@ -98,6 +99,7 @@ cihai = 'cihai_cli.cli:cli'
 
 [tool.poetry.extras]
 docs = [
+  "docutils",
   "sphinx",
   "sphinx-issues",
   "sphinx-click",
