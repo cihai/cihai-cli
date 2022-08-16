@@ -19,5 +19,6 @@ cli/index
 :hidden:
 
 history
+Developer Guide <https://cihai.git-pull.com/contributing/>
 GitHub <https://github.com/cihai/cihai-cli>
 ```
