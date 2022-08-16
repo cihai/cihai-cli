@@ -1,13 +1,7 @@
-# cihai-cli
+# cihai-cli &middot; [![Python Package](https://img.shields.io/pypi/v/cihai_cli.svg)](https://pypi.org/project/cihai-cli/) [![License](https://img.shields.io/github/license/cihai/cihai-cli.svg)](https://github.com/cihai/cihai-cli/blob/master/LICENSE) [![Code Coverage](https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/cihai/cihai-cli)
 
 Command line interface to the [cihai](https://cihai.git-pull.com)
-[CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language library
-
-[![Python Package](https://img.shields.io/pypi/v/cihai_cli.svg)](https://pypi.org/project/cihai-cli/)
-[![Docs](https://github.com/cihai/cihai-cli/workflows/docs/badge.svg)](https://cihai-cli.git-pull.com/)
-[![Build Status](https://github.com/cihai/cihai-cli/workflows/tests/badge.svg)](https://github.com/cihai/cihai-cli/actions?query=workflow%3A%22tests%22)
-[![Code Coverage](https://codecov.io/gh/cihai/cihai-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/cihai/cihai-cli)
-[![License](https://img.shields.io/github/license/cihai/cihai-cli.svg)](https://github.com/cihai/cihai-cli/blob/master/LICENSE)
+[CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language library.
 
 This project is under active development. Follow our progress and check back for updates!
 
@@ -177,3 +171,6 @@ class="title-ref">\_\_about\_\_.py</span> and \`pyproject.toml\`:
 - pypi: <https://pypi.python.org/pypi/cihai-cli>
 - OpenHub: <https://www.openhub.net/p/cihai-cli>
 - License: MIT
+
+[![Docs](https://github.com/cihai/cihai-cli/workflows/docs/badge.svg)](https://cihai-cli.git-pull.com/)
+[![Build Status](https://github.com/cihai/cihai-cli/workflows/tests/badge.svg)](https://github.com/cihai/cihai-cli/actions?query=workflow%3A%22tests%22)
