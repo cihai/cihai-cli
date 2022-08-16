@@ -121,7 +121,7 @@ lint = ["flake8", "mypy", "types-PyYAML"]
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
-  "unihan_etl.*"
+  "unihan_etl.*",
 ]
 ignore_missing_imports = true
 
