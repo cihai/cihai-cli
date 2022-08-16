@@ -891,6 +891,14 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "types-pyyaml"
+version = "6.0.11"
+description = "Typing stubs for PyYAML"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.3.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -973,7 +981,7 @@ test = []
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "97bef80d624eadbec448782c7c3b20a180c796ca606eb80f05fc149444bd5fec"
+content-hash = "5e062554381ba73550df8958e5b6f64dc961f2ec0dd85f3a300d8b75590f441c"
 
 [metadata.files]
 alabaster = [
@@ -1309,6 +1317,10 @@ tornado = [
     {file = "tornado-6.2.tar.gz", hash = "sha256:9b630419bde84ec666bfd7ea0a4cb2a8a651c2d5cccdbdd1972a0c859dfc3c13"},
 ]
 typed-ast = []
+types-pyyaml = [
+    {file = "types-PyYAML-6.0.11.tar.gz", hash = "sha256:7f7da2fd11e9bc1e5e9eb3ea1be84f4849747017a59fc2eee0ea34ed1147c2e0"},
+    {file = "types_PyYAML-6.0.11-py3-none-any.whl", hash = "sha256:8f890028123607379c63550179ddaec4517dc751f4c527a52bb61934bf495989"},
+]
 typing-extensions = []
 unicodecsv = [
     {file = "unicodecsv-0.14.1.tar.gz", hash = "sha256:018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc"},

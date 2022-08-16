@@ -93,6 +93,7 @@ isort = "*"
 ### Lint ###
 flake8 = "*"
 mypy = "*"
+types-PyYAML = "^6.0.11"
 
 [tool.poetry.scripts]
 cihai = 'cihai_cli.cli:cli'
@@ -115,7 +116,7 @@ docs = [
 test = ["pytest", "pytest-rerunfailures", "pytest-watcher"]
 coverage = ["codecov", "coverage", "pytest-cov"]
 format = ["black", "isort"]
-lint = ["flake8", "mypy"]
+lint = ["flake8", "mypy", "types-PyYAML"]
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
