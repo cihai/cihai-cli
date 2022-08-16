@@ -6,7 +6,7 @@ You can test the unpublished version of cihai-cli before its released, see
 - [pip](https://pip.pypa.io/en/stable/):
 
   ```console
-  $ pip install --user --upgrade --pre cihai[cli]
+  $ pip install --user --upgrade --pre 'cihai[cli]'
   ```
 
 - [pipx](https://pypa.github.io/pipx/docs/):
