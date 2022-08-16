@@ -96,7 +96,7 @@ mypy = "*"
 types-PyYAML = "^6.0.11"
 
 [tool.poetry.scripts]
-cihai = 'cihai_cli.cli:cli'
+cihai = "cihai_cli.cli:cli"
 
 [tool.poetry.extras]
 docs = [
