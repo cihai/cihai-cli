@@ -31,7 +31,6 @@ You can test the unpublished version of cihai-cli before its released, see
 - Update poetry to 1.1
   - CI: Use poetry 1.1.12 and `install-poetry.py` installer (#255 + #269)
   - Relock poetry.lock at 1.1 (w/ 1.1.7's fix)
-- Add `.pre-commit-config.yaml` (#269)
 - pyupgrade to python 3.7
 
 ### Tests
