@@ -7,7 +7,7 @@ cihai is designed to work out-of-the-box without configuration.
 ## Installation
 
 ```{code-block} sh
-$ pip install --user cihai[cli]
+$ pip install --user cihai-cli
 ```
 
 ### Developmental releases
@@ -19,13 +19,13 @@ the 4th beta release of `1.10.0` before general availability.
 - [pip]\:
 
   ```console
-  $ pip install --user --upgrade --pre cihai[cli]
+  $ pip install --user --upgrade --pre cihai-cli
   ```
 
 - [pipx]\:
 
   ```console
-  $ pipx install --suffix=@next 'cihai[cli]' --pip-args '\--pre' --include-deps --force
+  $ pipx install --suffix=@next cihai-cli --pip-args '\--pre' --include-deps --force
   ```
 
   Then use `cihai@next info 好`.
@@ -35,13 +35,13 @@ via trunk (can break easily):
 - [pip]\:
 
   ```console
-  $ pip install --user -e git+https://github.com/cihai/cihai-cli.git#egg=cihai[cli]
+  $ pip install --user -e git+https://github.com/cihai/cihai-cli.git#egg=cihai-cli
   ```
 
 - [pipx]\:
 
   ```console
-  $ pipx install --suffix=@master 'cihai[cli] @ git+https://github.com/cihai/cihai.git@master' --include-deps --force
+  $ pipx install --suffix=@master 'cihai-cli @ git+https://github.com/cihai/cihai.git@master' --include-deps --force
   ```
 
 [pip]: https://pip.pypa.io/en/stable/

@@ -6,20 +6,44 @@ You can test the unpublished version of cihai-cli before its released, see
 - [pip](https://pip.pypa.io/en/stable/):
 
   ```console
-  $ pip install --user --upgrade --pre 'cihai[cli]'
+  $ pip install --user --upgrade --pre cihai-cli
   ```
 
 - [pipx](https://pypa.github.io/pipx/docs/):
 
   ```console
-  $ pipx install --suffix=@next 'cihai[cli]' --pip-args '\--pre' --include-deps --force
+  $ pipx install --suffix=@next cihai-cli --pip-args '\--pre' --include-deps --force
   ```
 
   Then use `cihai@next info 好`.
 
-## cihai-cli 0.11.x (unreleased)
+## cihai-cli 0.12.x (unreleased)
 
 - _Insert changes/features/fixes for next release here_
+
+## cihai-cli 0.11.0 (2022-08-20)
+
+### Breaking changes
+
+The CLI version of `cihai` installed through `cihai-cli` again
+
+Before (cihai 0.9 to 0.14, cihai-cli 0.5 to 0.10):
+
+```console
+$ pip install cihai[cli]
+```
+
+After (cihai 0.15+, cihai-cli 0.11+):
+
+```console
+$ pip install cihai-cli
+```
+
+This made deploying cihai + cihai-cli and pinning packages extremely laborious.
+
+We can reinvestigate this model in the future.
+
+via: [cihai#326](https://github.com/cihai/cihai/pull/326), **[cihai-cli#279](https://github.com/cihai/cihai-cli/pull/279)**
 
 ## cihai-cli 0.10.x (2022-08-20)
 

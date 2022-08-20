@@ -8,7 +8,7 @@ This project is under active development. Follow our progress and check back for
 ## Installation
 
 ```console
-$ pip install --user 'cihai[cli]'
+$ pip install --user 'cihai-cli'
 ```
 
 ### Developmental releases
@@ -18,13 +18,13 @@ You can test the unpublished version of cihai-cli before its released.
 - [pip](https://pip.pypa.io/en/stable/):
 
   ```console
-  $ pip install --user --upgrade --pre 'cihai[cli]'
+  $ pip install --user --upgrade --pre cihai-cli
   ```
 
 - [pipx](https://pypa.github.io/pipx/docs/):
 
   ```console
-  $ pipx install --suffix=@next 'cihai[cli]' --pip-args '\--pre' --include-deps --force
+  $ pipx install --suffix=@next cihai-cli --pip-args '\--pre' --include-deps --force
   ```
 
   Then use `cihai@next info 好`.
