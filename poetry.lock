@@ -106,7 +106,7 @@ unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "cihai"
-version = "0.13.0"
+version = "0.14.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 category = "main"
 optional = false
@@ -116,10 +116,10 @@ python-versions = ">=3.7,<4.0"
 appdirs = "*"
 kaptan = "*"
 sqlalchemy = "<1.4"
-unihan-etl = ">=0.14.0,<0.15.0"
+unihan-etl = ">=0.15.0,<0.16.0"
 
 [package.extras]
-cli = ["cihai-cli (>=0.9.0,<0.10.0)"]
+cli = ["cihai-cli (>=0.10.0a0,<0.11.0)"]
 
 [[package]]
 name = "click"
@@ -915,7 +915,7 @@ python-versions = "*"
 
 [[package]]
 name = "unihan-etl"
-version = "0.14.0"
+version = "0.15.0"
 description = "Export UNIHAN data of Chinese, Japanese, Korean to CSV, JSON or YAML"
 category = "main"
 optional = false
@@ -1040,8 +1040,8 @@ charset-normalizer = [
     {file = "charset_normalizer-2.1.1-py3-none-any.whl", hash = "sha256:83e9a75d1911279afd89352c68b45348559d1fc0506b054b346651b5e7fee29f"},
 ]
 cihai = [
-    {file = "cihai-0.13.0-py3-none-any.whl", hash = "sha256:27146d653d6411a825d32acebdc6b324023b26aeb7dc12485dee8536609c3ba2"},
-    {file = "cihai-0.13.0.tar.gz", hash = "sha256:7bc79fadf2eb32e9a6f9dbb851b3a25f17fb82e60d0e188adfffd2dcf14e42ec"},
+    {file = "cihai-0.14.0-py3-none-any.whl", hash = "sha256:c5c8b767142a72f22bd2727d0bd6050dae2c7dd8c9ac425fedd674d7f1c00cca"},
+    {file = "cihai-0.14.0.tar.gz", hash = "sha256:a74e38e041bc907960370d1f36c119b1c7a90f9fc7d1b7aace16540d1bdd11dd"},
 ]
 click = [
     {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
@@ -1499,8 +1499,8 @@ unicodecsv = [
     {file = "unicodecsv-0.14.1.tar.gz", hash = "sha256:018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc"},
 ]
 unihan-etl = [
-    {file = "unihan-etl-0.14.0.tar.gz", hash = "sha256:1e42c42ecce014ed5464d91ec85c0c1ee0203c3ee422f7dd0a9a2b7cf6939ced"},
-    {file = "unihan_etl-0.14.0-py3-none-any.whl", hash = "sha256:2740e1869227c9d97df784de8e6dc993dd20da9415451e3d2ee9d280276f1590"},
+    {file = "unihan-etl-0.15.0.tar.gz", hash = "sha256:12d4b2e937558cb2d156d974caddc51d1ebcae969b626243bc921f0301663611"},
+    {file = "unihan_etl-0.15.0-py3-none-any.whl", hash = "sha256:49897741ec76bf1492c745cebe9980e7e244c850361250895e1ed55d5631efc1"},
 ]
 urllib3 = [
     {file = "urllib3-1.26.11-py2.py3-none-any.whl", hash = "sha256:c33ccba33c819596124764c23a97d25f32b28433ba0dedeb77d873a38722c9bc"},
