@@ -38,6 +38,9 @@ See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation for full
 
 ```console
 $ cihai info 好
+```
+
+```yaml
 char: 好
 kCantonese: hou2 hou3
 kDefinition: good, excellent, fine; well
@@ -45,21 +48,27 @@ kHangul: 호
 kJapaneseOn: KOU
 kKorean: HO
 kMandarin: hǎo
-kTang: '*xɑ̀u *xɑ̌u'
-kTotalStrokes: '6'
+kTang: "*xɑ̀u *xɑ̌u"
+kTotalStrokes: "6"
 ucn: U+597D
+```
 
-# retrieve all character information (including book indices)
+Retrieve all character information (including book indices):
+
+```console
 $ cihai info 好 -a
+```
+
+```yaml
 char: 好
 kCangjie: VND
 kCantonese: hou2 hou3
-kCihaiT: '378.103'
+kCihaiT: "378.103"
 kDefinition: good, excellent, fine; well
 kFenn: 552A
-kFourCornerCode: '4744.7'
-kFrequency: '1'
-kGradeLevel: '1'
+kFourCornerCode: "4744.7"
+kFrequency: "1"
+kGradeLevel: "1"
 kHKGlyph: 0871
 kHangul: 호
 kHanyuPinlu: hǎo(6060) hāo(142) hào(115)
@@ -68,11 +77,11 @@ kJapaneseKun: KONOMU SUKU YOI
 kJapaneseOn: KOU
 kKorean: HO
 kMandarin: hǎo
-kPhonetic: '481'
+kPhonetic: "481"
 kRSAdobe_Japan1_6: C+1975+38.3.3 C+1975+39.3.3
-kRSKangXi: '38.3'
-kTang: '*xɑ̀u *xɑ̌u'
-kTotalStrokes: '6'
+kRSKangXi: "38.3"
+kTang: "*xɑ̀u *xɑ̌u"
+kTotalStrokes: "6"
 kVietnamese: háo
 kXHC1983: 0445.030:hǎo 0448.030:hào
 ucn: U+597D
@@ -82,6 +91,9 @@ ucn: U+597D
 
 ```console
 $ cihai reverse library
+```
+
+```yaml
 char: 圕
 kCantonese: syu1
 kDefinition: library
