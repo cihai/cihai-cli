@@ -5,7 +5,6 @@ import click
 import yaml
 
 import cihai
-from cihai._compat import PY2
 from cihai.core import Cihai
 from unihan_etl.__about__ import __version__ as __unihan_etl_version__
 
@@ -73,11 +72,7 @@ def cli(ctx, config, log_level):
     ctx.obj["c"] = c  # pass Cihai object down to other commands
 
 
-INFO_SHORT_HELP = (
-    "Get details on a CJK character"
-    if PY2
-    else 'Get details on a CJK character, e.g. "好"'
-)
+INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
 
 
 @cli.command(name="info", short_help=INFO_SHORT_HELP)
@@ -96,8 +91,6 @@ def command_info(ctx, char, show_all):
     for c in query.__table__.columns._data.keys():
         value = getattr(query, c)
         if value:
-            if PY2:
-                value = value.encode("utf-8")
             if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                 continue
             attrs[str(c)] = value
@@ -125,8 +118,6 @@ def command_reverse(ctx, char, show_all):
         for c in k.__table__.columns._data.keys():
             value = getattr(k, c)
             if value:
-                if PY2:
-                    value = value.encode("utf-8")
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                     continue
                 attrs[str(c)] = value
