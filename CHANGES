@@ -21,6 +21,11 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - _Insert changes/features/fixes for next release here_
 
+### Breaking changes
+
+- Python 2 compatibility module and imports removed. Python 2.x was officially
+  dropped in 0.7.0 (2021-06-15) via #278
+
 ## cihai-cli 0.9.0 (2022-08-16)
 
 ### Compatibility

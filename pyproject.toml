@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cihai-cli"
-version = "0.9.0"
+version = "0.10.0a0"
 description = "Command line frontend for the cihai CJK language library"
 license = "MIT"
 authors = ["Tony Narlock <tony@git-pull.com>"]
@@ -58,7 +58,7 @@ Repository = "https://github.com/cihai/cihai-cli"
 [tool.poetry.dependencies]
 python = "^3.7"
 click = ">=7<8.2"
-cihai = ">=0.12.0,<0.14.0"
+cihai = ">=0.12.0,<0.15.0"
 PyYAML = "<6,>=3.12"
 
 [tool.poetry.dev-dependencies]
