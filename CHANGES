@@ -37,7 +37,7 @@ Infrastructure updates for static type checking and doctest examples.
   - Relock poetry.lock at 1.1 (w/ 1.1.7's fix)
 - pyupgrade to python 3.7
 
-- Initial [doctests] support added, via #276 
+- Initial [doctests] support added, via #276
 
   [doctests]: https://docs.python.org/3/library/doctest.html
 
