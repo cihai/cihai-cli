@@ -8,7 +8,7 @@ This project is under active development. Follow our progress and check back for
 ## Installation
 
 ```console
-$ pip install --user 'cihai-cli'
+$ pip install --user cihai-cli
 ```
 
 ### Developmental releases
