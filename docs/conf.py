@@ -29,7 +29,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_click.ext",  # sphinx-click
     "sphinx_inline_tabs",
-    "sphinx_issues",
+    "sphinx_autoissues",
     "sphinx_copybutton",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
@@ -88,6 +88,10 @@ html_sidebars = {
     ]
 }
 
+# sphinx-autoissues
+issuetracker = "github"
+issuetracker_project = "cihai/cihai-cli"
+
 # sphinxext.opengraph
 ogp_site_url = about["__docs__"]
 ogp_image = "_static/img/icons/icon-192x192.png"
@@ -100,9 +104,6 @@ copybutton_prompt_text = (
 )
 copybutton_prompt_is_regexp = True
 copybutton_remove_prompts = True
-
-# sphinx-issues
-issues_github_path = "cihai/cihai-cli"
 
 # sphinxext-rediraffe
 rediraffe_redirects = "redirects.txt"

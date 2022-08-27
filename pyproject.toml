@@ -68,11 +68,11 @@ furo = "*"
 sphinx-autobuild = "*"
 sphinx-autodoc-typehints = "*"
 sphinx-click = "*"
-sphinx-issues = "*"
 sphinx-inline-tabs = { version = "*", python = "^3.7" }
 sphinxext-opengraph = "*"
 sphinx-copybutton = "*"
 sphinxext-rediraffe = "*"
+sphinx-autoissues = "*"
 myst_parser = "*"
 docutils = "~0.18.0"
 
@@ -102,7 +102,6 @@ cihai = "cihai_cli.cli:cli"
 docs = [
   "docutils",
   "sphinx",
-  "sphinx-issues",
   "sphinx-click",
   "sphinx-autodoc-typehints",
   "sphinx-autobuild",
@@ -110,6 +109,7 @@ docs = [
   "sphinxext-opengraph",
   "sphinx-inline-tabs",
   "sphinxext-rediraffe",
+  "sphinx-autoissues",
   "myst_parser",
   "furo",
 ]
