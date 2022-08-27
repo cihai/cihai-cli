@@ -21,6 +21,10 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - _Insert changes/features/fixes for next release here_
 
+### Documentation
+
+- Render changelog with sphinx-autoissues, #280
+
 ## cihai-cli 0.12.0 (2022-08-21)
 
 ### Internal
