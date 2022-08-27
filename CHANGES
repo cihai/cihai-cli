@@ -101,7 +101,7 @@ Infrastructure updates for static type checking and doctest examples.
 
 ## cihai-cli 0.8.0 (2021-06-16)
 
-- {issue}`252`: Convert to markdown
+- #252: Convert to markdown
 
 ## cihai-cli 0.7.2 (2021-06-15)
 
@@ -115,19 +115,19 @@ Infrastructure updates for static type checking and doctest examples.
 
 - Update {}`black` to 21.6b0
 - Update trove classifiers to 3.9
-- {issue}`251` Drop python 2.7 and 3.5. Remove deprecated `__future__` and modesets
+- #251 Drop python 2.7 and 3.5. Remove deprecated `__future__` and modesets
 
 ## cihai-cli 0.6.0 (2020-08-09)
 
-- {issue}`249` Move packaging / publishing to poetry
-- {issue}`248` Self host docs
-- {issue}`248` Add metadata / icons / etc. for doc site
-- {issue}`248` Move travis -> github actions
-- {issue}`248` Overhaul Makefiles
+- #249 Move packaging / publishing to poetry
+- #248 Self host docs
+- #248 Add metadata / icons / etc. for doc site
+- #248 Move travis -> github actions
+- #248 Overhaul Makefiles
 
 ## cihai-cli 0.5.1 (2020-07-03)
 
-- {issue}`247` - Move from Pipfile to Poetry
+- #247 - Move from Pipfile to Poetry
 - Fixed bug in Python 2.x when showing help / "cihai"
 
 ## cihai-cli 0.5.0 (2019-08-18)
@@ -140,7 +140,7 @@ Infrastructure updates for static type checking and doctest examples.
 
 ## cihai-cli 0.5.0a (2018-09-08)
 
-- {issue}`91` `-V` / `-version` now shows the cihai backend version.
+- #91 `-V` / `-version` now shows the cihai backend version.
 
 ## cihai-cli 0.4.1 (2018-07-21)
 
