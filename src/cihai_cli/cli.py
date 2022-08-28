@@ -1,6 +1,7 @@
 import argparse
 import logging
 import sys
+import typing as t
 
 import yaml
 
@@ -28,7 +29,7 @@ HUMAN_UNIHAN_FIELDS = [
 INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
 
 
-def create_parser():
+def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cihai")
     parser.add_argument(
         "--version",
@@ -48,6 +49,7 @@ def create_parser():
     parser.add_argument(
         "--config",
         "-c",
+        dest="config_file",
         action="store",
         help="Path to custom config file",
     )
@@ -62,7 +64,13 @@ def create_parser():
     return parser
 
 
-def cli(args=None):
+class CLILoadNamespace(argparse.Namespace):
+    config_file: t.Optional[str]
+    version: bool
+    log_file: t.Optional[str]
+
+
+def cli(_args: t.Optional[t.List[str]] = None) -> None:
     """Retrieve CJK information via CLI.
 
     For help and example usage, see documentation:
@@ -70,12 +78,12 @@ def cli(args=None):
     https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
 
     parser = create_parser()
-    args = parser.parse_args(args)
+    args = parser.parse_args(_args, namespace=CLILoadNamespace())
 
     setup_logger(level=args.log_level.upper())
 
-    if args.config:
-        c = Cihai.from_file(args.config)
+    if args.config_file:
+        c = Cihai.from_file(args.config_file)
     else:
         c = Cihai()
 
@@ -106,7 +114,7 @@ def create_info_subparser(parser: argparse.ArgumentParser) -> argparse.ArgumentP
     return parser
 
 
-def command_info(c: Cihai, char: str, show_all: bool):
+def command_info(c: Cihai, char: str, show_all: bool) -> None:
     """Look up a definition by term."""
     query = c.unihan.lookup_char(char).first()
     attrs = {}
@@ -138,7 +146,7 @@ def create_reverse_subparser(
     return parser
 
 
-def command_reverse(c: Cihai, char: str, show_all: bool):
+def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
     """Lookup a word or phrase by searching definitions."""
     query = c.unihan.reverse_char([char])
     if not query.count():
@@ -160,7 +168,10 @@ def command_reverse(c: Cihai, char: str, show_all: bool):
         print("--------")
 
 
-def setup_logger(logger=None, level="INFO"):
+def setup_logger(
+    logger: t.Optional[logging.Logger] = None, level: str = "INFO"
+) -> None:
+
     """Setup logging for CLI use.
 
     :param logger: instance of logger
