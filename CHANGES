@@ -21,6 +21,10 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - _Insert changes/features/fixes for next release here_
 
+### Development
+
+- Add [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) (#281)
+
 ### Documentation
 
 - Render changelog with sphinx-autoissues, #280
