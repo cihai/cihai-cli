@@ -92,6 +92,7 @@ isort = "*"
 
 ### Lint ###
 flake8 = "*"
+flake8-bugbear = "^22.8.23"
 mypy = "*"
 types-PyYAML = "^6.0.11"
 
@@ -116,7 +117,7 @@ docs = [
 test = ["pytest", "pytest-rerunfailures", "pytest-watcher"]
 coverage = ["codecov", "coverage", "pytest-cov"]
 format = ["black", "isort"]
-lint = ["flake8", "mypy", "types-PyYAML"]
+lint = ["flake8", "flake8-bugbear", "mypy", "types-PyYAML"]
 
 [[tool.mypy.overrides]]
 module = [
