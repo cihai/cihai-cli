@@ -24,6 +24,7 @@ You can test the unpublished version of cihai-cli before its released, see
 ### Development
 
 - Add [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) (#281)
+- Add [flake8-comprehensions](https://github.com/adamchainz/flake8-comprehensions) (#282)
 
 ### Documentation
 
