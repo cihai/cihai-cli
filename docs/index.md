@@ -18,6 +18,7 @@ cli/index
 :caption: Project
 :hidden:
 
+api
 history
 Developer Guide <https://cihai.git-pull.com/contributing/>
 GitHub <https://github.com/cihai/cihai-cli>
