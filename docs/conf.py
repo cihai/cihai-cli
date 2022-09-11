@@ -230,7 +230,7 @@ def linkcode_resolve(domain, info):  # NOQA: C901
             linespec,
         )
     else:
-        return "{}/blob/v{}/{}/{},{}{}".format(
+        return "{}/blob/v{}/{}/{}/{}{}".format(
             about["__github__"],
             about["__version__"],
             "src",
