@@ -82,6 +82,7 @@ INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
 )
 @click.pass_context
 def command_info(ctx, char, show_all):
+    """Look up a definition by term."""
     c = ctx.obj["c"]
     query = c.unihan.lookup_char(char).first()
     attrs = {}
@@ -108,6 +109,7 @@ def command_info(ctx, char, show_all):
 )
 @click.pass_context
 def command_reverse(ctx, char, show_all):
+    """Lookup a word or phrase by searching definitions."""
     c = ctx.obj["c"]
     query = c.unihan.reverse_char([char])
     if not query.count():
