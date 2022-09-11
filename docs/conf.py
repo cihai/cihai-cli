@@ -92,6 +92,14 @@ html_sidebars = {
 # linkify_issues
 issue_url_tpl = "https://github.com/cihai/cihai-cli/issues/{issue_id}"
 
+# sphinx.ext.autodoc
+autoclass_content = "both"
+autodoc_member_order = "bysource"
+
+# sphinx-autodoc-typehints
+autodoc_typehints = "description"  # show type hints in doc body instead of signature
+simplify_optional_unions = True
+
 # sphinxext.opengraph
 ogp_site_url = about["__docs__"]
 ogp_image = "_static/img/icons/icon-192x192.png"
