@@ -21,6 +21,15 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - _Insert changes/features/fixes for next release here_
 
+## cihai-cli 0.13.0 (unreleased)
+
+### Infrastructure
+
+- CI speedups (#285)
+
+  - Split out release to separate job so the PyPI Upload docker image isn't pulled on normal runs
+  - Clean up CodeQL
+
 ## cihai-cli 0.13.0 (2022-09-11)
 
 **This is a maintenance only release, no bugfixes or features.**
