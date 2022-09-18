@@ -30,6 +30,10 @@ You can test the unpublished version of cihai-cli before its released, see
   - Split out release to separate job so the PyPI Upload docker image isn't pulled on normal runs
   - Clean up CodeQL
 
+- Poetry: Bump 1.1.x to 1.2.x
+
+  - Fix click constraint for poetry 1.2 (was missing a comma)
+
 ## cihai-cli 0.13.0 (2022-09-11)
 
 **This is a maintenance only release, no bugfixes or features.**
