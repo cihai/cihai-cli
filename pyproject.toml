@@ -64,7 +64,7 @@ PyYAML = "<6,>=3.12"
 [tool.poetry.dev-dependencies]
 ### Docs ###
 sphinx = "*"
-gp-libs = "0.0.1a10"
+gp-libs = "0.0.1a12"
 furo = "*"
 sphinx-autobuild = "*"
 sphinx-autodoc-typehints = "*"
@@ -74,12 +74,12 @@ sphinxext-opengraph = "*"
 sphinx-copybutton = "*"
 sphinxext-rediraffe = "*"
 myst_parser = "*"
-docutils = "~0.18.0"
+docutils = "*"
 
 ### Testing ###
 pytest = "*"
 pytest-rerunfailures = "*"
-pytest-watcher = "^0.2.3"
+pytest-watcher = "*"
 
 ### Coverage ###
 codecov = "*"
@@ -92,10 +92,10 @@ isort = "*"
 
 ### Lint ###
 flake8 = "*"
-flake8-bugbear = "^22.8.23"
-flake8-comprehensions = "^3.10.0"
+flake8-bugbear = "*"
+flake8-comprehensions = "*"
 mypy = "*"
-types-PyYAML = "^6.0.11"
+types-PyYAML = "*"
 
 [tool.poetry.scripts]
 cihai = "cihai_cli.cli:cli"
