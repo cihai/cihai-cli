@@ -67,7 +67,7 @@ gp-libs = "0.0.1a16"
 furo = "*"
 sphinx-autobuild = "*"
 sphinx-autodoc-typehints = "*"
-sphinx-click = "*"
+sphinx-argparse = "*"
 sphinx-inline-tabs = { version = "*", python = "^3.7" }
 sphinxext-opengraph = "*"
 sphinx-copybutton = "*"
@@ -103,7 +103,7 @@ cihai = "cihai_cli.cli:cli"
 docs = [
   "docutils",
   "sphinx",
-  "sphinx-click",
+  "sphinx-argparse",
   "sphinx-autodoc-typehints",
   "sphinx-autobuild",
   "sphinx-copybutton",
