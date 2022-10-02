@@ -3,24 +3,40 @@ import pathlib
 import pytest
 
 import yaml
-from click.testing import CliRunner
 
-from cihai_cli import cli
+from cihai_cli.cli import cli
 
 
-def test_cli(test_config_file):
-    runner = CliRunner()
-    result = runner.invoke(cli.cli)
-    assert result.exit_code == 0
-    result = runner.invoke(cli.cli, "-c", test_config_file)
-    result = runner.invoke(cli.cli, "info")
-    assert result.exit_code == 2
-    # result = runner.invoke(cli, ['info', '好'])
-    # assert result.exit_code == 0
+def test_cli(
+    test_config_file: pathlib.Path,
+    tmp_path: pathlib.Path,
+    capsys: pytest.CaptureFixture,
+    monkeypatch: pytest.MonkeyPatch,
+):
+    monkeypatch.chdir(tmp_path)
+
+    try:
+        cli()
+    except SystemExit:
+        pass
+
+    try:
+        cli(["-c", test_config_file])
+    except SystemExit:
+        pass
+
+    try:
+        cli(["info"])
+    except SystemExit:
+        pass
 
 
 def test_cli_reflects_after_bootstrap(
-    tmp_path: pathlib.Path, tmpdb_file, unihan_options
+    tmp_path: pathlib.Path,
+    capsys: pytest.CaptureFixture,
+    monkeypatch: pytest.MonkeyPatch,
+    tmpdb_file,
+    unihan_options,
 ):
     config = {
         "database": {"url": f"sqlite:///{tmpdb_file}s"},
@@ -30,18 +46,34 @@ def test_cli_reflects_after_bootstrap(
     config_file.write_text(
         yaml.dump(config, default_flow_style=False), encoding="utf-8"
     )
-    runner = CliRunner()
-    result = runner.invoke(cli.cli, ["-c", str(config_file), "info", "㐀"])
-    assert "Bootstrapping Unihan database" in result.output
-    assert result.exit_code == 0
 
-    result = runner.invoke(cli.cli, ["-c", str(config_file)], "info")
+    try:
+        cli(["-c", str(config_file), "info", "㐀"])
+    except SystemExit:
+        result = capsys.readouterr()
+        output = "".join(list(result.out))
+        assert "Bootstrapping Unihan database" in output
+
+    try:
+        cli(["-c", str(config_file), "info"])
+    except SystemExit:
+        result = capsys.readouterr()
+        output = "".join(list(result.out))
+        assert "Bootstrapping" in output
 
 
 @pytest.mark.parametrize("flag", ["-V", "--version"])
-def test_cli_version(flag):
-    runner = CliRunner()
-    result = runner.invoke(cli.cli, [flag])
-    assert "cihai-cli" in result.output
-    assert "cihai" in result.output
-    assert "unihan-etl" in result.output
+def test_cli_version(
+    tmp_path: pathlib.Path,
+    capsys: pytest.CaptureFixture,
+    monkeypatch: pytest.MonkeyPatch,
+    flag: str,
+):
+    try:
+        result = cli([flag])
+    except SystemExit:
+        result = capsys.readouterr()
+        output = "".join(list(result.out))
+        assert "cihai-cli" in output
+        assert "cihai" in output
+        assert "unihan-etl" in output

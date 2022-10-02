@@ -21,6 +21,16 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - _Insert changes/features/fixes for next release here_
 
+### Internal
+
+- Move from click to {mod}`argparse` (#286)
+
+  Click was more difficult to control and work with, ironically.
+
+### Packaging
+
+- Drop click dependency (#286)
+
 ## cihai-cli 0.14.0 (2022-10-01)
 
 ### Packages
