@@ -23,6 +23,12 @@ You can test the unpublished version of cihai-cli before its released, see
 
 ## cihai-cli 0.15.0 (2022-10-02)
 
+### Bug fix
+
+- CLI: Fix help text descriptions
+
+## cihai-cli 0.15.0 (2022-10-02)
+
 ### Internal
 
 - Move from click to {mod}`argparse` (#286)
