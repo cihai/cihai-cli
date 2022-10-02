@@ -95,7 +95,7 @@ def cli(args=None):
 
 
 def create_info_subparser(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
-    parser.add_argument("char", metavar="<character>", help="Specify config")
+    parser.add_argument("char", metavar="<character>", help="Lookup term / character")
     parser.add_argument(
         "--all",
         "-a",
@@ -127,7 +127,7 @@ def command_info(c: Cihai, char: str, show_all: bool):
 def create_reverse_subparser(
     parser: argparse.ArgumentParser,
 ) -> argparse.ArgumentParser:
-    parser.add_argument("char", metavar="<character>", help="Specify config")
+    parser.add_argument("char", metavar="<character>", help="Lookup term / character")
     parser.add_argument(
         "--all",
         "-a",
