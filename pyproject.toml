@@ -128,7 +128,6 @@ lint = [
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
-  "unihan_etl.*",
 ]
 ignore_missing_imports = true
 
