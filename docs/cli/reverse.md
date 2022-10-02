@@ -1,5 +1,15 @@
+(cli-reverse)=
+
+(cihai-reverse)=
+
+# cihai reverse
+
+## Command
+
 ```{eval-rst}
-.. click:: cihai_cli.cli:command_reverse
-    :prog: cihai reverse
-    :show-nested:
+.. argparse::
+    :module: cihai_cli.cli
+    :func: create_parser
+    :prog: cihai
+    :path: reverse
 ```

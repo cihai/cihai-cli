@@ -1,5 +1,15 @@
+(cli-info)=
+
+(cihai-info)=
+
+# cihai info
+
+## Command
+
 ```{eval-rst}
-.. click:: cihai_cli.cli:command_info
-    :prog: cihai info
-    :show-nested:
+.. argparse::
+    :module: cihai_cli.cli
+    :func: create_parser
+    :prog: cihai
+    :path: info
 ```
