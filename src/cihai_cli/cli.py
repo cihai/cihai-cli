@@ -1,14 +1,14 @@
+import argparse
 import logging
 import sys
 
-import click
 import yaml
 
-import cihai
+from cihai.__about__ import __version__ as cihai_version
 from cihai.core import Cihai
-from unihan_etl.__about__ import __version__ as __unihan_etl_version__
+from unihan_etl.__about__ import __version__ as unihan_etl_version
 
-from .__about__ import __title__, __version__
+from .__about__ import __version__
 
 #: fields which are human friendly
 HUMAN_UNIHAN_FIELDS = [
@@ -25,69 +25,93 @@ HUMAN_UNIHAN_FIELDS = [
     "kTotalStrokes",
 ]
 
+INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
 
-@click.group(context_settings={"obj": {}})
-@click.version_option(
-    __version__,
-    "-V",
-    "--version",
-    message="""
-{prog} %(version)s, cihai {cihai_version}, unihan-etl {unihan_etl_version}
-""".format(
-        prog=__title__,
-        cihai_version=cihai.__version__,
-        unihan_etl_version=__unihan_etl_version__,
-    ).strip(),
-)
-@click.option(
-    "-c",
-    "--config",
-    type=click.Path(exists=True),
-    metavar="<config-file>",
-    help="path to custom config file",
-)
-@click.option(
-    "--log_level",
-    default="INFO",
-    metavar="<log-level>",
-    help="Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
-)
-@click.pass_context
-def cli(ctx, config, log_level):
+
+def create_parser():
+    parser = argparse.ArgumentParser(prog="cihai")
+    parser.add_argument(
+        "--version",
+        "-V",
+        action="version",
+        version=(
+            f"%(prog)s cihai-cli {__version__}, "
+            f"cihai {cihai_version}, unihan-etl {unihan_etl_version}"
+        ),
+    )
+    parser.add_argument(
+        "--log-level",
+        action="store",
+        default="INFO",
+        help="Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)",
+    )
+    parser.add_argument(
+        "--config",
+        "-c",
+        action="store",
+        help="Path to custom config file",
+    )
+    subparsers = parser.add_subparsers(dest="subparser_name")
+    info_parser = subparsers.add_parser("info", help=INFO_SHORT_HELP)
+    create_info_subparser(info_parser)
+    reverse_parser = subparsers.add_parser(
+        "reverse", help='Search all info for character matches, e.g. "good"'
+    )
+    create_reverse_subparser(reverse_parser)
+
+    return parser
+
+
+def cli(args=None):
     """Retrieve CJK information via CLI.
 
     For help and example usage, see documentation:
 
     https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
-    setup_logger(level=log_level.upper())
-    if config:
-        c = Cihai.from_file(config)
+
+    parser = create_parser()
+    args = parser.parse_args(args)
+
+    setup_logger(level=args.log_level.upper())
+
+    if args.config:
+        c = Cihai.from_file(args.config)
     else:
         c = Cihai()
 
     if not c.unihan.is_bootstrapped:
-        click.echo("Bootstrapping Unihan database")
+        print("Bootstrapping Unihan database")
         c.unihan.bootstrap(options=c.config.get("unihan_options", {}))
 
-    ctx.obj["c"] = c  # pass Cihai object down to other commands
+    if args.subparser_name is None:
+        parser.print_help()
+        return
+    elif args.subparser_name == "info":
+        command_info(c=c, char=args.char, show_all=args.show_all)
+    elif args.subparser_name == "reverse":
+        command_reverse(c=c, char=args.char, show_all=args.show_all)
+    else:
+        print(f"No subparser for {args.subparser_name}")
 
 
-INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
+def create_info_subparser(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    parser.add_argument("char", metavar="<character>", help="Specify config")
+    parser.add_argument(
+        "--all",
+        "-a",
+        dest="show_all",
+        action="store_true",
+        help="Show all character details",
+    )
+    return parser
 
 
-@cli.command(name="info", short_help=INFO_SHORT_HELP)
-@click.argument("char", metavar="<character>")
-@click.option(
-    "-a", "--all", "show_all", is_flag=True, help="Show all character details"
-)
-@click.pass_context
-def command_info(ctx, char, show_all):
+def command_info(c: Cihai, char: str, show_all: bool):
     """Look up a definition by term."""
-    c = ctx.obj["c"]
     query = c.unihan.lookup_char(char).first()
     attrs = {}
     if not query:
-        click.echo("No records found for %s" % char, err=True)
+        print("No records found for %s" % char)
         sys.exit()
     for c in query.__table__.columns._data.keys():
         value = getattr(query, c)
@@ -95,25 +119,30 @@ def command_info(ctx, char, show_all):
             if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                 continue
             attrs[str(c)] = value
-    click.echo(
+    print(
         yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip("\n")
     )
 
 
-@cli.command(
-    name="reverse", short_help='Search all info for character matches, e.g. "good"'
-)
-@click.argument("char", metavar="<character>")
-@click.option(
-    "-a", "--all", "show_all", is_flag=True, help="Show all character details"
-)
-@click.pass_context
-def command_reverse(ctx, char, show_all):
+def create_reverse_subparser(
+    parser: argparse.ArgumentParser,
+) -> argparse.ArgumentParser:
+    parser.add_argument("char", metavar="<character>", help="Specify config")
+    parser.add_argument(
+        "--all",
+        "-a",
+        dest="show_all",
+        action="store_true",
+        help="Show all character details",
+    )
+    return parser
+
+
+def command_reverse(c: Cihai, char: str, show_all: bool):
     """Lookup a word or phrase by searching definitions."""
-    c = ctx.obj["c"]
     query = c.unihan.reverse_char([char])
     if not query.count():
-        click.echo("No records found for %s" % char, err=True)
+        print("No records found for %s" % char)
         sys.exit()
     for k in query:
         attrs = {}
@@ -123,12 +152,12 @@ def command_reverse(ctx, char, show_all):
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                     continue
                 attrs[str(c)] = value
-        click.echo(
+        print(
             yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip(
                 "\n"
             )
         )
-        click.echo("--------")
+        print("--------")
 
 
 def setup_logger(logger=None, level="INFO"):
