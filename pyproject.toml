@@ -96,6 +96,9 @@ flake8-comprehensions = "*"
 mypy = "*"
 types-PyYAML = "*"
 
+### Quirks ###
+importlib-metadata = "<5"  # https://github.com/PyCQA/flake8/issues/1701
+
 [tool.poetry.scripts]
 cihai = "cihai_cli.cli:cli"
 
