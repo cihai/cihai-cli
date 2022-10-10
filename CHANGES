@@ -19,9 +19,16 @@ You can test the unpublished version of cihai-cli before its released, see
 
 ## cihai-cli 0.16.x (unreleased)
 
-- _Insert changes/features/fixes for next release here_
+- Notes on upcoming releases will be added here
 
-## cihai-cli 0.15.0 (2022-10-02)
+<!-- Maintainers, insert changes / features for the next release here -->
+
+### Documentation
+
+- Add migrations page
+- Add back page on completions
+
+## cihai-cli 0.15.1 (2022-10-02)
 
 ### Bug fix
 
