@@ -2,14 +2,25 @@
 
 # Commands
 
-## Sub-commands
-
 ```{toctree}
 :caption: General
 
 info
 reverse
 ```
+
+```{toctree}
+:caption: Completion
+:maxdepth: 1
+
+completion
+```
+
+(cli-main)=
+
+(cihai-main)=
+
+(cihai-cli-main)=
 
 ## Command: `cihai`
 

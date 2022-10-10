@@ -1,0 +1,41 @@
+# Migration notes
+
+Migration and deprecation notes for cihai-cli are here, see {ref}`changelog` as
+well.
+
+```{admonition} Welcome on board! 👋
+1. 📌 For safety, **always** pin the package
+2. 📖 Check the migration notes _(You are here)_
+3. 📣 If you feel something got deprecated and it interrupted you - past, present, or future - voice your opinion on the [tracker].
+
+   We want to make cihai-cli fun, reliable, and useful for users.
+
+   API changes can be painful.
+
+   If we can do something to draw the sting, we'll do it. We're taking a balanced approach. That's why these notes are here!
+
+   (Please pin the package. 🙏)
+
+   [tracker]: https://github.com/cihai/cihai-cli/discussions
+```
+
+## Next release
+
+_Notes on the upcoming release will be added here_
+
+<!-- Maintainers, insert changes / features for the next release here -->
+
+## cihai-cli 0.15.0 (2022-10-09)
+
+**Completions have changed** (#286)
+
+Completions now use a different tool: [shtab]. See the [completions page] for more information.
+
+If you were using earlier versions of cihai-cli (earlier than 0.15.0), you may need to uninstall the old completions, first.
+
+[completions page]: https://cihai-cli.git-pull.com/cli/completion.html
+[shtab]: https://docs.iterative.ai/shtab/
+
+<!---
+# vim: set filetype=markdown:
+-->
