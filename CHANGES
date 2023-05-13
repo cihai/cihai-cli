@@ -23,6 +23,13 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- Update cihai 0.18.1 -> 0.18.3
+  - Sub-dependency updated: unihan-etl 0.18.1 -> 0.18.2
+
+    Typing update for `merge_dict`
+
 ### Documentation
 
 - Add migrations page
