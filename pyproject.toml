@@ -60,7 +60,7 @@ python = "^3.7"
 cihai = "~0.18.3"
 PyYAML = "*"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 ### Docs ###
 sphinx = "*"
 gp-libs = "0.0.1a16"
@@ -85,22 +85,10 @@ codecov = "*"
 coverage = "*"
 pytest-cov = "*"
 
-### Format ###
-black = "*"
-isort = "*"
-
 ### Lint ###
-flake8 = [
-  { version = "*", python = "^3.7" },
-  { version = ">=5", python = "^3.8" },
-]
-flake8-bugbear = "*"
-flake8-comprehensions = "*"
+ruff = "*"
 mypy = "*"
 types-PyYAML = "*"
-
-### Quirks ###
-importlib-metadata = "<5"  # https://github.com/PyCQA/flake8/issues/1701
 
 [tool.poetry.scripts]
 cihai = "cihai_cli.cli:cli"
@@ -122,11 +110,8 @@ docs = [
 ]
 test = ["pytest", "pytest-rerunfailures", "pytest-watcher"]
 coverage = ["codecov", "coverage", "pytest-cov"]
-format = ["black", "isort"]
 lint = [
-  "flake8",
-  "flake8-bugbear",
-  "flake8-comprehensions",
+  "ruff",
   "mypy",
   "types-PyYAML",
 ]
