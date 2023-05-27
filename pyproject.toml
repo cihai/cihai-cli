@@ -131,6 +131,12 @@ lint = [
   "types-PyYAML",
 ]
 
+[tool.mypy]
+files = [
+  "src/",
+  "tests/",
+]
+
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
