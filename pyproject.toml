@@ -63,7 +63,7 @@ PyYAML = "*"
 [tool.poetry.group.dev.dependencies]
 ### Docs ###
 sphinx = "*"
-gp-libs = "0.0.1a16"
+gp-libs = "*"
 furo = "*"
 sphinx-autobuild = "*"
 sphinx-autodoc-typehints = "*"
