@@ -124,6 +124,10 @@ $ cd cihai-cli
 
 [Bootstrap your environment and learn more about contributing](https://cihai.git-pull.com/contributing/). We use the same conventions / tools across all cihai projects: `pytest`, `sphinx`, `flake8`, `mypy`, `black`, `isort`, `tmuxp`, and file watcher helpers (e.g. `entr(1)`).
 
+## Python versions
+
+- Final Python 3.7 version: 0.16.0
+
 ## Quick links
 
 - [Quickstart](https://cihai-cli.git-pull.com/quickstart.html)

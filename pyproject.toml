@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cihai-cli"
-version = "0.15.2"
+version = "0.16.0"
 description = "Command line frontend for the cihai CJK language library"
 license = "MIT"
 authors = ["Tony Narlock <tony@git-pull.com>"]

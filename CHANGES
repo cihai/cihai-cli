@@ -17,11 +17,17 @@ You can test the unpublished version of cihai-cli before its released, see
 
   Then use `cihai@next info 好`.
 
-## cihai-cli 0.16.x (unreleased)
+## cihai-cli 0.17.x (unreleased)
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+## cihai-cli 0.16.0 (2023-05-29)
+
 _Maintenance only, no bug fixes, or new features_
+
+### Breaking
+
+0.16.0 will be the final Python 3.7 release.
 
 ### Internal improvements
 
