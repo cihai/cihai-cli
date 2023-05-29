@@ -21,6 +21,16 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Breaking
+
+- **Python 3.7 Dropped**
+
+  Python 3.7 support has been dropped (#290)
+
+  Its end-of-life is June 27th, 2023 and Python 3.8 will add support for
+  `typing.TypedDict` and `typing.Protocol` out of the box without needing
+  `typing_extensions`.
+
 ## cihai-cli 0.16.0 (2023-05-29)
 
 _Maintenance only, no bug fixes, or new features_
