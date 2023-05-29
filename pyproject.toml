@@ -57,7 +57,7 @@ Repository = "https://github.com/cihai/cihai-cli"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-cihai = "~0.18.3"
+cihai = "~0.19.0"
 PyYAML = "*"
 
 [tool.poetry.group.dev.dependencies]
