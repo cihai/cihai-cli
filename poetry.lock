@@ -200,13 +200,13 @@ files = [
 
 [[package]]
 name = "cihai"
-version = "0.19.0"
+version = "0.20.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8,<4.0"
 files = [
-    {file = "cihai-0.19.0-py3-none-any.whl", hash = "sha256:efcdda53ddf35b3d7864abdc6eb81ecdad3fe4c10e384b885d1beef5d353813a"},
-    {file = "cihai-0.19.0.tar.gz", hash = "sha256:37b250950e7111a930437580df6401c6c11234ec2abf20f31fb61365747fee3b"},
+    {file = "cihai-0.20.0-py3-none-any.whl", hash = "sha256:3f4ff55bbc1ae03f26782a2d8aa3a145816673d77e8486b0883b8c4216e68fce"},
+    {file = "cihai-0.20.0.tar.gz", hash = "sha256:d91b56bef1cd50239a46efac285f901e4a48ac4d91efebafc13de8ac90aed5df"},
 ]
 
 [package.dependencies]
@@ -1418,4 +1418,4 @@ test = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "342e951d3f59746afb52e177d13cbb4282c614d00e71d5ed178d0cc994c5f55e"
+content-hash = "b936d9e80c22743cd1ea2768255841089ae908dcbb52bdaa0c1d37f2649f083c"
