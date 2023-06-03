@@ -3,8 +3,12 @@ import pathlib
 import pytest
 
 import yaml
+import typing as t
 
 from cihai_cli.cli import cli
+
+if t.TYPE_CHECKING:
+    from cihai.types import UntypedDict as UnihanOptions
 
 
 def test_cli(
@@ -12,7 +16,7 @@ def test_cli(
     tmp_path: pathlib.Path,
     capsys: pytest.CaptureFixture,
     monkeypatch: pytest.MonkeyPatch,
-):
+) -> None:
     monkeypatch.chdir(tmp_path)
 
     try:
@@ -21,7 +25,7 @@ def test_cli(
         pass
 
     try:
-        cli(["-c", test_config_file])
+        cli(["-c", str(test_config_file)])
     except SystemExit:
         pass
 
@@ -35,12 +39,16 @@ def test_cli_reflects_after_bootstrap(
     tmp_path: pathlib.Path,
     capsys: pytest.CaptureFixture,
     monkeypatch: pytest.MonkeyPatch,
-    tmpdb_file,
-    unihan_options,
+    tmpdb_file: pathlib.Path,
+    unihan_options: "UnihanOptions",
 ):
     config = {
         "database": {"url": f"sqlite:///{tmpdb_file}s"},
-        "unihan_options": unihan_options,
+        "unihan_options": {
+            "source": str(unihan_options["source"]),
+            "work_dir": str(unihan_options["work_dir"]),
+            "zip_path": str(unihan_options["zip_path"]),
+        },
     }
     config_file = tmp_path / "config.yml"
     config_file.write_text(
@@ -68,7 +76,7 @@ def test_cli_version(
     capsys: pytest.CaptureFixture,
     monkeypatch: pytest.MonkeyPatch,
     flag: str,
-):
+) -> None:
     try:
         result = cli([flag])
     except SystemExit:
