@@ -113,7 +113,7 @@ def command_info(c: Cihai, char: str, show_all: bool):
     if not query:
         print("No records found for %s" % char)
         sys.exit()
-    for c in query.__table__.columns._data.keys():
+    for c in query.__table__.columns.keys():
         value = getattr(query, c)
         if value:
             if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
