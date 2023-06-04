@@ -123,6 +123,7 @@ files = [
   "src/",
   "tests/",
 ]
+strict = true
 
 [[tool.mypy.overrides]]
 module = [

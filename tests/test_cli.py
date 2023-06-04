@@ -14,7 +14,7 @@ if t.TYPE_CHECKING:
 def test_cli(
     test_config_file: pathlib.Path,
     tmp_path: pathlib.Path,
-    capsys: pytest.CaptureFixture,
+    capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.chdir(tmp_path)
@@ -34,14 +34,19 @@ def test_cli(
     except SystemExit:
         pass
 
+    try:
+        cli(["reverse"])
+    except SystemExit:
+        pass
+
 
 def test_cli_reflects_after_bootstrap(
     tmp_path: pathlib.Path,
-    capsys: pytest.CaptureFixture,
+    capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
     tmpdb_file: pathlib.Path,
     unihan_options: "UnihanOptions",
-):
+) -> None:
     config = {
         "database": {"url": f"sqlite:///{tmpdb_file}s"},
         "unihan_options": {
@@ -73,12 +78,12 @@ def test_cli_reflects_after_bootstrap(
 @pytest.mark.parametrize("flag", ["-V", "--version"])
 def test_cli_version(
     tmp_path: pathlib.Path,
-    capsys: pytest.CaptureFixture,
+    capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
     flag: str,
 ) -> None:
     try:
-        result = cli([flag])
+        cli([flag])
     except SystemExit:
         result = capsys.readouterr()
         output = "".join(list(result.out))
