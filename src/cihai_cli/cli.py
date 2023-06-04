@@ -146,7 +146,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool):
         sys.exit()
     for k in query:
         attrs = {}
-        for c in k.__table__.columns._data.keys():
+        for c in k.__table__.columns.keys():
             value = getattr(k, c)
             if value:
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
