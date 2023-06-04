@@ -25,6 +25,7 @@ _Maintenance only, no bug fixes, or new features_
 
 ### Development
 
+- Typings: Add `--strict` mypy compliance (#277)
 - cihai: 0.20 -> 0.21, moves to SQLAlchemy 2.0 (#292)
 - Move from pytest's `tmp_dir` (`py.path.local`) to `tmp_path` (`pathlib.Path`),
   #292
