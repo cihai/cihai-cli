@@ -34,6 +34,11 @@ def test_cli(
     except SystemExit:
         pass
 
+    try:
+        cli(["reverse"])
+    except SystemExit:
+        pass
+
 
 def test_cli_reflects_after_bootstrap(
     tmp_path: pathlib.Path,
