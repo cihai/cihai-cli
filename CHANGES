@@ -17,13 +17,17 @@ You can test the unpublished version of cihai-cli before its released, see
 
   Then use `cihai@next info 好`.
 
-## cihai-cli 0.18.x (unreleased)
+## cihai-cli 0.19.x (unreleased)
 
 <!-- Maintainers, insert changes / features for the next release here -->
+
+## cihai-cli 0.18.0 (2023-06-19)
 
 ### Development
 
 - cihai: Bumps to 0.22.1
+
+  Reliance on {mod}`pathlib`-based file paths, typings.
 
 ## cihai-cli 0.17.0 (2023-06-04)
 
