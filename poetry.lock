@@ -200,20 +200,20 @@ files = [
 
 [[package]]
 name = "cihai"
-version = "0.22.1"
+version = "0.23.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "cihai-0.22.1-py3-none-any.whl", hash = "sha256:1e86f331a55fea56c446b15aab58704fd3ddc372c553e1d91aef970233b405cd"},
-    {file = "cihai-0.22.1.tar.gz", hash = "sha256:002db724a982373bf07deafa4a7e596225fbf382841cc1ca2909329546a2481a"},
+    {file = "cihai-0.23.0-py3-none-any.whl", hash = "sha256:f25085b24b4d97b0eee001f0260f18e5df10d5c23d73335364d6cb49d3b01161"},
+    {file = "cihai-0.23.0.tar.gz", hash = "sha256:9c375570b37a9b35e03d7e768632a53eb3f300e5e3bdf56623ec3b0e2ccb281a"},
 ]
 
 [package.dependencies]
 appdirs = "*"
 PyYAML = ">=6.0,<6.1"
 sqlalchemy = {version = ">=2.0,<2.1", extras = ["mypy"]}
-unihan-etl = ">=0.21.1,<0.22.0"
+unihan-etl = ">=0.22.1,<0.23.0"
 
 [[package]]
 name = "click"
@@ -1420,13 +1420,13 @@ files = [
 
 [[package]]
 name = "unihan-etl"
-version = "0.21.1"
+version = "0.22.1"
 description = "Export UNIHAN data of Chinese, Japanese, Korean to CSV, JSON or YAML"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "unihan_etl-0.21.1-py3-none-any.whl", hash = "sha256:9ad728d5bbcc809a29652796f67445357f364921db6e060ec7adbd34ca28ae46"},
-    {file = "unihan_etl-0.21.1.tar.gz", hash = "sha256:c2ccc1baa234b4092593027fc5a6399412bfaf70f97d70eb19bba5baf9f6217c"},
+    {file = "unihan_etl-0.22.1-py3-none-any.whl", hash = "sha256:85458a65f2b011c995e35c347095ac3bdb8f87288fdafa258ed1ab7ff55f70dd"},
+    {file = "unihan_etl-0.22.1.tar.gz", hash = "sha256:11217e250a6309c1fc501741dd3c60ec5eb1d0988bfd5ee836117e8ff8aa3681"},
 ]
 
 [package.dependencies]
@@ -1525,4 +1525,4 @@ test = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "c048cd796436c172b357be1909ac6e7947d3225241701808d08291abbecb7e4f"
+content-hash = "b3354c5003fa561b91f1dec67f24459403f4cba8d398fc95e1282025ba155c59"
