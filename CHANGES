@@ -21,6 +21,13 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- cihai: 0.21.0 to 0.22.1
+
+  Sub-dependency unihan-etl to 0.21.1 -> 0.22.2, which has
+  {obj}`dataclasses.dataclass`-based configuration.
+
 ## cihai-cli 0.18.0 (2023-06-19)
 
 ### Development
