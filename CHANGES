@@ -21,6 +21,18 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- cihai: 0.23.0 -> 0.25.0 (#298)
+
+  - Subdependency unihan-etl: 0.23.1 -> 0.24.0
+
+    - Subdependency updated for zhon: 1.1.5 -> 2.0.0
+
+      [zhon 2.0's Release notes](https://github.com/tsroten/zhon/blob/v2.0.0/CHANGES.rst#v200-2023-06-24)
+
+      Fixes pytest warning related to regular expressions.
+
 ## cihai-cli 0.19.0 (2023-06-24)
 
 _Maintenance only, no bug fixes, or new features_

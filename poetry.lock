@@ -200,20 +200,20 @@ files = [
 
 [[package]]
 name = "cihai"
-version = "0.23.0"
+version = "0.25.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "cihai-0.23.0-py3-none-any.whl", hash = "sha256:f25085b24b4d97b0eee001f0260f18e5df10d5c23d73335364d6cb49d3b01161"},
-    {file = "cihai-0.23.0.tar.gz", hash = "sha256:9c375570b37a9b35e03d7e768632a53eb3f300e5e3bdf56623ec3b0e2ccb281a"},
+    {file = "cihai-0.25.0-py3-none-any.whl", hash = "sha256:0f763b29633ef07e47794aa44c2089c860ca2b15c28852d17c790dbb073e517b"},
+    {file = "cihai-0.25.0.tar.gz", hash = "sha256:45235ab51491010779e4ed445166d56d9cb8bc58a4a1d65de20c4a0b07a09203"},
 ]
 
 [package.dependencies]
 appdirs = "*"
 PyYAML = ">=6.0,<6.1"
 sqlalchemy = {version = ">=2.0,<2.1", extras = ["mypy"]}
-unihan-etl = ">=0.22.1,<0.23.0"
+unihan-etl = ">=0.24.0,<0.25.0"
 
 [[package]]
 name = "click"
@@ -1421,20 +1421,20 @@ files = [
 
 [[package]]
 name = "unihan-etl"
-version = "0.22.1"
+version = "0.24.0"
 description = "Export UNIHAN data of Chinese, Japanese, Korean to CSV, JSON or YAML"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "unihan_etl-0.22.1-py3-none-any.whl", hash = "sha256:85458a65f2b011c995e35c347095ac3bdb8f87288fdafa258ed1ab7ff55f70dd"},
-    {file = "unihan_etl-0.22.1.tar.gz", hash = "sha256:11217e250a6309c1fc501741dd3c60ec5eb1d0988bfd5ee836117e8ff8aa3681"},
+    {file = "unihan_etl-0.24.0-py3-none-any.whl", hash = "sha256:7670368f49c8112f878efc2a4370763269a38418fe24271ca2fc6295544ae4fb"},
+    {file = "unihan_etl-0.24.0.tar.gz", hash = "sha256:451831b659d1efc49248538af1be228da392e75a29d330b4196fff89465fcc35"},
 ]
 
 [package.dependencies]
 appdirs = "*"
 PyYAML = "*"
 unicodecsv = "*"
-zhon = "*"
+zhon = ">=2.0,<2.1"
 
 [[package]]
 name = "urllib3"
@@ -1494,12 +1494,13 @@ watchmedo = ["PyYAML (>=3.10)"]
 
 [[package]]
 name = "zhon"
-version = "1.1.5"
+version = "2.0.1"
 description = "Zhon provides constants used in Chinese text processing."
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 files = [
-    {file = "zhon-1.1.5.tar.gz", hash = "sha256:793723575c46f10ace8846c579ce740b04c73e2aa583e04e000aedbd4a47f87f"},
+    {file = "zhon-2.0.1-py3-none-any.whl", hash = "sha256:0f1c5e94a7c706beb4b01dff67b7b137ee016dd219a454cf840f5ade49c011e2"},
+    {file = "zhon-2.0.1.tar.gz", hash = "sha256:436773a7ee38efafefa8abaf78fd15bf6df94663ad3e862372adfa16e26824db"},
 ]
 
 [[package]]
@@ -1526,4 +1527,4 @@ test = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "b3354c5003fa561b91f1dec67f24459403f4cba8d398fc95e1282025ba155c59"
+content-hash = "2078498af26e7b690a14ba234ca4f26794272de0dd992720b7f9d8a5f38fba0f"
