@@ -17,9 +17,11 @@ You can test the unpublished version of cihai-cli before its released, see
 
   Then use `cihai@next info 好`.
 
-## cihai-cli 0.21.x (unreleased)
+## cihai-cli 0.22.x (unreleased)
 
 <!-- Maintainers, insert changes / features for the next release here -->
+
+## cihai-cli 0.21.0 (2023-07-01)
 
 ### Development
 
