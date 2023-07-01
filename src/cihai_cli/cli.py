@@ -82,10 +82,7 @@ def cli(_args: t.Optional[t.List[str]] = None) -> None:
 
     setup_logger(level=args.log_level.upper())
 
-    if args.config_file:
-        c = Cihai.from_file(args.config_file)
-    else:
-        c = Cihai()
+    c = Cihai.from_file(args.config_file) if args.config_file else Cihai()
 
     if not c.unihan.is_bootstrapped:
         print("Bootstrapping Unihan database")
@@ -121,8 +118,8 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
     if not query:
         print("No records found for %s" % char)
         sys.exit()
-    for c in query.__table__.columns.keys():
-        value = getattr(query, c)
+    for col in query.__table__.columns:
+        value = getattr(query, col.name)
         if value:
             if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                 continue
@@ -154,7 +151,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
         sys.exit()
     for k in query:
         attrs = {}
-        for c in k.__table__.columns.keys():
+        for c in k.__table__.columns:
             value = getattr(k, c)
             if value:
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
@@ -171,7 +168,6 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
 def setup_logger(
     logger: t.Optional[logging.Logger] = None, level: str = "INFO"
 ) -> None:
-
     """Setup logging for CLI use.
 
     :param logger: instance of logger
