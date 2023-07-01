@@ -23,6 +23,7 @@ You can test the unpublished version of cihai-cli before its released, see
 
 ### Development
 
+- ruff: Increase code quality strictness, implement code improvements (#295)
 - cihai: 0.25.0 -> 0.26.0 (linting updates through stricter ruff settings)
 
   unihan-etl: 0.24.0 -> 0.25.0 (linting improvements in the same way)
