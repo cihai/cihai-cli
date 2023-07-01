@@ -21,6 +21,12 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- cihai: 0.25.0 -> 0.26.0 (linting updates through stricter ruff settings)
+
+  unihan-etl: 0.24.0 -> 0.25.0 (linting improvements in the same way)
+
 ## cihai-cli 0.20.0 (2023-06-25)
 
 ### Development
