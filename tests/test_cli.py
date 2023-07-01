@@ -1,10 +1,9 @@
+import contextlib
 import pathlib
-
-import pytest
-
-import yaml
 import typing as t
 
+import pytest
+import yaml
 from cihai_cli.cli import cli
 
 if t.TYPE_CHECKING:
@@ -19,25 +18,21 @@ def test_cli(
 ) -> None:
     monkeypatch.chdir(tmp_path)
 
-    try:
+    with contextlib.suppress(SystemExit):
         cli()
-    except SystemExit:
-        pass
 
-    try:
+
+    with contextlib.suppress(SystemExit):
         cli(["-c", str(test_config_file)])
-    except SystemExit:
-        pass
 
-    try:
+
+    with contextlib.suppress(SystemExit):
         cli(["info"])
-    except SystemExit:
-        pass
 
-    try:
+
+    with contextlib.suppress(SystemExit):
         cli(["reverse"])
-    except SystemExit:
-        pass
+
 
 
 def test_cli_reflects_after_bootstrap(
