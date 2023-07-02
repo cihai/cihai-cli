@@ -121,9 +121,9 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
     for col, _, _ in query.__table__.columns._collection:
         value = getattr(query, col)
         if value:
-            if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
+            if not show_all and str(col) not in HUMAN_UNIHAN_FIELDS:
                 continue
-            attrs[str(c)] = value
+            attrs[str(col)] = value
     print(
         yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip("\n")
     )
