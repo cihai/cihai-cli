@@ -118,8 +118,8 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
     if not query:
         print("No records found for %s" % char)
         sys.exit()
-    for col in query.__table__.columns:
-        value = getattr(query, col.name)
+    for col, _, _ in query.__table__.columns._collection:
+        value = getattr(query, col)
         if value:
             if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                 continue
@@ -151,7 +151,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
         sys.exit()
     for k in query:
         attrs = {}
-        for c in k.__table__.columns:
+        for c, _, _ in k.__table__.columns._collection:
             value = getattr(k, c)
             if value:
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
