@@ -23,7 +23,7 @@ You can test the unpublished version of cihai-cli before its released, see
 
 ### Fixes
 
-- Fix `cihai info` and `cihai reverse` (#297)
+- Fix `cihai info` and `cihai reverse` (#297, #298)
 
 ## cihai-cli 0.21.0 (2023-07-01)
 
