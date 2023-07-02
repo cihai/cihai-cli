@@ -7,7 +7,7 @@ import yaml
 from cihai_cli.cli import cli
 
 if t.TYPE_CHECKING:
-    from cihai.types import UntypedDict as UnihanOptions
+    from cihai.types import UntypedDict
 
 
 def test_cli(
@@ -21,18 +21,16 @@ def test_cli(
     with contextlib.suppress(SystemExit):
         cli()
 
-
     with contextlib.suppress(SystemExit):
         cli(["-c", str(test_config_file)])
 
-
     with contextlib.suppress(SystemExit):
         cli(["info"])
-
+        captured = capsys.readouterr()
+        assert "usage" in captured.out
 
     with contextlib.suppress(SystemExit):
         cli(["reverse"])
-
 
 
 def test_cli_reflects_after_bootstrap(
@@ -40,7 +38,7 @@ def test_cli_reflects_after_bootstrap(
     capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
     tmpdb_file: pathlib.Path,
-    unihan_options: "UnihanOptions",
+    unihan_options: "UntypedDict",
 ) -> None:
     config = {
         "database": {"url": f"sqlite:///{tmpdb_file}s"},
