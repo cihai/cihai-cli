@@ -95,7 +95,7 @@ def unihan_options(
 ) -> "UntypedDict":
     return {
         "source": zip_path,
-        "work_dir": cache_path,
+        "work_dir": cache_path / "work_dir",
         "zip_path": cache_path / "downloads" / "Moo.zip",
     }
 
