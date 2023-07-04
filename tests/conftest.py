@@ -40,8 +40,8 @@ def fixture_path(tests_path: pathlib.Path) -> pathlib.Path:
 
 
 @pytest.fixture(scope="session")
-def test_config_file_path(fixture_path: pathlib.Path) -> pathlib.Path:
-    return fixture_path / "test_config.yml"
+def test_config_file_path(cache_path: pathlib.Path) -> pathlib.Path:
+    return cache_path / "test_config.yml"
 
 
 @pytest.fixture(scope="session")
