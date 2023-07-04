@@ -62,7 +62,6 @@ def test_config_file(
             allow_unicode=True,
         )
         file.write(config)
-    print(test_config_file_path.read_text())
     return test_config_file_path
 
 
