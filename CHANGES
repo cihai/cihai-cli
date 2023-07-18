@@ -21,6 +21,10 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- Ruff: Code quality fixes (#299)
+
 ## cihai-cli 0.21.1 (2023-07-02)
 
 ### Bug Fixes
