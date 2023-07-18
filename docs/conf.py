@@ -1,10 +1,9 @@
-# flake8: NOQA E501
+# flake8: NOQA: E501
 import inspect
-import os
+import pathlib
 import sys
 import typing as t
-from os.path import dirname, relpath
-from pathlib import Path
+from os.path import relpath
 
 import cihai_cli
 
@@ -12,7 +11,7 @@ if t.TYPE_CHECKING:
     from sphinx.application import Sphinx
 
 # Get the project root dir, which is the parent dir of this
-cwd = Path(__file__).parent
+cwd = pathlib.Path(__file__).parent
 project_root = cwd.parent
 src_root = project_root / "src"
 
@@ -21,7 +20,7 @@ sys.path.insert(0, str(cwd / "_ext"))
 
 # package data
 about: t.Dict[str, str] = {}
-with open(src_root / "cihai_cli" / "__about__.py") as fp:
+with (src_root / "cihai_cli" / "__about__.py").open() as fp:
     exec(fp.read(), about)
 
 
@@ -180,9 +179,7 @@ intersphinx_mapping = {
 }
 
 
-def linkcode_resolve(
-    domain: str, info: t.Dict[str, str]
-) -> t.Union[None, str]:
+def linkcode_resolve(domain: str, info: t.Dict[str, str]) -> t.Union[None, str]:
     """
     Determine the URL corresponding to Python object
 
@@ -205,7 +202,7 @@ def linkcode_resolve(
     for part in fullname.split("."):
         try:
             obj = getattr(obj, part)
-        except Exception:
+        except Exception:  # noqa: PERF203
             return None
 
     # strip decorators, which would resolve to the source of the decorator
@@ -230,12 +227,9 @@ def linkcode_resolve(
     except Exception:
         lineno = None
 
-    if lineno:
-        linespec = "#L%d-L%d" % (lineno, lineno + len(source) - 1)
-    else:
-        linespec = ""
+    linespec = "#L%d-L%d" % (lineno, lineno + len(source) - 1) if lineno else ""
 
-    fn = relpath(fn, start=dirname(cihai_cli.__file__))
+    fn = relpath(fn, start=pathlib.Path(cihai_cli.__file__).parent)
 
     if "dev" in about["__version__"]:
         return "{}/blob/master/{}/{}/{}{}".format(
@@ -259,7 +253,7 @@ def linkcode_resolve(
 def remove_tabs_js(app: "Sphinx", exc: Exception) -> None:
     # Fix for sphinx-inline-tabs#18
     if app.builder.format == "html" and not exc:
-        tabs_js = Path(app.builder.outdir) / "_static" / "tabs.js"
+        tabs_js = pathlib.Path(app.builder.outdir) / "_static" / "tabs.js"
         tabs_js.unlink(missing_ok=True)
 
 
