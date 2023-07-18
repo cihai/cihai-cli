@@ -21,6 +21,12 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- cihai: 0.26.0 -> 0.27.0 (#300)
+
+  Includes unihan-etl 0.25.2 -> 0.27.0 pytest fixes
+
 ## cihai-cli 0.21.2 (2023-07-18)
 
 _Maintenance only, no bug fixes, or new features_
