@@ -21,6 +21,14 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+_Maintenance only, no bug fixes, or new features_
+
+- cihai: 0.27.0 -> 0.28.0
+
+  Update pytest plugin
+
 ## cihai-cli 0.22.0 (2023-07-18)
 
 _Maintenance only, no bug fixes, or new features_
