@@ -21,18 +21,14 @@ def test_cli(
     with contextlib.suppress(SystemExit):
         cli()
 
-
     with contextlib.suppress(SystemExit):
         cli(["-c", str(test_config_file)])
-
 
     with contextlib.suppress(SystemExit):
         cli(["info"])
 
-
     with contextlib.suppress(SystemExit):
         cli(["reverse"])
-
 
 
 def test_cli_reflects_after_bootstrap(
