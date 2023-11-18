@@ -338,7 +338,7 @@ Infrastructure updates for static type checking and doctest examples.
 
 ## cihai-cli 0.7.0 (2021-06-15)
 
-- Update {}`black` to 21.6b0
+- Update `black` to 21.6b0
 - Update trove classifiers to 3.9
 - #251 Drop python 2.7 and 3.5. Remove deprecated `__future__` and modesets
 
