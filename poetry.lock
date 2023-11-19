@@ -170,20 +170,20 @@ files = [
 
 [[package]]
 name = "cihai"
-version = "0.28.0"
+version = "0.29.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "cihai-0.28.0-py3-none-any.whl", hash = "sha256:08a5b2c2d1053084e088ee69429737b8a34ab128cba7ba7dfba0cb5c0a5f96d0"},
-    {file = "cihai-0.28.0.tar.gz", hash = "sha256:8a23de548bff73cdcce3b10d2838e79fea47d09a99d1715de3f4284f7b739443"},
+    {file = "cihai-0.29.0-py3-none-any.whl", hash = "sha256:f323b7fc7160f7fa4bd5066c853a87eaeef514c399f6bef7b24c064ee1cec457"},
+    {file = "cihai-0.29.0.tar.gz", hash = "sha256:5c765f1041e9fe58502e994662b4b2efb6b09765d07bad20004b63f227d26f22"},
 ]
 
 [package.dependencies]
 appdirs = "*"
 PyYAML = ">=6.0,<6.1"
 sqlalchemy = {version = ">=2.0,<2.1", extras = ["mypy"]}
-unihan-etl = ">=0.28.0,<0.29.0"
+unihan-etl = ">=0.29.0,<0.30.0"
 
 [[package]]
 name = "codecov"
@@ -1386,13 +1386,13 @@ files = [
 
 [[package]]
 name = "unihan-etl"
-version = "0.28.1"
+version = "0.29.0"
 description = "Export UNIHAN data of Chinese, Japanese, Korean to CSV, JSON or YAML"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "unihan_etl-0.28.1-py3-none-any.whl", hash = "sha256:386e56c8d9443ae7cb3b7c5696cf0be19a804816baec73e9db4884b4376d583d"},
-    {file = "unihan_etl-0.28.1.tar.gz", hash = "sha256:3cd95402a1bbc1890c960af83f2d7d8ab5b8f3c0f7e93391a0dd4954321c1b0b"},
+    {file = "unihan_etl-0.29.0-py3-none-any.whl", hash = "sha256:49fc8b10b52b85f6d50b9d606c6d64c1cb9586238e566fcce7c11bada995f2dd"},
+    {file = "unihan_etl-0.29.0.tar.gz", hash = "sha256:107dd1fc2cb3adf53f2449e8afae1b9821aa5d94e8e17c722c1226b1ce8b6fbd"},
 ]
 
 [package.dependencies]
@@ -1485,4 +1485,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "e97479bfe780b96106e79be1b6735927cb9a77f8fad55321ac6135400fd224e6"
+content-hash = "8b81c57e7d74b1a283ad441222013b119bd18d2666915cf3e1346de5455ba613"
