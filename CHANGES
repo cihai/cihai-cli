@@ -24,21 +24,42 @@ You can test the unpublished version of cihai-cli before its released, see
 ### Packaging
 
 - Move pytest configuration to `pyproject.toml` (#301)
+- Add Python 3.12 to trove classifiers
+- Packaging (poetry): Fix development dependencies
+
+  Per [Poetry's docs on managing dependencies] and `poetry check`, we had it wrong: Instead of using extras, we should create these:
+
+  ```toml
+  [tool.poetry.group.[group-name].dependencies]
+  dev-dependency = "1.0.0"
+  ```
+
+  Which we now do.
+
+  [Poetry's docs on managing dependencies]: https://python-poetry.org/docs/master/managing-dependencies/
 
 ### Development
 
 - ruff: Remove ERA / `eradicate` plugin
 
   This rule had too many false positives to trust. Other ruff rules have been beneficial.
+
 - Poetry: 1.6.1 -> 1.7.0
 
   See also: https://github.com/python-poetry/poetry/blob/1.7.0/CHANGELOG.md
+
 - Move formatting from `black` to [`ruff format`] (#302)
 
   This retains the same formatting style of `black` while eliminating a
   dev dependency by using our existing rust-based `ruff` linter.
 
   [`ruff format`]: https://docs.astral.sh/ruff/formatter/
+
+- CI: Update action packages to fix warnings
+
+  - [dorny/paths-filter]: 2.7.0 -> 2.11.1
+
+  [dorny/paths-filter]: https://github.com/dorny/paths-filter
 
 ## cihai-cli 0.23.0 (2023-07-22)
 
@@ -144,7 +165,8 @@ _Maintenance only, no bug fixes, or new features_
   Note: `typing_extension`'s `TypedDict` is still
   used for `NotRequired` `TypedDict`s until the minimum python version supports
   them ([3.11](https://www.python.org/downloads/release/python-3110/) via [PEP-655](https://peps.python.org/pep-0655/))
-- cihai: 
+
+- cihai:
 
   - Update 0.19.0 -> 0.20.0: Add mypy strict typings
   - Update 0.20.0 -> 0.21.0: SQLAlchemy 2.0 (#292)
@@ -165,9 +187,11 @@ _Maintenance only, no bug fixes, or new features_
   formatting can be done almost instantly.
 
   This change replaces isort, flake8 and flake8 plugins.
+
 - poetry: 1.4.0 -> 1.5.0
 
   See also: https://github.com/python-poetry/poetry/releases/tag/1.5.0
+
 - Update cihai 0.18.3 -> 0.19.0 and unihan-etl 0.18.2 -> 0.19.1
 
   Moved to linting ruff (no changes to the production package itself)
@@ -181,6 +205,7 @@ _Maintenance only, no bug fixes or new features_
 ### Development
 
 - Update cihai 0.18.1 -> 0.18.3
+
   - Sub-dependency updated: unihan-etl 0.18.1 -> 0.18.2
 
     Typing update for `merge_dict`
