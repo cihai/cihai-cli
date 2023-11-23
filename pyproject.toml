@@ -64,8 +64,8 @@ PyYAML = "*"
 [tool.poetry.group.docs.dependencies]
 ### Docs ###
 sphinx = "*"
-gp-libs = "*"
 furo = "*"
+gp-libs = "*"
 sphinx-autobuild = "*"
 sphinx-autodoc-typehints = "*"
 sphinx-argparse = "*"
@@ -81,6 +81,7 @@ docutils = "*"
 pytest = "*"
 pytest-rerunfailures = "*"
 pytest-watcher = "*"
+gp-libs = "*"
 
 [tool.poetry.group.coverage.dependencies]
 ### Coverage ###
