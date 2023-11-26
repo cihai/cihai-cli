@@ -21,6 +21,10 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### CI
+
+- Move CodeQL from advanced configuration file to GitHub's default
+
 ## cihai-cli 0.24.0 (2023-11-19)
 
 _Maintenance only, no bug fixes, or new features_
