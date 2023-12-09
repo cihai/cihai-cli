@@ -21,6 +21,13 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- cihai: 0.29.0 -> 0.30.0
+
+  - pydocstyle docstrings
+  - Bug fixes for unused character utility functions
+
 ### CI
 
 - Move CodeQL from advanced configuration file to GitHub's default
