@@ -31,6 +31,11 @@ You can test the unpublished version of cihai-cli before its released, see
 ### CI
 
 - Move CodeQL from advanced configuration file to GitHub's default
+- ci: Add pydocstyle rule to ruff (#304)
+
+### Documentation
+
+- Add docstrings to functions, methods, classes, and packages (#304)
 
 ## cihai-cli 0.24.0 (2023-11-19)
 
