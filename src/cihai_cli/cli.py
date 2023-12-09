@@ -75,8 +75,8 @@ def cli(_args: t.Optional[t.List[str]] = None) -> None:
 
     For help and example usage, see documentation:
 
-    https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
-
+    https://cihai-cli.git-pull.com and https://cihai.git-pull.com
+    """
     parser = create_parser()
     args = parser.parse_args(_args, namespace=CLILoadNamespace())
 
