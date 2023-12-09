@@ -1,3 +1,4 @@
+"""CLI functionality for cihai-cli."""
 import argparse
 import logging
 import sys
@@ -30,6 +31,7 @@ INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
 
 
 def create_parser() -> argparse.ArgumentParser:
+    """Create argparse for cihai-cli."""
     parser = argparse.ArgumentParser(prog="cihai")
     parser.add_argument(
         "--version",
@@ -65,6 +67,8 @@ def create_parser() -> argparse.ArgumentParser:
 
 
 class CLILoadNamespace(argparse.Namespace):
+    """Typing for CLI namespace."""
+
     config_file: t.Optional[str]
     version: bool
     log_file: t.Optional[str]
@@ -75,8 +79,8 @@ def cli(_args: t.Optional[t.List[str]] = None) -> None:
 
     For help and example usage, see documentation:
 
-    https://cihai-cli.git-pull.com and https://cihai.git-pull.com"""
-
+    https://cihai-cli.git-pull.com and https://cihai.git-pull.com
+    """
     parser = create_parser()
     args = parser.parse_args(_args, namespace=CLILoadNamespace())
 
@@ -100,6 +104,7 @@ def cli(_args: t.Optional[t.List[str]] = None) -> None:
 
 
 def create_info_subparser(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    """Create ``cihai info`` subparser."""
     parser.add_argument("char", metavar="<character>", help="Lookup term / character")
     parser.add_argument(
         "--all",
@@ -132,6 +137,7 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
 def create_reverse_subparser(
     parser: argparse.ArgumentParser,
 ) -> argparse.ArgumentParser:
+    """Create ``cihai reverse`` subparser."""
     parser.add_argument("char", metavar="<character>", help="Lookup term / character")
     parser.add_argument(
         "--all",
@@ -168,7 +174,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
 def setup_logger(
     logger: t.Optional[logging.Logger] = None, level: str = "INFO"
 ) -> None:
-    """Setup logging for CLI use.
+    """Configure logging for CLI use.
 
     :param logger: instance of logger
     :type logger: :py:class:`Logger`

@@ -1,3 +1,4 @@
+"""CLI tests for cihai-cli."""
 import contextlib
 import pathlib
 import typing as t
@@ -16,6 +17,7 @@ def test_cli(
     capsys: pytest.CaptureFixture[str],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    """Test basic cihai usage."""
     monkeypatch.chdir(tmp_path)
 
     with contextlib.suppress(SystemExit):
@@ -38,6 +40,7 @@ def test_cli_reflects_after_bootstrap(
     tmpdb_file: pathlib.Path,
     unihan_options: "UnihanOptions",
 ) -> None:
+    """High-level, integrative CLI-based test."""
     config = {
         "database": {"url": f"sqlite:///{tmpdb_file}s"},
         "unihan_options": {
@@ -73,6 +76,7 @@ def test_cli_version(
     monkeypatch: pytest.MonkeyPatch,
     flag: str,
 ) -> None:
+    """Returns cihai-cli version."""
     try:
         cli([flag])
     except SystemExit:

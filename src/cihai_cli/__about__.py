@@ -1,3 +1,4 @@
+"""Metadata for cihai_cli package."""
 __title__ = "cihai-cli"
 __package_name__ = "cihai_cli"
 __version__ = "0.24.0"
