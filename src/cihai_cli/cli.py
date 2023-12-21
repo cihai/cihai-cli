@@ -176,9 +176,10 @@ def setup_logger(
 ) -> None:
     """Configure logging for CLI use.
 
-    :param logger: instance of logger
-    :type logger: :py:class:`Logger`
-
+    Parameters
+    ----------
+    logger : :py:class:`Logger`
+        Instance of logger, if one set up.
     """
     if not logger:
         logger = logging.getLogger()
