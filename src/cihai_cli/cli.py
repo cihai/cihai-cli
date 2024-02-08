@@ -59,7 +59,8 @@ def create_parser() -> argparse.ArgumentParser:
     info_parser = subparsers.add_parser("info", help=INFO_SHORT_HELP)
     create_info_subparser(info_parser)
     reverse_parser = subparsers.add_parser(
-        "reverse", help='Search all info for character matches, e.g. "good"',
+        "reverse",
+        help='Search all info for character matches, e.g. "good"',
     )
     create_reverse_subparser(reverse_parser)
 
@@ -172,7 +173,8 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
 
 
 def setup_logger(
-    logger: t.Optional[logging.Logger] = None, level: str = "INFO",
+    logger: t.Optional[logging.Logger] = None,
+    level: str = "INFO",
 ) -> None:
     """Configure logging for CLI use.
 
