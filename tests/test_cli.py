@@ -51,7 +51,8 @@ def test_cli_reflects_after_bootstrap(
     }
     config_file = tmp_path / "config.yml"
     config_file.write_text(
-        yaml.dump(config, default_flow_style=False), encoding="utf-8"
+        yaml.dump(config, default_flow_style=False),
+        encoding="utf-8",
     )
 
     try:

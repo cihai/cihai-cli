@@ -21,6 +21,25 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- Strengthen linting (#307)
+
+  - Add flake8-commas (COM)
+
+    - https://docs.astral.sh/ruff/rules/#flake8-commas-com
+    - https://pypi.org/project/flake8-commas/
+
+  - Add flake8-builtins (A)
+
+    - https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+    - https://pypi.org/project/flake8-builtins/
+
+  - Add flake8-errmsg (EM)
+
+    - https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
+    - https://pypi.org/project/flake8-errmsg/
+
 ## cihai-cli 0.25.0 (2023-12-09)
 
 _Maintenance only, no bug fixes, or new features_
