@@ -21,6 +21,17 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### What's new
+
+- cihai: 0.30.0 -> 0.31.0 (#308):
+
+  Bump UNIHAN compatibility from 11.0.0 to [15.1.0](https://www.unicode.org/reports/tr38/tr38-35.html#History) (released 2023-09-01, revision 35).
+
+  - unihan-etl: 0.29.0 -> 0.33.1
+
+    - 0.30.1 -> 0.33: UNIHAN compatibility bumped to 15.1.0.
+    - 0.29.0 -> 0.30.1: Fix `kRSUnicode` double apostrophes.
+
 ### Development
 
 - Strengthen linting (#307)
