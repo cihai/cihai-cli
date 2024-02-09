@@ -172,20 +172,20 @@ files = [
 
 [[package]]
 name = "cihai"
-version = "0.30.0"
+version = "0.31.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "cihai-0.30.0-py3-none-any.whl", hash = "sha256:e75fe084dcb64505db821aae81e5f4d9f3c0de1e8109783e0cd605986089fe8c"},
-    {file = "cihai-0.30.0.tar.gz", hash = "sha256:6838b3021b8575ac565c2ae128d952b6e15e6fc760beac38ced5109be36894a4"},
+    {file = "cihai-0.31.0-py3-none-any.whl", hash = "sha256:8353d54740bd26e0e72f0a56cbc85844bbad007954db6e90eb520ee976e95dee"},
+    {file = "cihai-0.31.0.tar.gz", hash = "sha256:92315317d6044bbeef02fce8329d0a4386e71936691b988d5ce5e7349c330a29"},
 ]
 
 [package.dependencies]
 appdirs = "*"
 PyYAML = ">=6.0,<6.1"
 sqlalchemy = {version = ">=2.0,<2.1", extras = ["mypy"]}
-unihan-etl = ">=0.29.0,<0.30.0"
+unihan-etl = ">=0.33.1,<0.34.0"
 
 [[package]]
 name = "codecov"
@@ -846,6 +846,7 @@ files = [
     {file = "PyYAML-6.0.1-cp311-cp311-win_amd64.whl", hash = "sha256:bf07ee2fef7014951eeb99f56f39c9bb4af143d8aa3c21b1677805985307da34"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:855fb52b0dc35af121542a76b9a84f8d1cd886ea97c84703eaa6d88e37a2ad28"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:40df9b996c2b73138957fe23a16a4f0ba614f4c0efce1e9406a184b6d07fa3a9"},
+    {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a08c6f0fe150303c1c6b71ebcd7213c2858041a7e01975da3a99aed1e7a378ef"},
     {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6c22bec3fbe2524cde73d7ada88f6566758a8f7227bfbf93a408a9d86bcc12a0"},
     {file = "PyYAML-6.0.1-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:8d4e9c88387b0f5c7d5f281e55304de64cf7f9c0021a3525bd3b1c542da3b0e4"},
     {file = "PyYAML-6.0.1-cp312-cp312-win32.whl", hash = "sha256:d483d2cdf104e7c9fa60c544d92981f12ad66a457afae824d146093b8c294c54"},
@@ -1373,13 +1374,13 @@ files = [
 
 [[package]]
 name = "unihan-etl"
-version = "0.29.0"
+version = "0.33.1"
 description = "Export UNIHAN data of Chinese, Japanese, Korean to CSV, JSON or YAML"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "unihan_etl-0.29.0-py3-none-any.whl", hash = "sha256:49fc8b10b52b85f6d50b9d606c6d64c1cb9586238e566fcce7c11bada995f2dd"},
-    {file = "unihan_etl-0.29.0.tar.gz", hash = "sha256:107dd1fc2cb3adf53f2449e8afae1b9821aa5d94e8e17c722c1226b1ce8b6fbd"},
+    {file = "unihan_etl-0.33.1-py3-none-any.whl", hash = "sha256:bb8df80a592ca49ef79a361f54fd4e0d42285867e60e6b78e134c89d2b14c022"},
+    {file = "unihan_etl-0.33.1.tar.gz", hash = "sha256:3822042c5225bd1a04558d223bb6357cc10616aa1ac146788391799eaa01d969"},
 ]
 
 [package.dependencies]
@@ -1475,4 +1476,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "602f61c49b0883f4374c647023cec84cef5159174af4a1d0693b2b3e147d19d1"
+content-hash = "dda5d8aeed54fc446acbee643e25b9262ab41cac451fbe327fa365277906a7e5"
