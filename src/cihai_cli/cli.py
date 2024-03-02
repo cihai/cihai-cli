@@ -1,4 +1,5 @@
 """CLI functionality for cihai-cli."""
+
 import argparse
 import logging
 import sys

@@ -1,4 +1,5 @@
 """Pytest configuration."""
+
 import pathlib
 import typing as t
 import zipfile

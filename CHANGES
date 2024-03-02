@@ -21,6 +21,14 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- ruff 0.2.2 -> 0.3.0 (#309)
+
+  Related formattings. Update CI to use `ruff check .` instead of `ruff .`.
+
+  See also: https://github.com/astral-sh/ruff/blob/v0.3.0/CHANGELOG.md
+
 ## cihai-cli 0.26.0 (2024-02-09)
 
 ### What's new
