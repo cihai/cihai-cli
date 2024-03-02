@@ -1,4 +1,5 @@
 """CLI tests for cihai-cli."""
+
 import contextlib
 import pathlib
 import typing as t
