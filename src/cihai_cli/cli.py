@@ -100,7 +100,7 @@ def cli(_args: t.Optional[t.List[str]] = None) -> None:
     if args.subparser_name is None:
         parser.print_help()
         return
-    elif args.subparser_name == "info":
+    if args.subparser_name == "info":
         command_info(c=c, char=args.char, show_all=args.show_all)
     elif args.subparser_name == "reverse":
         command_reverse(c=c, char=args.char, show_all=args.show_all)
