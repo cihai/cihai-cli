@@ -23,6 +23,10 @@ You can test the unpublished version of cihai-cli before its released, see
 
 ### Development
 
+- cihai: 0.33.1 -> 0.34.0
+
+  - unihan-etl: 0.31.0 -> 0.32.0
+
 - Aggressive automated lint fixes via `ruff` (#310)
 
   via ruff v0.3.4, all automated lint fixes, including unsafe and previews were applied:
