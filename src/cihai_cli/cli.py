@@ -13,6 +13,9 @@ from unihan_etl.__about__ import __version__ as unihan_etl_version
 
 from .__about__ import __version__
 
+log = logging.getLogger(__name__)
+
+
 #: fields which are human friendly
 HUMAN_UNIHAN_FIELDS = [
     "char",
@@ -91,18 +94,18 @@ def cli(_args: t.Optional[t.List[str]] = None) -> None:
     c = Cihai.from_file(args.config_file) if args.config_file else Cihai()
 
     if not c.unihan.is_bootstrapped:
-        print("Bootstrapping Unihan database")
+        log.info("Bootstrapping Unihan database")
         c.unihan.bootstrap(options=c.config.get("unihan_options", {}))
 
     if args.subparser_name is None:
         parser.print_help()
         return
-    elif args.subparser_name == "info":
+    if args.subparser_name == "info":
         command_info(c=c, char=args.char, show_all=args.show_all)
     elif args.subparser_name == "reverse":
         command_reverse(c=c, char=args.char, show_all=args.show_all)
     else:
-        print(f"No subparser for {args.subparser_name}")
+        log.info(f"No subparser for {args.subparser_name}")
 
 
 def create_info_subparser(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
@@ -123,7 +126,7 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
     query = c.unihan.lookup_char(char).first()
     attrs = {}
     if not query:
-        print("No records found for %s" % char)
+        log.info(f"No records found for {char}")
         sys.exit()
     for col, _, _ in query.__table__.columns._collection:
         value = getattr(query, col)
@@ -131,7 +134,7 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
             if not show_all and str(col) not in HUMAN_UNIHAN_FIELDS:
                 continue
             attrs[str(col)] = value
-    print(
+    log.info(
         yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip("\n"),
     )
 
@@ -155,7 +158,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
     """Lookup a word or phrase by searching definitions."""
     query = c.unihan.reverse_char([char])
     if not query.count():
-        print("No records found for %s" % char)
+        log.info("No records found for %s" % char)
         sys.exit()
     for k in query:
         attrs = {}
@@ -165,12 +168,12 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
                 if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
                     continue
                 attrs[str(c)] = value
-        print(
+        log.info(
             yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip(
                 "\n",
             ),
         )
-        print("--------")
+        log.info("--------")
 
 
 def setup_logger(

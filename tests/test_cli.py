@@ -37,6 +37,7 @@ def test_cli(
 def test_cli_reflects_after_bootstrap(
     tmp_path: pathlib.Path,
     capsys: pytest.CaptureFixture[str],
+    caplog: pytest.LogCaptureFixture,
     monkeypatch: pytest.MonkeyPatch,
     tmpdb_file: pathlib.Path,
     unihan_options: "UnihanOptions",
@@ -59,22 +60,23 @@ def test_cli_reflects_after_bootstrap(
     try:
         cli(["-c", str(config_file), "info", "㐀"])
     except SystemExit:
-        result = capsys.readouterr()
-        output = "".join(list(result.out))
+        output = "".join(list(caplog.messages) + list(capsys.readouterr().out))
         assert "Bootstrapping Unihan database" in output
+
+    caplog.clear()
 
     try:
         cli(["-c", str(config_file), "info"])
     except SystemExit:
-        result = capsys.readouterr()
-        output = "".join(list(result.out))
-        assert "Bootstrapping" in output
+        output = "".join(list(capsys.readouterr().err))
+        assert "cihai info" in output
 
 
 @pytest.mark.parametrize("flag", ["-V", "--version"])
 def test_cli_version(
     tmp_path: pathlib.Path,
     capsys: pytest.CaptureFixture[str],
+    caplog: pytest.LogCaptureFixture,
     monkeypatch: pytest.MonkeyPatch,
     flag: str,
 ) -> None:
@@ -82,8 +84,7 @@ def test_cli_version(
     try:
         cli([flag])
     except SystemExit:
-        result = capsys.readouterr()
-        output = "".join(list(result.out))
+        output = "".join(list(caplog.messages) + list(capsys.readouterr().out))
         assert "cihai-cli" in output
         assert "cihai" in output
         assert "unihan-etl" in output
