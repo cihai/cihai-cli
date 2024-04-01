@@ -1,2 +1,6 @@
 database:
   url: 'sqlite:///:memory:'
+unihan_options:
+  source: /home/t/work/cihai/cihai-cli/.cihai_cache/Unihan.zip
+  work_dir: /home/t/work/cihai/cihai-cli/.cihai_cache
+  zip_path: /home/t/work/cihai/cihai-cli/.cihai_cache/downloads/Moo.zip
