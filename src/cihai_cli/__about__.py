@@ -2,7 +2,7 @@
 
 __title__ = "cihai-cli"
 __package_name__ = "cihai_cli"
-__version__ = "0.26.0"
+__version__ = "0.27.0"
 __description__ = "Command line frontend for the cihai CJK language library"
 __author__ = "Tony Narlock"
 __email__ = "tony@git-pull.com"
