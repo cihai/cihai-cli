@@ -21,6 +21,10 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Documentation
+
+- Automatically linkify links that were previously only text.
+
 ## cihai-cli 0.27.0 (2024-04-01)
 
 _Maintenance only, no bug fixes, or new features_
