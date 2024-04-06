@@ -172,13 +172,13 @@ files = [
 
 [[package]]
 name = "cihai"
-version = "0.32.0"
+version = "0.33.0"
 description = "Library for CJK (chinese, japanese, korean) language data."
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "cihai-0.32.0-py3-none-any.whl", hash = "sha256:378e5d10561a2af864b4938d02df9268d537fb251fe705be68d26f0d351ea8b9"},
-    {file = "cihai-0.32.0.tar.gz", hash = "sha256:fd8eb8a1d0a76718bf9a4c885f2ad2fdeec7eed25273940f15a751b1af777bab"},
+    {file = "cihai-0.33.0-py3-none-any.whl", hash = "sha256:4db5a8aa94aec0acd1a53f2e44eb5fd550c17a71d01d1382a8d40196684d29c3"},
+    {file = "cihai-0.33.0.tar.gz", hash = "sha256:454a20636005ae6050af9d27b444189e25919c33c1a784d1c95b9364dcd09646"},
 ]
 
 [package.dependencies]
@@ -1510,4 +1510,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "d01317d9371636e755021e1191a77ecf99b9f251f3f40aea030d3d53ee792645"
+content-hash = "6238e19fe79fc8f629c7b68af0a8f1ef274ea8fed611b65b303b6628e48eb52d"
