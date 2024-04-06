@@ -25,6 +25,12 @@ You can test the unpublished version of cihai-cli before its released, see
 
 - Automatically linkify links that were previously only text.
 
+### Development
+
+- cihai: 0.32.0 -> 0.33.0
+
+  Ruff linting for cihai package.
+
 ## cihai-cli 0.27.0 (2024-04-01)
 
 _Maintenance only, no bug fixes, or new features_
