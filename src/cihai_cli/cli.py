@@ -158,7 +158,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
     """Lookup a word or phrase by searching definitions."""
     query = c.unihan.reverse_char([char])
     if not query.count():
-        log.info("No records found for %s" % char)
+        log.info(f"No records found for {char}")
         sys.exit()
     for k in query:
         attrs = {}
