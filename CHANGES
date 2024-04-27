@@ -21,6 +21,12 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Development
+
+- Code quality: Use f-strings in more places (#312)
+
+  via [ruff 0.4.2](https://github.com/astral-sh/ruff/blob/v0.4.2/CHANGELOG.md).
+
 ## cihai-cli 0.28.0 (2024-04-06)
 
 _Maintenance only, no bug fixes, or new features_
