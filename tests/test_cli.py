@@ -6,6 +6,7 @@ import typing as t
 
 import pytest
 import yaml
+
 from cihai_cli.cli import cli
 
 if t.TYPE_CHECKING:
