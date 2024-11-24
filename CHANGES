@@ -26,6 +26,11 @@ You can test the unpublished version of cihai-cli before its released, see
 - Code quality: Use f-strings in more places (#312)
 
   via [ruff 0.4.2](https://github.com/astral-sh/ruff/blob/v0.4.2/CHANGELOG.md).
+- Project and package management: poetry to uv (#321)
+
+  [uv] is the new package and project manager for the project, replacing Poetry.
+
+[uv]: https://github.com/astral-sh/uv
 
 ## cihai-cli 0.28.0 (2024-04-06)
 
