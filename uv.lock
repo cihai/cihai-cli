@@ -150,7 +150,7 @@ wheels = [
 
 [[package]]
 name = "cihai"
-version = "0.34.0"
+version = "0.35.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -158,9 +158,9 @@ dependencies = [
     { name = "sqlalchemy", extra = ["mypy"] },
     { name = "unihan-etl" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fe/af/7a51c350590d72b3a6903912bea433d9e16a9758de4994e4dcf51089c0e2/cihai-0.34.0.tar.gz", hash = "sha256:b16b9fa01eb14cd725f814a3452912514d195c59a1b74e721ab3b6d2e9d76f69", size = 220956 }
+sdist = { url = "https://files.pythonhosted.org/packages/1d/aa/198997bb600d51d564ad51944017e7883241ab585cc8dcf81640246f444b/cihai-0.35.0.tar.gz", hash = "sha256:7b11ed857ad94e9fed05deff836fab6d8bc5b3c32621bb716720bb9bb4c3e188", size = 231990 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c6/09/ad88db3a54d9b092774ac79353108a8a82b2863a3f2fd5e48403a7136f27/cihai-0.34.0-py3-none-any.whl", hash = "sha256:b8cd512d31b4a5899b83432454197b59ad78bc484b80a2d24c90a63a9aba1165", size = 25191 },
+    { url = "https://files.pythonhosted.org/packages/bc/64/74569ad1c627a4ded7d10caae5a41ae738192fe3cfb97f0683c49f535fcc/cihai-0.35.0-py3-none-any.whl", hash = "sha256:78642371ca70f8a0b6cc39540f1037cde32666f4301b07ed2bd110a26d42bdba", size = 25172 },
 ]
 
 [[package]]
@@ -235,7 +235,7 @@ typings = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cihai", specifier = "~=0.34.0" },
+    { name = "cihai", specifier = "~=0.35.0" },
     { name = "pyyaml" },
 ]
 
@@ -1316,7 +1316,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/6f/a4/691ab63b17505a260
 
 [[package]]
 name = "unihan-etl"
-version = "0.36.0"
+version = "0.37.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -1324,9 +1324,9 @@ dependencies = [
     { name = "unicodecsv" },
     { name = "zhon" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/4f/7c/d95b3cad5016d5334464ae7fe3d430363b4b1723d09a3f0cd75da7923f06/unihan_etl-0.36.0.tar.gz", hash = "sha256:b100a23323d433c6660bec73c48c5f79e9da7613984d7a3b548cee6103ba3fc6", size = 249315 }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/a4/93e46d507663806a19a9c0145624042ac1d9c7449a9ed1c7e6af59a9e84b/unihan_etl-0.37.0.tar.gz", hash = "sha256:fb8380ee8df07cb278ee1e2e084528bc94eaee5573817f0edabb042968e64417", size = 260836 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f5/66/79b01a6a7cc019587b456d9a6ac75414b8988837a584ff7eb7642d822c0c/unihan_etl-0.36.0-py3-none-any.whl", hash = "sha256:adb9a91e12ff0beba32e071d9c900d81bc28c0a311bb3657102c16f930bf422b", size = 59891 },
+    { url = "https://files.pythonhosted.org/packages/52/79/dbc780da350a06a9e9c5d95c52767ffa63d424004d71ca9a14812d2d47c8/unihan_etl-0.37.0-py3-none-any.whl", hash = "sha256:b4d70b4dd6717f997aa244bf987778835c376b22ac243f57bd3befb5cbd3e919", size = 59870 },
 ]
 
 [[package]]
