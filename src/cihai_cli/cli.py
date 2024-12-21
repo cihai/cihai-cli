@@ -79,7 +79,7 @@ class CLILoadNamespace(argparse.Namespace):
     log_file: t.Optional[str]
 
 
-def cli(_args: t.Optional[t.List[str]] = None) -> None:
+def cli(_args: t.Optional[list[str]] = None) -> None:
     """Retrieve CJK information via CLI.
 
     For help and example usage, see documentation:
