@@ -21,6 +21,30 @@ You can test the unpublished version of cihai-cli before its released, see
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+### Breaking changes
+
+- Drop Python 3.8 (#323)
+
+  The minimum version of Python in this and future releases is Python 3.9.
+
+  Python 3.8 reached end-of-life status on October 7th, 2024 (see PEP 569).
+
+- cihai: Bump minimum version to 0.35.0 (#323)
+
+  Requires Python 3.9.
+
+  Updates unihan-etl to 0.37.0, which also requires Python 3.9.
+
+### Development
+
+- Aggressive automated lint fixes via `ruff` (#323)
+
+  via ruff v0.8.4, all automated lint fixes, including unsafe and previews were applied for Python 3.9:
+
+  ```sh
+  ruff check --select ALL . --fix --unsafe-fixes --preview --show-fixes; ruff format .
+  ```
+
 ## cihai-cli 0.29.0 (2024-11-26)
 
 _Maintenance only, no bug fixes, or new features_
