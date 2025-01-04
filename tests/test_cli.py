@@ -1,7 +1,8 @@
 """CLI tests for cihai-cli."""
 
+from __future__ import annotations
+
 import contextlib
-import pathlib
 import typing as t
 
 import pytest
@@ -10,6 +11,8 @@ import yaml
 from cihai_cli.cli import cli
 
 if t.TYPE_CHECKING:
+    import pathlib
+
     from cihai.types import UntypedDict as UnihanOptions
 
 
@@ -41,7 +44,7 @@ def test_cli_reflects_after_bootstrap(
     caplog: pytest.LogCaptureFixture,
     monkeypatch: pytest.MonkeyPatch,
     tmpdb_file: pathlib.Path,
-    unihan_options: "UnihanOptions",
+    unihan_options: UnihanOptions,
 ) -> None:
     """High-level, integrative CLI-based test."""
     config = {

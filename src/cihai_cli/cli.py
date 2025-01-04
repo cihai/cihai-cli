@@ -1,9 +1,10 @@
 """CLI functionality for cihai-cli."""
 
+from __future__ import annotations
+
 import argparse
 import logging
 import sys
-import typing as t
 
 import yaml
 
@@ -74,12 +75,12 @@ def create_parser() -> argparse.ArgumentParser:
 class CLILoadNamespace(argparse.Namespace):
     """Typing for CLI namespace."""
 
-    config_file: t.Optional[str]
+    config_file: str | None
     version: bool
-    log_file: t.Optional[str]
+    log_file: str | None
 
 
-def cli(_args: t.Optional[list[str]] = None) -> None:
+def cli(_args: list[str] | None = None) -> None:
     """Retrieve CJK information via CLI.
 
     For help and example usage, see documentation:
@@ -177,7 +178,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
 
 
 def setup_logger(
-    logger: t.Optional[logging.Logger] = None,
+    logger: logging.Logger | None = None,
     level: str = "INFO",
 ) -> None:
     """Configure logging for CLI use.
