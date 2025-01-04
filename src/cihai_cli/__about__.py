@@ -1,5 +1,7 @@
 """Metadata for cihai_cli package."""
 
+from __future__ import annotations
+
 __title__ = "cihai-cli"
 __package_name__ = "cihai_cli"
 __version__ = "0.30.0"
