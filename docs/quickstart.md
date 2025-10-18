@@ -10,6 +10,24 @@ cihai is designed to work out-of-the-box without configuration.
 $ pip install --user cihai-cli
 ```
 
+Or manage it inside an existing project with uv:
+
+```console
+$ uv add cihai-cli
+```
+
+Install the CLI as a user-wide tool with uv:
+
+```console
+$ uv tool install cihai-cli
+```
+
+Run it on-demand without installing:
+
+```console
+$ uvx --from cihai-cli cihai --version
+```
+
 ### Developmental releases
 
 New versions of cihai CLI are published to PyPI as alpha, beta, or release candidates. In their
@@ -20,6 +38,16 @@ the 4th beta release of `1.10.0` before general availability.
 
   ```console
   $ pip install --user --upgrade --pre cihai-cli
+  ```
+
+- [uv]\:
+
+  ```console
+  $ uv tool install --prerelease=allow cihai-cli
+  ```
+
+  ```console
+  $ uv add --prerelease=allow cihai-cli
   ```
 
 - [pipx]\:
@@ -38,6 +66,12 @@ via trunk (can break easily):
   $ pip install --user -e git+https://github.com/cihai/cihai-cli.git#egg=cihai-cli
   ```
 
+- [uv]\:
+
+  ```console
+  $ uv add git+https://github.com/cihai/cihai-cli.git#egg=cihai-cli
+  ```
+
 - [pipx]\:
 
   ```console
@@ -46,6 +80,7 @@ via trunk (can break easily):
 
 [pip]: https://pip.pypa.io/en/stable/
 [pipx]: https://pypa.github.io/pipx/docs/
+[uv]: https://docs.astral.sh/uv/
 
 ## Configuration
 

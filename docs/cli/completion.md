@@ -18,6 +18,24 @@ Provisional support for completions in cihai-cli 0.15+ are powered by [shtab](ht
 $ pip install shtab --user
 ```
 
+Or manage it inside an existing project with uv:
+
+```console
+$ uv add --dev shtab
+```
+
+Install `shtab` as a user-wide tool with uv:
+
+```console
+$ uv tool install shtab
+```
+
+Run it on-demand without installing:
+
+```console
+$ uvx shtab
+```
+
 :::{tab} bash
 
 ```bash

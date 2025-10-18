@@ -9,6 +9,16 @@ You can test the unpublished version of cihai-cli before its released, see
   $ pip install --user --upgrade --pre cihai-cli
   ```
 
+- [uv](https://docs.astral.sh/uv/):
+
+  ```console
+  $ uv tool install --prerelease=allow cihai-cli
+  ```
+
+  ```console
+  $ uv add --prerelease=allow cihai-cli
+  ```
+
 - [pipx](https://pypa.github.io/pipx/docs/):
 
   ```console
@@ -466,6 +476,24 @@ After (cihai 0.15+, cihai-cli 0.11+):
 
 ```console
 $ pip install cihai-cli
+```
+
+Modern uv-based workflows can either add the CLI to a project:
+
+```console
+$ uv add cihai-cli
+```
+
+Install it as a user-wide tool:
+
+```console
+$ uv tool install cihai-cli
+```
+
+Or run it on-demand:
+
+```console
+$ uvx --from cihai-cli cihai --version
 ```
 
 This made deploying cihai + cihai-cli and pinning packages extremely laborious.

@@ -11,6 +11,24 @@ This project is under active development. Follow our progress and check back for
 $ pip install --user cihai-cli
 ```
 
+Or manage it inside an existing project with uv:
+
+```console
+$ uv add cihai-cli
+```
+
+Install the CLI as a user-wide tool with uv:
+
+```console
+$ uv tool install cihai-cli
+```
+
+Run it on-demand without installing:
+
+```console
+$ uvx --from cihai-cli cihai --version
+```
+
 ### Developmental releases
 
 You can test the unpublished version of cihai-cli before its released.
@@ -19,6 +37,16 @@ You can test the unpublished version of cihai-cli before its released.
 
   ```console
   $ pip install --user --upgrade --pre cihai-cli
+  ```
+
+- [uv](https://docs.astral.sh/uv/):
+
+  ```console
+  $ uv tool install --prerelease=allow cihai-cli
+  ```
+
+  ```console
+  $ uv add --prerelease=allow cihai-cli
   ```
 
 - [pipx](https://pypa.github.io/pipx/docs/):
