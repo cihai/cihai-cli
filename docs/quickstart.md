@@ -40,23 +40,30 @@ the 4th beta release of `1.10.0` before general availability.
   $ pip install --user --upgrade --pre cihai-cli
   ```
 
-- [uv]\:
+- [pipx]\:
+
+  ```console
+  $ pipx install --suffix=@next 'cihai-cli' --pip-args '\--pre' --force
+  // Usage: cihai@next info 好
+  ```
+
+- [uv tool install][uv-tools]\:
 
   ```console
   $ uv tool install --prerelease=allow cihai-cli
   ```
 
-  ```console
-  $ uv add --prerelease=allow cihai-cli
-  ```
-
-- [pipx]\:
+- [uv]\:
 
   ```console
-  $ pipx install --suffix=@next cihai-cli --pip-args '\--pre' --include-deps --force
+  $ uv add cihai-cli --prerelease allow
   ```
 
-  Then use `cihai@next info 好`.
+- [uvx]\:
+
+  ```console
+  $ uvx --from 'cihai-cli' --prerelease allow cihai
+  ```
 
 via trunk (can break easily):
 
@@ -81,6 +88,8 @@ via trunk (can break easily):
 [pip]: https://pip.pypa.io/en/stable/
 [pipx]: https://pypa.github.io/pipx/docs/
 [uv]: https://docs.astral.sh/uv/
+[uv-tools]: https://docs.astral.sh/uv/concepts/tools/
+[uvx]: https://docs.astral.sh/uv/guides/tools/
 
 ## Configuration
 
