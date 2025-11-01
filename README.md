@@ -161,7 +161,7 @@ $ cd cihai-cli
 - [Quickstart](https://cihai-cli.git-pull.com/quickstart.html)
 - Python [API](https://cihai-cli.git-pull.com/api.html)
 - [2017 roadmap](https://cihai.git-pull.com/design-and-planning/2017/spec.html)
-- Python support: >= 3.9, pypy
+- Python support: >= 3.10, pypy
 - Source: <https://github.com/cihai/cihai-cli>
 - Docs: <https://cihai-cli.git-pull.com>
 - Changelog: <https://cihai-cli.git-pull.com/history.html>

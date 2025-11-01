@@ -127,7 +127,7 @@ def command_info(c: Cihai, char: str, show_all: bool) -> None:
     query = c.unihan.lookup_char(char).first()
     attrs = {}
     if not query:
-        log.info(f"No records found for {char}")
+        log.info("No records found for %s", char)
         sys.exit()
     for col, _, _ in query.__table__.columns._collection:
         value = getattr(query, col)
@@ -159,7 +159,7 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
     """Lookup a word or phrase by searching definitions."""
     query = c.unihan.reverse_char([char])
     if not query.count():
-        log.info(f"No records found for {char}")
+        log.info("No records found for %s", char)
         sys.exit()
     for k in query:
         attrs = {}
