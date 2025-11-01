@@ -28,11 +28,13 @@ $ uv add cihai-cli --prerelease allow
 $ uvx --from 'cihai-cli' --prerelease allow cihai
 ```
 
-## cihai-cli 0.31.x (unreleased)
+## cihai-cli 0.32.x (unreleased)
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
 - _Changes for the upcoming release go here._
+
+## cihai-cli 0.31.0 (2025-11-01)
 
 ### Breaking changes
 
