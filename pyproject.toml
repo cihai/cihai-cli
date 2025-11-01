@@ -2,7 +2,7 @@
 name = "cihai-cli"
 version = "0.30.0"
 description = "Command line frontend for the cihai CJK language library"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10,<4.0"
 license = { text = "MIT" }
 authors = [
   {name = "Tony Narlock", email = "tony@git-pull.com"}
