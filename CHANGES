@@ -3,29 +3,30 @@
 You can test the unpublished version of cihai-cli before its released, see
 [developmental releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases).
 
-- [pip](https://pip.pypa.io/en/stable/):
+[pip](https://pip.pypa.io/en/stable/):
 
-  ```console
-  $ pip install --user --upgrade --pre cihai-cli
-  ```
+```console
+$ pip install --user --upgrade --pre cihai-cli
+```
 
-- [uv](https://docs.astral.sh/uv/):
+[pipx](https://pypa.github.io/pipx/docs/):
 
-  ```console
-  $ uv tool install --prerelease=allow cihai-cli
-  ```
+```console
+$ pipx install --suffix=@next 'cihai-cli' --pip-args '\--pre' --force
+// Usage: cihai@next info 好
+```
 
-  ```console
-  $ uv add --prerelease=allow cihai-cli
-  ```
+[uv](https://docs.astral.sh/uv/getting-started/features/#python-versions):
 
-- [pipx](https://pypa.github.io/pipx/docs/):
+```console
+$ uv add cihai-cli --prerelease allow
+```
 
-  ```console
-  $ pipx install --suffix=@next cihai-cli --pip-args '\--pre' --include-deps --force
-  ```
+[uvx](https://docs.astral.sh/uv/guides/tools/):
 
-  Then use `cihai@next info 好`.
+```console
+$ uvx --from 'cihai-cli' --prerelease allow cihai
+```
 
 ## cihai-cli 0.31.x (unreleased)
 
