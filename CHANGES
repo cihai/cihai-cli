@@ -36,6 +36,7 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 
 ### Breaking changes
 
+- Bump cihai 0.35.0 -> 0.36.0
 - Drop support for Python 3.9; the new minimum is Python 3.10 (#330).
 
   See also:
