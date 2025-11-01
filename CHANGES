@@ -35,6 +35,8 @@ You can test the unpublished version of cihai-cli before its released, see
 
 ### Development
 
+- Add Python 3.14 to test matrix (#329)
+
 #### chore: Implement PEP 563 deferred annotation resolution (#324)
 
 - Add `from __future__ import annotations` to defer annotation resolution and reduce unnecessary runtime computations during type checking.
