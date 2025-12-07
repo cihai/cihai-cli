@@ -32,7 +32,9 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
-- _Changes for the upcoming release go here._
+### CI
+
+- Migrate to PyPI Trusted Publisher (#332)
 
 ### Development
 
