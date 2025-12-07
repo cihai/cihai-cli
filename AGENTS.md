@@ -88,7 +88,7 @@ just design-docs    # update CSS/JS assets
 
 ## Coding Standards
 - `from __future__ import annotations` required; enforced by ruff.
-- Namespace imports for stdlib/typing (`import typing as t`).
+- Namespace imports for stdlib/typing (`import typing as t`); third-party packages may use `from X import Y`.
 - Docstrings follow NumPy style (see `tool.ruff.lint.pydocstyle`).
 - Python target version: 3.10 (`tool.ruff.target-version`).
 - Keep CLI output human-friendly YAML; avoid breaking existing flags/args.
