@@ -34,6 +34,13 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 
 - _Changes for the upcoming release go here._
 
+### Development
+
+#### Makefile -> Justfile (#333)
+
+- Migrate from `Makefile` to `justfile` for running development tasks
+- Update documentation to reference `just` commands
+
 ### Documentation
 
 - Migrate docs deployment to AWS OIDC authentication and AWS CLI
