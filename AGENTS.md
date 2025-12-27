@@ -42,28 +42,28 @@ uv pip install --editable . -G dev
 
 ### Tests
 ```bash
-make test           # or: uv run pytest
+just test           # or: uv run pytest
 uv run pytest tests/test_cli.py           # single file
 uv run pytest tests/test_cli.py::test_info_command  # single test
 
-make start          # run tests then watch with pytest-watcher
+just start          # run tests then watch with pytest-watcher
 uv run ptw .        # standalone watcher (doctests enabled by default)
 ```
 
 ### Linting & Types
 ```bash
-make ruff           # uv run ruff check .
-make ruff_format    # uv run ruff format .
+just ruff           # uv run ruff check .
+just ruff-format    # uv run ruff format .
 uv run ruff check . --fix --show-fixes
 
-make mypy           # strict type checking
+just mypy           # strict type checking
 ```
 
 ### Documentation
 ```bash
-make build_docs     # build Sphinx HTML in docs/_build
-make start_docs     # autobuild + livereload
-make design_docs    # update CSS/JS assets
+just build-docs     # build Sphinx HTML in docs/_build
+just start-docs     # autobuild + livereload
+just design-docs    # update CSS/JS assets
 ```
 
 ### Workflow (recommended)
@@ -82,7 +82,7 @@ make design_docs    # update CSS/JS assets
 ## Testing Strategy
 - Pytest with doctests enabled (`addopts` in `pyproject.toml`).
 - Prefer real `cihai` / `unihan_etl` integration over heavy mocking; reuse fixtures where present.
-- Watch mode: `uv run ptw .` (used in `make start`).
+- Watch mode: `uv run ptw .` (used in `just start`).
 - Coverage via `pytest-cov`; configuration in `pyproject.toml`.
 - Prefer fixtures over mocks (`server`, `session`, etc. when available); use `tmp_path` over `tempfile`, `monkeypatch` over `unittest.mock`.
 
