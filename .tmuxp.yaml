@@ -9,8 +9,8 @@ windows:
   panes:
   - focus: true
   - pane 
-  - make watch_mypy
-  - make start
+  - just watch-mypy
+  - just start
 - window_name: docs
   layout: main-horizontal
   options:
@@ -20,4 +20,4 @@ windows:
   - focus: true
   - pane
   - pane
-  - make start
+  - just start
