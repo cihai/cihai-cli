@@ -94,6 +94,40 @@ just design-docs    # update CSS/JS assets
 - Keep CLI output human-friendly YAML; avoid breaking existing flags/args.
 - Doctests: keep concise, narrative Examples blocks; move complex flows to `tests/examples/`.
 
+## Documentation Standards
+
+### Code Blocks in Documentation
+
+When writing documentation (README, CHANGES, docs/), follow these rules for code blocks:
+
+**One command per code block.** This makes commands individually copyable.
+
+**Put explanations outside the code block**, not as comments inside.
+
+Good:
+
+Run the tests:
+
+```console
+$ uv run pytest
+```
+
+Run with coverage:
+
+```console
+$ uv run pytest --cov
+```
+
+Bad:
+
+```console
+# Run the tests
+$ uv run pytest
+
+# Run with coverage
+$ uv run pytest --cov
+```
+
 ## Debugging Tips
 - Lean on `pytest -k <pattern> -vv` for focused failures.
 - For CLI behavior, run `uv run cihai info 好` or `uv run cihai reverse library`.
