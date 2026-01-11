@@ -134,11 +134,34 @@ $ uv run pytest --cov
 - If Unihan DB is missing, CLI bootstraps automatically; avoid altering that flow unless required.
 - Stuck in loops? Pause, minimize to a minimal repro, document exact errors, and restate the hypothesis before another attempt.
 
-## Commit Standards
-- Format: `Component/File(commit-type[scope]): short imperative subject`.
-- Body: `why:` and `what:` bullet list; keep lines ≤72 chars, one topic per commit.
-- Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`, `style`, `py(deps)` / `py(deps[dev])`.
+## Git Commit Standards
+
+Commit subjects: `Component/File(commit-type[scope]): Concise description`
+
+Body template:
+```
+why: Reason or impact.
+what:
+- Key technical changes
+- Single topic only
+```
+
+Guidelines:
+- Subject ≤50 chars; body lines ≤72 chars; imperative mood.
+- One topic per commit; separate subject and body with a blank line.
 - Mark breaking changes with `BREAKING:` and include related issue refs when relevant.
+
+Common commit types:
+- **feat**: New features or enhancements
+- **fix**: Bug fixes
+- **refactor**: Code restructuring without functional change
+- **docs**: Documentation updates
+- **chore**: Maintenance (dependencies, tooling, config)
+- **test**: Test-related updates
+- **style**: Code style and formatting
+- **py(deps)**: Dependencies
+- **py(deps[dev])**: Dev dependencies
+- **ai(rules[LLM type])**: AI rule updates (e.g., `ai(rules[AGENTS])`)
 
 ## Notes & Docs Authoring
 - For `notes/**/*.md`, keep content concise and well-structured (headings, bullets, code fences).
