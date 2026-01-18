@@ -147,6 +147,7 @@ files = [
 ]
 exclude = [
   "tests/docs/",
+  "docs/_ext/",
 ]
 
 [[tool.mypy.overrides]]
