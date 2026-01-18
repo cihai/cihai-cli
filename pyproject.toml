@@ -75,7 +75,6 @@ dev = [
   "sphinxext-opengraph",
   "sphinx-copybutton",
   "sphinxext-rediraffe",
-  "sphinx-argparse",
   "myst-parser",
   "linkify-it-py",
   # Testing
@@ -107,7 +106,6 @@ docs = [
   "sphinxext-opengraph",
   "sphinx-copybutton",
   "sphinxext-rediraffe",
-  "sphinx-argparse",
   "myst-parser",
   "linkify-it-py",
 ]
@@ -129,6 +127,8 @@ lint = [
 ]
 typings = [
   "types-PyYAML",
+  "types-docutils",
+  "types-Pygments",
 ]
 
 [project.scripts]
@@ -145,10 +145,27 @@ files = [
   "src/",
   "tests/",
 ]
+exclude = [
+  "tests/docs/",
+]
 
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+  "sphinx_argparse_neo",
+  "sphinx_argparse_neo.*",
+  "cli_usage_lexer",
+  "argparse_lexer",
+  "argparse_roles",
+  "docutils",
+  "docutils.*",
+  "pygments",
+  "pygments.*",
 ]
 ignore_missing_imports = true
 
