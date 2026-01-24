@@ -163,12 +163,12 @@ def command_reverse(c: Cihai, char: str, show_all: bool) -> None:
         sys.exit()
     for k in query:
         attrs = {}
-        for c, _, _ in k.__table__.columns._collection:
-            value = getattr(k, c)
+        for col, _, _ in k.__table__.columns._collection:
+            value = getattr(k, col)
             if value:
-                if not show_all and str(c) not in HUMAN_UNIHAN_FIELDS:
+                if not show_all and str(col) not in HUMAN_UNIHAN_FIELDS:
                     continue
-                attrs[str(c)] = value
+                attrs[str(col)] = value
         log.info(
             yaml.safe_dump(attrs, allow_unicode=True, default_flow_style=False).strip(
                 "\n",
