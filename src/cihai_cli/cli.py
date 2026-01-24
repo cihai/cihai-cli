@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
+import textwrap
+import typing as t
 
 import yaml
 
@@ -35,9 +37,105 @@ HUMAN_UNIHAN_FIELDS = [
 INFO_SHORT_HELP = 'Get details on a CJK character, e.g. "好"'
 
 
+def build_description(
+    intro: str,
+    example_blocks: t.Sequence[tuple[str | None, t.Sequence[str]]],
+) -> str:
+    """Assemble help text with optional example sections.
+
+    Parameters
+    ----------
+    intro : str
+        Introduction text to display at the top of the help.
+    example_blocks : Sequence[tuple[str | None, Sequence[str]]]
+        List of (heading, commands) tuples. If heading is None, displays
+        as "examples:", otherwise as "{heading} examples:".
+
+    Returns
+    -------
+    str
+        Formatted help text with examples.
+    """
+    sections: list[str] = []
+    intro_text = textwrap.dedent(intro).strip()
+    if intro_text:
+        sections.append(intro_text)
+
+    for heading, commands in example_blocks:
+        if not commands:
+            continue
+        title = "examples:" if heading is None else f"{heading} examples:"
+        lines = [title]
+        lines.extend(f"  {command}" for command in commands)
+        sections.append("\n".join(lines))
+
+    return "\n\n".join(sections)
+
+
+CLI_DESCRIPTION = build_description(
+    """
+    cihai - CJK character lookup tool.
+
+    Look up Chinese, Japanese, and Korean characters using the Unihan database.
+    """,
+    (
+        (
+            "info",
+            [
+                "cihai info 好",
+                "cihai info --all 好",
+            ],
+        ),
+        (
+            "reverse",
+            [
+                'cihai reverse "good"',
+                'cihai reverse --all "library"',
+            ],
+        ),
+    ),
+)
+
+INFO_DESCRIPTION = build_description(
+    """
+    Get details on a CJK character.
+    """,
+    (
+        (
+            None,
+            [
+                "cihai info 好",
+                "cihai info 你",
+                "cihai info --all 好",
+            ],
+        ),
+    ),
+)
+
+REVERSE_DESCRIPTION = build_description(
+    """
+    Search definitions for character matches.
+    """,
+    (
+        (
+            None,
+            [
+                'cihai reverse "good"',
+                'cihai reverse "library"',
+                'cihai reverse --all "love"',
+            ],
+        ),
+    ),
+)
+
+
 def create_parser() -> argparse.ArgumentParser:
     """Create argparse for cihai-cli."""
-    parser = argparse.ArgumentParser(prog="cihai")
+    parser = argparse.ArgumentParser(
+        prog="cihai",
+        description=CLI_DESCRIPTION,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument(
         "--version",
         "-V",
@@ -61,11 +159,18 @@ def create_parser() -> argparse.ArgumentParser:
         help="Path to custom config file",
     )
     subparsers = parser.add_subparsers(dest="subparser_name")
-    info_parser = subparsers.add_parser("info", help=INFO_SHORT_HELP)
+    info_parser = subparsers.add_parser(
+        "info",
+        help=INFO_SHORT_HELP,
+        description=INFO_DESCRIPTION,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     create_info_subparser(info_parser)
     reverse_parser = subparsers.add_parser(
         "reverse",
         help='Search all info for character matches, e.g. "good"',
+        description=REVERSE_DESCRIPTION,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     create_reverse_subparser(reverse_parser)
 
