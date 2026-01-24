@@ -32,6 +32,10 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 
 <!-- Maintainers, insert changes / features for the next release here -->
 
+_Add your latest changes from PRs here_
+
+## cihai-cli 0.31.1 (2026-01-24)
+
 ### Breaking changes
 
 - Bump cihai 0.36.0 -> 0.36.1 (#338)

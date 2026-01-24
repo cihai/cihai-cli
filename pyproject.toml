@@ -1,6 +1,6 @@
 [project]
 name = "cihai-cli"
-version = "0.31.0"
+version = "0.31.1"
 description = "Command line frontend for the cihai CJK language library"
 requires-python = ">=3.10,<4.0"
 license = { text = "MIT" }
