@@ -138,32 +138,30 @@ build-backend = "hatchling.build"
 [tool.mypy]
 strict = true
 python_version = "3.10"
+mypy_path = ["src", "docs/_ext"]
+explicit_package_bases = true
 files = [
   "src/",
   "tests/",
+  "docs/_ext/",
 ]
 exclude = [
   "tests/docs/",
-  "docs/_ext/",
 ]
 
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
+  "cihai_cli",
+  "cihai_cli.*",
 ]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = [
-  "sphinx_argparse_neo",
-  "sphinx_argparse_neo.*",
   "cli_usage_lexer",
   "argparse_lexer",
   "argparse_roles",
-  "docutils",
-  "docutils.*",
-  "pygments",
-  "pygments.*",
 ]
 ignore_missing_imports = true
 
