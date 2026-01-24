@@ -152,8 +152,6 @@ exclude = [
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
-  "cihai_cli",
-  "cihai_cli.*",
 ]
 ignore_missing_imports = true
 
