@@ -209,6 +209,7 @@ convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
 "*/__init__.py" = ["F401"]
+"src/cihai_cli/_colors.py" = ["D301"]  # Doctest needs real escape bytes, not raw strings
 
 [tool.pytest.ini_options]
 addopts = "--reruns=0 --tb=short --no-header --showlocals --doctest-modules"
