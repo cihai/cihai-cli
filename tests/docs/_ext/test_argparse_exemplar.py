@@ -13,7 +13,7 @@ from __future__ import annotations
 import typing as t
 
 import pytest
-from argparse_exemplar import (  # type: ignore[import-not-found]
+from argparse_exemplar import (
     ExemplarConfig,
     _is_examples_section,
     _is_usage_block,
@@ -797,9 +797,10 @@ def test_reorder_nodes_multiple_examples_sections() -> None:
     assert len(result) == 5
     assert isinstance(result[0], nodes.paragraph)
     assert isinstance(result[1], nodes.literal_block)
-    assert result[2]["ids"] == ["examples"]
-    assert result[3]["ids"] == ["machine-readable-output-examples"]
-    assert result[4]["ids"] == ["arguments"]
+    assert t.cast(nodes.Element, result[2])["ids"] == ["examples"]
+    node3 = t.cast(nodes.Element, result[3])
+    assert node3["ids"] == ["machine-readable-output-examples"]
+    assert t.cast(nodes.Element, result[4])["ids"] == ["arguments"]
 
 
 def test_reorder_nodes_preserves_non_examples_after() -> None:

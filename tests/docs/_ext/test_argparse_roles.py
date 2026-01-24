@@ -116,7 +116,8 @@ def test_cli_option_role_with_options() -> None:
 
     assert len(node_list) == 1
     # Options are normalized but classes come from role logic
-    assert "cli-option" in node_list[0]["classes"]
+    node = t.cast(nodes.Element, node_list[0])
+    assert "cli-option" in node["classes"]
 
 
 # --- CLI Metavar Role Tests ---
@@ -421,7 +422,8 @@ def test_cli_option_role_empty_text() -> None:
     assert len(node_list) == 1
     assert node_list[0].astext() == ""
     # No dash prefix, so only base class
-    assert node_list[0]["classes"] == ["cli-option"]
+    node = t.cast(nodes.Element, node_list[0])
+    assert node["classes"] == ["cli-option"]
 
 
 def test_cli_option_role_special_characters() -> None:
@@ -436,4 +438,5 @@ def test_cli_option_role_special_characters() -> None:
 
     assert len(node_list) == 1
     assert node_list[0].astext() == "--foo-bar_baz"
-    assert "cli-option-long" in node_list[0]["classes"]
+    node = t.cast(nodes.Element, node_list[0])
+    assert "cli-option-long" in node["classes"]
