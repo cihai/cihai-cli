@@ -15,6 +15,7 @@ from cihai.core import Cihai
 from unihan_etl.__about__ import __version__ as unihan_etl_version
 
 from .__about__ import __version__
+from ._formatter import create_formatter
 
 log = logging.getLogger(__name__)
 
@@ -131,10 +132,12 @@ REVERSE_DESCRIPTION = build_description(
 
 def create_parser() -> argparse.ArgumentParser:
     """Create argparse for cihai-cli."""
+    formatter_class = create_formatter()
+
     parser = argparse.ArgumentParser(
         prog="cihai",
         description=CLI_DESCRIPTION,
-        formatter_class=argparse.RawDescriptionHelpFormatter,
+        formatter_class=formatter_class,
     )
     parser.add_argument(
         "--version",
@@ -163,14 +166,14 @@ def create_parser() -> argparse.ArgumentParser:
         "info",
         help=INFO_SHORT_HELP,
         description=INFO_DESCRIPTION,
-        formatter_class=argparse.RawDescriptionHelpFormatter,
+        formatter_class=formatter_class,
     )
     create_info_subparser(info_parser)
     reverse_parser = subparsers.add_parser(
         "reverse",
         help='Search all info for character matches, e.g. "good"',
         description=REVERSE_DESCRIPTION,
-        formatter_class=argparse.RawDescriptionHelpFormatter,
+        formatter_class=formatter_class,
     )
     create_reverse_subparser(reverse_parser)
 
