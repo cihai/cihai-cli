@@ -227,6 +227,8 @@ dev = [
     { name = "sphinxext-opengraph" },
     { name = "sphinxext-rediraffe" },
     { name = "types-colorama" },
+    { name = "types-docutils" },
+    { name = "types-pygments" },
     { name = "types-pyyaml" },
     { name = "types-requests" },
 ]
@@ -257,11 +259,6 @@ testing = [
     { name = "pytest-mock" },
     { name = "pytest-rerunfailures" },
     { name = "pytest-watcher" },
-]
-typings = [
-    { name = "types-docutils" },
-    { name = "types-pygments" },
-    { name = "types-pyyaml" },
 ]
 
 [package.metadata]
@@ -298,6 +295,8 @@ dev = [
     { name = "sphinxext-opengraph" },
     { name = "sphinxext-rediraffe" },
     { name = "types-colorama" },
+    { name = "types-docutils" },
+    { name = "types-pygments" },
     { name = "types-pyyaml" },
     { name = "types-requests" },
 ]
@@ -324,11 +323,6 @@ testing = [
     { name = "pytest-mock" },
     { name = "pytest-rerunfailures" },
     { name = "pytest-watcher" },
-]
-typings = [
-    { name = "types-docutils" },
-    { name = "types-pygments" },
-    { name = "types-pyyaml" },
 ]
 
 [[package]]

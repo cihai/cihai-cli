@@ -91,9 +91,11 @@ dev = [
   "ruff",
   "mypy",
   # Annotations
-  "types-requests",
+  "types-colorama",
+  "types-docutils",
+  "types-Pygments",
   "types-PyYAML",
-  "types-colorama"
+  "types-requests",
 ]
 
 docs = [
@@ -124,11 +126,6 @@ coverage =[
 lint = [
   "ruff",
   "mypy",
-]
-typings = [
-  "types-PyYAML",
-  "types-docutils",
-  "types-Pygments",
 ]
 
 [project.scripts]
