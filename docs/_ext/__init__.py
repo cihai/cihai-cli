@@ -1,3 +1,3 @@
-"""Sphinx extensions for vcspull documentation."""
+"""Sphinx extensions for cihai-cli documentation."""
 
 from __future__ import annotations
