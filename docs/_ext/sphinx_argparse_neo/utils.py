@@ -7,9 +7,10 @@ This module provides utilities for cleaning argparse output before rendering:
 from __future__ import annotations
 
 import re
+import typing as t
 
 # ANSI escape code pattern - matches CSI sequences like \033[32m, \033[1;34m, etc.
-_ANSI_RE = re.compile(r"\033\[[;?0-9]*[a-zA-Z]")
+_ANSI_RE: t.Pattern[str] = re.compile(r"\033\[[;?0-9]*[a-zA-Z]")
 
 
 def strip_ansi(text: str) -> str:
