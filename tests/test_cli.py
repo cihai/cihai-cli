@@ -92,3 +92,42 @@ def test_cli_version(
         assert "cihai-cli" in output
         assert "cihai" in output
         assert "unihan-etl" in output
+
+
+def test_cli_help_contains_examples(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Verify main help output includes example commands."""
+    with contextlib.suppress(SystemExit):
+        cli(["--help"])
+
+    output = capsys.readouterr().out
+    assert "info examples:" in output
+    assert "cihai info 好" in output
+    assert "reverse examples:" in output
+    assert "cihai reverse" in output
+
+
+def test_cli_info_help_contains_examples(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Verify info subcommand help includes example commands."""
+    with contextlib.suppress(SystemExit):
+        cli(["info", "--help"])
+
+    output = capsys.readouterr().out
+    assert "examples:" in output
+    assert "cihai info 好" in output
+    assert "cihai info --all" in output
+
+
+def test_cli_reverse_help_contains_examples(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Verify reverse subcommand help includes example commands."""
+    with contextlib.suppress(SystemExit):
+        cli(["reverse", "--help"])
+
+    output = capsys.readouterr().out
+    assert "examples:" in output
+    assert "cihai reverse" in output

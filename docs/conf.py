@@ -34,7 +34,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.linkcode",
     "sphinx.ext.napoleon",
-    "sphinxarg.ext",  # sphinx-argparse
+    "argparse_exemplar",  # Custom sphinx-argparse replacement
     "sphinx_inline_tabs",
     "sphinx_copybutton",
     "sphinxext.opengraph",
@@ -70,7 +70,7 @@ pygments_dark_style = "monokai"
 
 html_static_path = ["_static"]
 html_extra_path = ["manifest.json"]
-html_css_files = ["css/custom.css"]
+html_css_files = ["css/custom.css", "css/argparse-highlight.css"]
 html_favicon = "_static/favicon.ico"
 html_theme = "furo"
 html_theme_path: list[str] = []

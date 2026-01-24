@@ -34,6 +34,35 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 
 _Add your latest changes from PRs here_
 
+### What's new
+
+#### Colored CLI help output (#337)
+
+- Add syntax highlighting for CLI help examples
+- New `_colors.py` module with ANSI color support respecting `NO_COLOR`/`FORCE_COLOR`
+- New `_formatter.py` with custom argparse HelpFormatter for colored examples
+
+#### Replace sphinx-argparse with sphinx_argparse_neo (#337)
+
+- Port `sphinx_argparse_neo` extension from vcspull, replacing external `sphinx-argparse` dependency
+- Add custom Pygments lexers for argparse and CLI usage syntax highlighting:
+  - `argparse_lexer.py` - Lexer for argparse help text
+  - `cli_usage_lexer.py` - Lexer for CLI usage patterns
+- Add `argparse_exemplar.py` extension for transforming argparse epilog examples into documentation
+- Add `argparse_roles.py` for custom Sphinx roles (`:opt:`, `:arg:`, `:prog:`)
+- Add CSS styling for syntax-highlighted argparse output
+- Add comprehensive test suite for all Sphinx extensions
+
+#### Dev dependencies
+
+- Add `types-docutils` and `types-Pygments` for type checking Sphinx extensions (#337)
+
+### Packaging
+
+- Add `py.typed` marker for [PEP 561] type checking support (#337)
+
+[PEP 561]: https://peps.python.org/pep-0561/
+
 ## cihai-cli 0.31.1 (2026-01-24)
 
 ### Breaking changes

@@ -75,7 +75,6 @@ dev = [
   "sphinxext-opengraph",
   "sphinx-copybutton",
   "sphinxext-rediraffe",
-  "sphinx-argparse",
   "myst-parser",
   "linkify-it-py",
   # Testing
@@ -92,9 +91,11 @@ dev = [
   "ruff",
   "mypy",
   # Annotations
-  "types-requests",
+  "types-colorama",
+  "types-docutils",
+  "types-Pygments",
   "types-PyYAML",
-  "types-colorama"
+  "types-requests",
 ]
 
 docs = [
@@ -107,7 +108,6 @@ docs = [
   "sphinxext-opengraph",
   "sphinx-copybutton",
   "sphinxext-rediraffe",
-  "sphinx-argparse",
   "myst-parser",
   "linkify-it-py",
 ]
@@ -127,9 +127,6 @@ lint = [
   "ruff",
   "mypy",
 ]
-typings = [
-  "types-PyYAML",
-]
 
 [project.scripts]
 cihai = "cihai_cli.cli:cli"
@@ -141,14 +138,28 @@ build-backend = "hatchling.build"
 [tool.mypy]
 strict = true
 python_version = "3.10"
+mypy_path = ["src", "docs/_ext"]
+explicit_package_bases = true
 files = [
   "src/",
   "tests/",
+  "docs/_ext/",
+]
+exclude = [
+  "tests/docs/",
 ]
 
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+  "cli_usage_lexer",
+  "argparse_lexer",
+  "argparse_roles",
 ]
 ignore_missing_imports = true
 
@@ -196,6 +207,7 @@ convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
 "*/__init__.py" = ["F401"]
+"src/cihai_cli/_colors.py" = ["D301"]  # Doctest needs real escape bytes, not raw strings
 
 [tool.pytest.ini_options]
 addopts = "--reruns=0 --tb=short --no-header --showlocals --doctest-modules"
