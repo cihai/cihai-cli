@@ -30,9 +30,11 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 
 ## cihai-cli 0.33.x (unreleased)
 
-<!-- Maintainers, insert changes / features for the next release here -->
+<!-- KEEP THIS PLACEHOLDER - DO NOT REMOVE OR MODIFY THIS LINE -->
+_Notes on the upcoming release will go here._
+<!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
-_Add your latest changes from PRs here_
+<!-- Maintainers, insert changes / features for the next release here -->
 
 ## cihai-cli 0.32.0 (2026-01-24)
 
