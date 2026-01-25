@@ -1165,7 +1165,7 @@ def _extract_sections_from_container(
     return container, extracted_sections
 
 
-class CleanArgParseDirective(ArgparseDirective):  # type: ignore[misc]
+class CleanArgParseDirective(ArgparseDirective):
     """ArgParse directive that strips ANSI codes and formats examples."""
 
     def run(self) -> list[nodes.Node]:
