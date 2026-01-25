@@ -34,6 +34,15 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
+### Documentation
+
+#### Improved CLI reference navigation (#339)
+
+- **Linkable arguments**: Each CLI argument now has a permalink (¶) for easy sharing and bookmarking
+- **Clearer metadata display**: Default values, types, and choices are now displayed in a structured format
+- **Required arguments highlighted**: Required arguments are visually distinguished with an amber tag
+- **Dark mode support**: All new styling adapts to your system's light/dark preference
+
 <!-- Maintainers, insert changes / features for the next release here -->
 
 ## cihai-cli 0.32.0 (2026-01-24)
