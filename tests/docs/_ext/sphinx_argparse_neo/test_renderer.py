@@ -470,7 +470,7 @@ def test_post_process_default() -> None:
 
     from docutils import nodes as dn
 
-    input_nodes: list[dn.Node] = [dn.paragraph(text="test")]
+    input_nodes = [dn.paragraph(text="test")]
 
     result = renderer.post_process(input_nodes)
 
@@ -480,7 +480,7 @@ def test_post_process_default() -> None:
 def test_post_process_custom() -> None:
     """Test custom post_process implementation."""
 
-    class CustomRenderer(ArgparseRenderer):
+    class CustomRenderer(ArgparseRenderer):  # type: ignore[misc]
         def post_process(self, result_nodes: list[t.Any]) -> list[t.Any]:
             # Add a marker to each node
             for node in result_nodes:
