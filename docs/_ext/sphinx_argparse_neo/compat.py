@@ -191,11 +191,11 @@ def get_parser_from_module(
 
     Examples
     --------
-    Load cihai_cli's parser factory:
+    Load tmuxp's parser factory:
 
-    >>> parser = get_parser_from_module("cihai_cli.cli", "create_parser")
+    >>> parser = get_parser_from_module("tmuxp.cli", "create_parser")
     >>> parser.prog
-    'cihai'
+    'tmuxp'
     >>> hasattr(parser, 'parse_args')
     True
     """
@@ -250,11 +250,11 @@ def get_parser_from_entry_point(
 
     Examples
     --------
-    Load cihai_cli's parser using entry point syntax:
+    Load tmuxp's parser using entry point syntax:
 
-    >>> parser = get_parser_from_entry_point("cihai_cli.cli:create_parser")
+    >>> parser = get_parser_from_entry_point("tmuxp.cli:create_parser")
     >>> parser.prog
-    'cihai'
+    'tmuxp'
 
     Invalid format raises ValueError:
 
