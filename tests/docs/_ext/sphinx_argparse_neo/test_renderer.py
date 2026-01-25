@@ -470,7 +470,7 @@ def test_post_process_default() -> None:
 
     from docutils import nodes as dn
 
-    input_nodes: list[dn.Node] = [dn.paragraph(text="test")]
+    input_nodes: list[nodes.Node] = [dn.paragraph(text="test")]
 
     result = renderer.post_process(input_nodes)
 

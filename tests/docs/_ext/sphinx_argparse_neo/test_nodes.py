@@ -2,8 +2,16 @@
 
 from __future__ import annotations
 
+import re
+import typing as t
+
+if t.TYPE_CHECKING:
+    from sphinx.writers.html5 import HTML5Translator
+
+import pytest
 from docutils import nodes
 from sphinx_argparse_neo.nodes import (
+    _generate_argument_id,
     argparse_argument,
     argparse_group,
     argparse_program,
@@ -257,3 +265,353 @@ def test_full_node_tree() -> None:
     assert isinstance(program.children[1], argparse_group)
     assert isinstance(program.children[2], argparse_group)
     assert isinstance(program.children[3], argparse_subcommands)
+
+
+# --- ID generation tests ---
+
+
+def test_generate_argument_id_short_option() -> None:
+    """Test ID generation for short option."""
+    assert _generate_argument_id(["-L"]) == "L"
+
+
+def test_generate_argument_id_long_option() -> None:
+    """Test ID generation for long option."""
+    assert _generate_argument_id(["--help"]) == "help"
+
+
+def test_generate_argument_id_multiple_names() -> None:
+    """Test ID generation for argument with multiple names."""
+    assert _generate_argument_id(["-v", "--verbose"]) == "v-verbose"
+
+
+def test_generate_argument_id_with_prefix() -> None:
+    """Test ID generation with prefix for namespace isolation."""
+    assert _generate_argument_id(["-L"], "shell") == "shell-L"
+    assert _generate_argument_id(["--help"], "load") == "load-help"
+
+
+def test_generate_argument_id_positional() -> None:
+    """Test ID generation for positional argument."""
+    assert _generate_argument_id(["filename"]) == "filename"
+
+
+def test_generate_argument_id_empty() -> None:
+    """Test ID generation with empty names list."""
+    assert _generate_argument_id([]) == ""
+
+
+def test_generate_argument_id_prefix_no_names() -> None:
+    """Test that prefix alone doesn't create ID when no names."""
+    assert _generate_argument_id([], "shell") == ""
+
+
+# --- HTML rendering tests using NamedTuple for parametrization ---
+
+
+class ArgumentHTMLCase(t.NamedTuple):
+    """Test case for argument HTML rendering."""
+
+    test_id: str
+    names: list[str]
+    metavar: str | None
+    help_text: str | None
+    default: str | None
+    type_name: str | None
+    required: bool
+    id_prefix: str
+    expected_patterns: list[str]  # Regex patterns to match
+
+
+ARGUMENT_HTML_CASES = [
+    ArgumentHTMLCase(
+        test_id="short_option_with_metavar",
+        names=["-L"],
+        metavar="socket-name",
+        help_text="pass-through for tmux -L",
+        default="None",
+        type_name=None,
+        required=False,
+        id_prefix="shell",
+        expected_patterns=[
+            r'<div class="argparse-argument-wrapper" id="shell-L">',
+            r'<dt class="argparse-argument-name">',
+            r'<span class="na">-L</span>',
+            r'<span class="nv">socket-name</span>',
+            r'<a class="headerlink" href="#shell-L">¶</a>',
+            r'<dl class="argparse-argument-meta">',
+            r'<dt class="argparse-meta-key">Default</dt>',
+            r'<dd class="argparse-meta-value"><span class="nv">None</span></dd>',
+            r"</div>",
+        ],
+    ),
+    ArgumentHTMLCase(
+        test_id="long_option",
+        names=["--help"],
+        metavar=None,
+        help_text="show help",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="",
+        expected_patterns=[
+            r'<span class="nt">--help</span>',
+            r'id="help"',
+            r'href="#help"',
+        ],
+    ),
+    ArgumentHTMLCase(
+        test_id="positional_argument",
+        names=["filename"],
+        metavar=None,
+        help_text="input file",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="",
+        expected_patterns=[
+            r'<span class="nl">filename</span>',
+            r'id="filename"',
+        ],
+    ),
+    ArgumentHTMLCase(
+        test_id="multiple_names",
+        names=["-v", "--verbose"],
+        metavar=None,
+        help_text="Enable verbose mode",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="load",
+        expected_patterns=[
+            r'id="load-v-verbose"',
+            r'<span class="na">-v</span>',
+            r'<span class="nt">--verbose</span>',
+            r'href="#load-v-verbose"',
+        ],
+    ),
+    ArgumentHTMLCase(
+        test_id="metadata_definition_list",
+        names=["workspace_file"],
+        metavar="workspace-file",
+        help_text="checks current directory for workspace files.",
+        default="None",
+        type_name="str",
+        required=True,
+        id_prefix="edit",
+        expected_patterns=[
+            r'<dl class="argparse-argument-meta">',
+            r'<dt class="argparse-meta-key">Default</dt>',
+            r'<dd class="argparse-meta-value"><span class="nv">None</span></dd>',
+            r'<dt class="argparse-meta-key">Type</dt>',
+            r'<dd class="argparse-meta-value"><span class="nv">str</span></dd>',
+            r'<dt class="argparse-meta-tag">Required</dt>',
+            r"</dl>",
+        ],
+    ),
+]
+
+
+class MockTranslator:
+    """Mock HTML5Translator for testing HTML generation."""
+
+    def __init__(self) -> None:
+        """Initialize mock translator."""
+        self.body: list[str] = []
+
+    def encode(self, text: str) -> str:
+        """HTML encode text."""
+        return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def render_argument_to_html(
+    names: list[str],
+    metavar: str | None,
+    help_text: str | None,
+    default: str | None,
+    type_name: str | None,
+    required: bool,
+    id_prefix: str,
+) -> str:
+    """Render an argument node to HTML string for testing.
+
+    Parameters
+    ----------
+    names
+        Argument names (e.g., ["-v", "--verbose"]).
+    metavar
+        Optional metavar (e.g., "FILE").
+    help_text
+        Help text for the argument.
+    default
+        Default value string.
+    type_name
+        Type name for the argument (e.g., "str", "int").
+    required
+        Whether the argument is required.
+    id_prefix
+        Prefix for the argument ID.
+
+    Returns
+    -------
+    str
+        HTML string from the mock translator's body.
+    """
+    from sphinx_argparse_neo.nodes import (
+        depart_argparse_argument_html,
+        visit_argparse_argument_html,
+    )
+
+    node = argparse_argument()
+    node["names"] = names
+    node["metavar"] = metavar
+    node["help"] = help_text
+    node["default_string"] = default
+    node["type_name"] = type_name
+    node["required"] = required
+    node["id_prefix"] = id_prefix
+
+    translator = MockTranslator()
+    visit_argparse_argument_html(t.cast("HTML5Translator", translator), node)
+    depart_argparse_argument_html(t.cast("HTML5Translator", translator), node)
+
+    return "".join(translator.body)
+
+
+@pytest.mark.parametrize(
+    "case",
+    ARGUMENT_HTML_CASES,
+    ids=lambda c: c.test_id,
+)
+def test_argument_html_rendering(case: ArgumentHTMLCase) -> None:
+    """Test HTML output for argument nodes."""
+    html = render_argument_to_html(
+        names=case.names,
+        metavar=case.metavar,
+        help_text=case.help_text,
+        default=case.default,
+        type_name=case.type_name,
+        required=case.required,
+        id_prefix=case.id_prefix,
+    )
+
+    for pattern in case.expected_patterns:
+        assert re.search(pattern, html), f"Pattern not found: {pattern}\nHTML: {html}"
+
+
+def test_argument_wrapper_has_id() -> None:
+    """Verify wrapper div has correct ID attribute."""
+    html = render_argument_to_html(
+        names=["-f", "--file"],
+        metavar="PATH",
+        help_text="Input file",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="convert",
+    )
+
+    assert 'id="convert-f-file"' in html
+    assert '<div class="argparse-argument-wrapper"' in html
+
+
+def test_argument_headerlink_present() -> None:
+    """Verify headerlink anchor exists with correct href."""
+    html = render_argument_to_html(
+        names=["--output"],
+        metavar="FILE",
+        help_text="Output file",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="freeze",
+    )
+
+    assert '<a class="headerlink" href="#freeze-output">¶</a>' in html
+
+
+def test_default_value_styled() -> None:
+    """Verify default value is wrapped in nv span within definition list."""
+    html = render_argument_to_html(
+        names=["--format"],
+        metavar=None,
+        help_text="Output format",
+        default="json",
+        type_name=None,
+        required=False,
+        id_prefix="",
+    )
+
+    assert '<dl class="argparse-argument-meta">' in html
+    assert '<dt class="argparse-meta-key">Default</dt>' in html
+    assert '<dd class="argparse-meta-value"><span class="nv">json</span></dd>' in html
+
+
+def test_wrapper_div_closed() -> None:
+    """Verify wrapper div is properly closed."""
+    html = render_argument_to_html(
+        names=["-v"],
+        metavar=None,
+        help_text="Verbose",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="",
+    )
+
+    # Count opening and closing div tags
+    open_divs = html.count("<div")
+    close_divs = html.count("</div>")
+    assert open_divs == close_divs, f"Unbalanced divs in HTML: {html}"
+
+
+def test_argument_no_id_prefix() -> None:
+    """Test argument rendering without ID prefix."""
+    html = render_argument_to_html(
+        names=["--debug"],
+        metavar=None,
+        help_text="Enable debug mode",
+        default=None,
+        type_name=None,
+        required=False,
+        id_prefix="",
+    )
+
+    assert 'id="debug"' in html
+    assert 'href="#debug"' in html
+
+
+def test_metadata_uses_definition_list() -> None:
+    """Verify metadata renders as definition list, not inline paragraph."""
+    html = render_argument_to_html(
+        names=["--format"],
+        metavar=None,
+        help_text="Output format",
+        default="json",
+        type_name="str",
+        required=False,
+        id_prefix="",
+    )
+
+    assert '<dl class="argparse-argument-meta">' in html
+    assert '<dt class="argparse-meta-key">Default</dt>' in html
+    assert '<dd class="argparse-meta-value"><span class="nv">json</span></dd>' in html
+    assert '<dt class="argparse-meta-key">Type</dt>' in html
+    assert '<dd class="argparse-meta-value"><span class="nv">str</span></dd>' in html
+
+
+def test_required_renders_as_tag() -> None:
+    """Verify Required renders as standalone tag, not key-value."""
+    html = render_argument_to_html(
+        names=["--config"],
+        metavar="FILE",
+        help_text="Config file",
+        default=None,
+        type_name=None,
+        required=True,
+        id_prefix="",
+    )
+
+    assert '<dt class="argparse-meta-tag">Required</dt>' in html
+    # Should NOT have a matching dd for Required
+    assert 'argparse-meta-value">Required' not in html
