@@ -38,8 +38,8 @@ $ uvx shtab
 
 :::{tab} bash
 
-```bash
-shtab --shell=bash -u cihai_cli.cli.create_parser \
+```console
+$ shtab --shell=bash -u cihai_cli.cli.create_parser \
   | sudo tee "$BASH_COMPLETION_COMPAT_DIR"/CIHAI
 ```
 
@@ -47,8 +47,8 @@ shtab --shell=bash -u cihai_cli.cli.create_parser \
 
 :::{tab} zsh
 
-```zsh
-shtab --shell=zsh -u cihai_cli.cli.create_parser \
+```console
+$ shtab --shell=zsh -u cihai_cli.cli.create_parser \
   | sudo tee /usr/local/share/zsh/site-functions/_CIHAI
 ```
 
@@ -56,8 +56,8 @@ shtab --shell=zsh -u cihai_cli.cli.create_parser \
 
 :::{tab} tcsh
 
-```zsh
-shtab --shell=tcsh -u cihai_cli.cli.create_parser \
+```console
+$ shtab --shell=tcsh -u cihai_cli.cli.create_parser \
   | sudo tee /etc/profile.d/CIHAI.completion.csh
 ```
 
