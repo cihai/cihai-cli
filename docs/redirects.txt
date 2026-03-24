@@ -1,2 +1,2 @@
-"cli.md" "cli/index.md"
+# "cli.md" "cli/index.md"  # dirhtml: same output path
 "commands.md" "cli/index.md"
