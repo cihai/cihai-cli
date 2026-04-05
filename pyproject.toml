@@ -124,15 +124,11 @@ build-backend = "hatchling.build"
 [tool.mypy]
 strict = true
 python_version = "3.10"
-mypy_path = ["src", "docs/_ext"]
+mypy_path = ["src"]
 explicit_package_bases = true
 files = [
   "src/",
   "tests/",
-  "docs/_ext/",
-]
-exclude = [
-  "tests/docs/",
 ]
 
 [[tool.mypy.overrides]]
