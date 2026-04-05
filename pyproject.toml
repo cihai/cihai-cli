@@ -66,18 +66,10 @@ Repository = "https://github.com/cihai/cihai-cli"
 [dependency-groups]
 dev = [
   # Docs
-  "sphinx<9",
-  "furo",
+  "gp-sphinx==0.0.1a0",
+  "sphinx-argparse-neo==0.0.1a0",
   "gp-libs",
   "sphinx-autobuild",
-  "sphinx-autodoc-typehints",
-  "sphinx-design",
-  "sphinx-inline-tabs",
-  "sphinxext-opengraph",
-  "sphinx-copybutton",
-  "sphinxext-rediraffe",
-  "myst-parser",
-  "linkify-it-py",
   # Testing
   "gp-libs",
   "pytest",
@@ -100,18 +92,10 @@ dev = [
 ]
 
 docs = [
-  "sphinx<9",
-  "furo",
+  "gp-sphinx==0.0.1a0",
+  "sphinx-argparse-neo==0.0.1a0",
   "gp-libs",
   "sphinx-autobuild",
-  "sphinx-autodoc-typehints",
-  "sphinx-design",
-  "sphinx-inline-tabs",
-  "sphinxext-opengraph",
-  "sphinx-copybutton",
-  "sphinxext-rediraffe",
-  "myst-parser",
-  "linkify-it-py",
 ]
 testing = [
   "gp-libs",
