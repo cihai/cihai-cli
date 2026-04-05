@@ -66,18 +66,10 @@ Repository = "https://github.com/cihai/cihai-cli"
 [dependency-groups]
 dev = [
   # Docs
-  "sphinx<9",
-  "furo",
+  "gp-sphinx==0.0.1a1",
+  "sphinx-argparse-neo==0.0.1a1",
   "gp-libs",
   "sphinx-autobuild",
-  "sphinx-autodoc-typehints",
-  "sphinx-design",
-  "sphinx-inline-tabs",
-  "sphinxext-opengraph",
-  "sphinx-copybutton",
-  "sphinxext-rediraffe",
-  "myst-parser",
-  "linkify-it-py",
   # Testing
   "gp-libs",
   "pytest",
@@ -100,18 +92,10 @@ dev = [
 ]
 
 docs = [
-  "sphinx<9",
-  "furo",
+  "gp-sphinx==0.0.1a1",
+  "sphinx-argparse-neo==0.0.1a1",
   "gp-libs",
   "sphinx-autobuild",
-  "sphinx-autodoc-typehints",
-  "sphinx-design",
-  "sphinx-inline-tabs",
-  "sphinxext-opengraph",
-  "sphinx-copybutton",
-  "sphinxext-rediraffe",
-  "myst-parser",
-  "linkify-it-py",
 ]
 testing = [
   "gp-libs",
@@ -140,29 +124,16 @@ build-backend = "hatchling.build"
 [tool.mypy]
 strict = true
 python_version = "3.10"
-mypy_path = ["src", "docs/_ext"]
+mypy_path = ["src"]
 explicit_package_bases = true
 files = [
   "src/",
   "tests/",
-  "docs/_ext/",
-]
-exclude = [
-  "tests/docs/",
 ]
 
 [[tool.mypy.overrides]]
 module = [
   "cihai.*",
-]
-ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = [
-  "sphinx_fonts",
-  "cli_usage_lexer",
-  "argparse_lexer",
-  "argparse_roles",
 ]
 ignore_missing_imports = true
 

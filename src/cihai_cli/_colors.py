@@ -27,9 +27,15 @@ class Colors:
     >>> colors.enabled
     False
 
+    >>> monkeypatch.delenv("NO_COLOR", raising=False)
     >>> colors = Colors(ColorMode.ALWAYS)
     >>> colors.enabled
     True
+
+    >>> monkeypatch.setenv("NO_COLOR", "1")
+    >>> colors = Colors(ColorMode.ALWAYS)
+    >>> colors.enabled
+    False
     """
 
     def __init__(self, mode: ColorMode = ColorMode.AUTO) -> None:
