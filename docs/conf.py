@@ -30,7 +30,10 @@ conf = merge_sphinx_config(
     source_branch="master",
     light_logo="img/cihai.svg",
     dark_logo="img/cihai.svg",
-    extra_extensions=["sphinx_argparse_neo.exemplar"],
+    extra_extensions=[
+        "sphinx_autodoc_api_style",
+        "sphinx_argparse_neo.exemplar",
+    ],
     intersphinx_mapping={
         "python": ("http://docs.python.org/", None),
         "sphinx": ("http://www.sphinx-doc.org/en/stable/", None),
