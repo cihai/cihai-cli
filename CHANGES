@@ -40,6 +40,11 @@ _Notes on the upcoming release will go here._
 
 ### Documentation
 
+- Visual improvements to API docs from [gp-sphinx](https://gp-sphinx.git-pull.com)-based Sphinx packages (#346)
+
+
+### Documentation
+
 #### Improved CLI reference navigation (#339)
 
 - **Linkable arguments**: Each CLI argument now has a permalink (¶) for easy sharing and bookmarking
