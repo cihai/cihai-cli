@@ -42,6 +42,9 @@ _Notes on the upcoming release will go here._
 
 - Visual improvements to API docs from [gp-sphinx](https://gp-sphinx.git-pull.com)-based Sphinx packages (#346)
 - Bump gp-sphinx docs stack to v0.0.1a8 (#347)
+- Bump gp-sphinx docs stack to v0.0.1a16 — docs site now renders
+  via `gp-furo-theme`, a Tailwind v4 respin of Furo, with
+  `sphinx-vite-builder` handling theme-asset builds (#348)
 
 
 ### Documentation
