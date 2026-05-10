@@ -1,6 +1,6 @@
 # Changelog
 
-You can test the unpublished version of cihai-cli before its released, see
+You can test the unpublished version of cihai-cli before it's released, see
 [developmental releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases).
 
 [pip](https://pip.pypa.io/en/stable/):
@@ -17,8 +17,9 @@ $ pipx install \
     --pip-args '\--pre' \
     --force \
     'cihai-cli'
-// Usage: cihai@next info 好
 ```
+
+Then run the suffixed command as `cihai@next info 好`.
 
 [uv](https://docs.astral.sh/uv/getting-started/features/#python-versions):
 
@@ -38,537 +39,525 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
+cihai-cli 0.33.x refreshes the documentation experience around the command-line
+workflow. The CLI reference becomes easier to scan, bookmark, and share, while
+the documentation site moves onto the shared gp-sphinx platform used across the
+git-pull ecosystem. The command surface itself is unchanged.
+
+### What's new
+
+#### Linkable CLI reference arguments (#339)
+
+The {ref}`cli` reference now gives every command option and positional argument
+its own permalink. That makes it possible to link directly to arguments on
+{ref}`cihai-info`, {ref}`cihai-reverse`, and {ref}`cli-completions` instead of
+sending readers to the top of a long command page.
+
+Argument metadata now renders as structured key/value rows for default values,
+types, choices, and required markers. Required arguments get a compact amber tag,
+metadata styling works in both light and dark modes, and metavars with
+underscores are highlighted as one token.
+
+#### Documentation landing pages for CLI workflows (#344)
+
+The homepage now leads with the actual `cihai` workflow: installation, `cihai
+info`, `cihai reverse`, and the note that the Unihan database is downloaded on
+first use. The CLI section uses cards for `info`, `reverse`, and completions,
+while project pages collect contributing, code style, and release notes away
+from the first-run path.
+
 ### Documentation
 
-- Visual improvements to API docs from [gp-sphinx](https://gp-sphinx.git-pull.com)-based Sphinx packages (#346)
-- Bump gp-sphinx docs stack to v0.0.1a8 (#347)
-- Bump gp-sphinx docs stack to v0.0.1a16 — docs site now renders
-  via `gp-furo-theme`, a Tailwind v4 respin of Furo, with
-  `sphinx-vite-builder` handling theme-asset builds (#348)
+#### Faster, steadier docs navigation (#342)
 
+The site gained self-hosted IBM Plex fonts, fallback font metrics, explicit
+image dimensions, badge placeholders, and SPA-style internal navigation. Those
+changes reduce font flash, layout shift, repeated asset downloads, and abrupt
+page swaps while preserving regular static HTML output for search engines and
+direct links.
 
-### Documentation
+#### Copy-pasteable command examples (#343)
 
-#### Improved CLI reference navigation (#339)
+Shell examples across the docs and changelog now use `console` blocks with a
+prompt marker and one logical command per block. Long commands use continuation
+lines so examples are readable without making copy/paste awkward.
 
-- **Linkable arguments**: Each CLI argument now has a permalink (¶) for easy sharing and bookmarking
-- **Clearer metadata display**: Default values, types, and choices are now displayed in a structured format
-- **Required arguments highlighted**: Required arguments are visually distinguished with an amber tag
-- **Dark mode support**: All new styling adapts to your system's light/dark preference
+#### Shared gp-sphinx documentation platform (#345, #346, #347, #348)
 
-<!-- Maintainers, insert changes / features for the next release here -->
+cihai-cli now consumes the published [gp-sphinx](https://gp-sphinx.git-pull.com)
+documentation stack instead of carrying repo-local Sphinx extensions, templates,
+stylesheets, and JavaScript. The migration keeps the CLI reference features but
+moves maintenance to shared packages, including `sphinx-autodoc-argparse` for
+argparse pages and `sphinx-autodoc-api-style` for card-style internal API docs.
+
+The docs stack was then bumped through gp-sphinx 0.0.1a8 and 0.0.1a16. Those
+updates bring the renamed autodoc packages, the argparse domain, namespaced
+CSS, the `gp-furo-theme` Tailwind v4 Furo respin, and `sphinx-vite-builder` so
+theme assets are built and packaged by the shared docs platform.
 
 ## cihai-cli 0.32.0 (2026-01-24)
+
+cihai-cli 0.32.0 is the CLI documentation overhaul release. It adds color-aware
+help examples to the actual command line, replaces the older Sphinx argparse
+extension with a richer in-tree documentation engine, and marks the package as
+typed for downstream tools.
 
 ### What's new
 
 #### Colored CLI help output (#337)
 
-- Add syntax highlighting for CLI help examples
-- New `_colors.py` module with ANSI color support respecting `NO_COLOR`/`FORCE_COLOR`
-- New `_formatter.py` with custom argparse HelpFormatter for colored examples
+`cihai --help`, `cihai info --help`, and `cihai reverse --help` now include
+syntax-highlighted examples. Color output respects `NO_COLOR` and `FORCE_COLOR`,
+so terminals, CI logs, and documentation builds can each select the right
+rendering mode.
 
-#### Replace sphinx-argparse with sphinx_argparse_neo (#337)
+#### CLI reference engine for argparse output (#337)
 
-- Port `sphinx_argparse_neo` extension from vcspull, replacing external `sphinx-argparse` dependency
-- Add custom Pygments lexers for argparse and CLI usage syntax highlighting:
-  - `argparse_lexer.py` - Lexer for argparse help text
-  - `cli_usage_lexer.py` - Lexer for CLI usage patterns
-- Add `argparse_exemplar.py` extension for transforming argparse epilog examples into documentation
-- Add `argparse_roles.py` for custom Sphinx roles (`:opt:`, `:arg:`, `:prog:`)
-- Add CSS styling for syntax-highlighted argparse output
-- Add comprehensive test suite for all Sphinx extensions
+The docs replaced `sphinx-argparse` with `sphinx_argparse_neo`, a maintained
+argparse documentation path ported into this project. It provides custom
+Pygments lexers for usage/help output, transforms epilog examples into normal
+documentation sections, exposes argparse roles, and strips ANSI escape codes
+when colored help is rendered into Sphinx.
 
-#### Dev dependencies
+### Development
 
-- Add `types-docutils` and `types-Pygments` for type checking Sphinx extensions (#337)
+#### Typed package marker (#337)
 
-### Packaging
-
-- Add `py.typed` marker for [PEP 561] type checking support (#337)
-
-[PEP 561]: https://peps.python.org/pep-0561/
+cihai-cli now ships `py.typed` for [PEP 561](https://peps.python.org/pep-0561/)
+type checker discovery. The release also added the docutils and Pygments type
+stubs needed to keep the documentation extensions under strict mypy.
 
 ## cihai-cli 0.31.1 (2026-01-24)
 
+cihai-cli 0.31.1 keeps the CLI aligned with the trusted-publishing release of
+the core `cihai` library. It also moves local developer commands from Make to
+Just and updates documentation deployment credentials to the newer OIDC flow.
+
 ### Breaking changes
 
-- Bump cihai 0.36.0 -> 0.36.1 (#338)
+Minimum `cihai~=0.36.1` (was `~=0.36.0`). The bump picks up cihai's PyPI Trusted
+Publisher release and the corresponding trusted `unihan-etl` dependency chain.
+(#338)
 
-### CI
+### Documentation
 
-- Migrate to PyPI Trusted Publisher (#332)
+Docs deployment moved to AWS OIDC authentication and the AWS CLI, removing the
+older long-lived credential path from the publishing workflow.
 
 ### Development
 
 #### Makefile -> Justfile (#333)
 
-- Migrate from `Makefile` to `justfile` for running development tasks
-- Update documentation to reference `just` commands
+Development tasks moved from `Makefile` to `justfile`. Project documentation now
+uses `just` commands for test, lint, type-check, and docs workflows.
 
-### Documentation
-
-- Migrate docs deployment to AWS OIDC authentication and AWS CLI
+cihai-cli migrated package publishing to PyPI Trusted Publisher. (#332)
 
 ## cihai-cli 0.31.0 (2025-11-01)
 
+cihai-cli 0.31.0 is the Python 3.10 baseline release. It follows the core
+`cihai` library to 0.36.0, keeps the test matrix current with Python 3.14, and
+adopts deferred annotations consistently across the package.
+
 ### Breaking changes
 
-- Bump cihai 0.35.0 -> 0.36.0
-- Drop support for Python 3.9; the new minimum is Python 3.10 (#330).
+Minimum Python is now 3.10; Python 3.9 is no longer supported. Python 3.9
+reached end of life on October 31, 2025. See the
+[Python release timeline](https://devguide.python.org/versions/) and
+[PEP 596](https://peps.python.org/pep-0596/) for the upstream schedule. (#330)
 
-  See also:
-  - [Python 3.9 EOL timeline](https://devguide.python.org/versions/#:~:text=Release%20manager-,3.9,-PEP%20596)
-  - [PEP 596](https://peps.python.org/pep-0596/)
+Minimum `cihai~=0.36.0` (was `~=0.35.0`).
 
 ### Development
 
-- Add Python 3.14 to test matrix (#329)
+Python 3.14 was added to the test matrix. (#329)
 
-#### chore: Implement PEP 563 deferred annotation resolution (#324)
-
-- Add `from __future__ import annotations` to defer annotation resolution and reduce unnecessary runtime computations during type checking.
-- Enable Ruff checks for PEP-compliant annotations:
-  - [non-pep585-annotation (UP006)](https://docs.astral.sh/ruff/rules/non-pep585-annotation/)
-  - [non-pep604-annotation (UP007)](https://docs.astral.sh/ruff/rules/non-pep604-annotation/)
-
-For more details on PEP 563, see: https://peps.python.org/pep-0563/
+The codebase now uses `from __future__ import annotations` and enables Ruff's
+PEP-compliant annotation checks for `UP006` and `UP007`. That defers annotation
+resolution at runtime while moving style enforcement into the normal lint gate.
+(#324)
 
 ## cihai-cli 0.30.0 (2024-12-21)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.30.0 is a maintenance release for the Python 3.9 floor. It drops
+Python 3.8, follows `cihai` to its Python 3.9-compatible release line, and
+applies the current Ruff autofix set across the project.
 
 ### Breaking changes
 
-- Drop Python 3.8 (#323)
+Minimum Python is now 3.9; Python 3.8 is no longer supported. Python 3.8 reached
+end of life on October 7, 2024. See [PEP 569](https://peps.python.org/pep-0569/)
+for the upstream release schedule. (#323)
 
-  The minimum version of Python in this and future releases is Python 3.9.
-
-  Python 3.8 reached end-of-life status on October 7th, 2024 (see PEP 569).
-
-- cihai: Bump minimum version to 0.35.0 (#323)
-
-  Requires Python 3.9.
-
-  Updates unihan-etl to 0.37.0, which also requires Python 3.9.
+Minimum `cihai~=0.35.0` (was `~=0.34.0`). That also brings in
+`unihan-etl>=0.37.0`, which requires Python 3.9. (#323)
 
 ### Development
 
-- Aggressive automated lint fixes via `ruff` (#323)
+Ruff 0.8.4 was applied with all selected automated fixes, including preview and
+unsafe fixes, then formatted the tree. (#323)
 
-  via ruff v0.8.4, all automated lint fixes, including unsafe and previews were applied for Python 3.9:
-
-  ```console
-  $ ruff check --select ALL . --fix --unsafe-fixes --preview --show-fixes; ruff format .
-  ```
+```console
+$ ruff check --select ALL . --fix --unsafe-fixes --preview --show-fixes; ruff format .
+```
 
 ## cihai-cli 0.29.0 (2024-11-26)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.29.0 moves project management from Poetry to uv and packaging from
+Poetry's build backend to Hatchling. The release is maintenance-only for users,
+but it changes the contributor and release toolchain substantially.
 
-#### Project and package management: poetry to uv (#321)
+### Breaking changes
 
-[uv] is the new package and project manager for the project, replacing Poetry.
+#### Project management moved from Poetry to uv (#321)
 
-[uv]: https://github.com/astral-sh/uv
+[uv](https://github.com/astral-sh/uv) is now the project and dependency manager.
+Locking, local installs, and contributor setup use uv instead of Poetry.
 
-#### Build system: poetry to hatchling (#321)
+#### Build backend moved to Hatchling (#321)
 
-[Build system] moved from [poetry] to [hatchling].
-
-[Build system]: https://packaging.python.org/en/latest/tutorials/packaging-projects/#choosing-a-build-backend
-[poetry]: https://github.com/python-poetry/poetry
-[hatchling]: https://hatch.pypa.io/latest/
+The package build system moved from [poetry](https://github.com/python-poetry/poetry)
+to [hatchling](https://hatch.pypa.io/latest/). See the Python Packaging User
+Guide's [build backend overview](https://packaging.python.org/en/latest/tutorials/packaging-projects/#choosing-a-build-backend)
+for the packaging model.
 
 ### Development
 
-- Code quality: Use f-strings in more places (#312)
-
-  via [ruff 0.4.2](https://github.com/astral-sh/ruff/blob/v0.4.2/CHANGELOG.md).
+Ruff 0.4.2 code-quality fixes were applied, including f-string modernization in
+places where the linter could safely improve readability. (#312)
 
 ## cihai-cli 0.28.0 (2024-04-06)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.28.0 is a maintenance release focused on documentation hygiene and
+the latest cihai 0.33.x dependency line.
 
 ### Documentation
 
-- Automatically linkify links that were previously only text.
+Plain-text links in the docs are now automatically linkified.
 
 ### Development
 
-- cihai: 0.32.0 -> 0.33.0
-
-  Ruff linting for cihai package.
+Minimum `cihai~=0.33.0` (was `~=0.32.0`). The bump follows cihai's Ruff linting
+updates.
 
 ## cihai-cli 0.27.0 (2024-04-01)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.27.0 is a maintenance release for the cihai 0.32.x dependency line
+and the Ruff 0.3 toolchain. It keeps the CLI aligned with Unihan ETL fixes while
+modernizing lint command usage.
 
 ### Development
 
-- cihai: 0.31.0 -> 0.32.0
+Minimum `cihai~=0.32.0` (was `~=0.31.0`), including `unihan-etl>=0.34.0`.
 
-  - unihan-etl: 0.31.0 -> 0.34.0
+Ruff was bumped from 0.2.2 to 0.3.0 and CI now runs `ruff check .` instead of
+the older `ruff .` command form. (#309)
 
-- Aggressive automated lint fixes via `ruff` (#310)
+Ruff 0.3.4 automated fixes were applied across active branches before the
+release. (#310)
 
-  via ruff v0.3.4, all automated lint fixes, including unsafe and previews were applied:
-
-  ```console
-  $ ruff check --select ALL . --fix --unsafe-fixes --preview --show-fixes; ruff format .
-  ```
-
-  Branches were treated with:
-
-  ```console
-  $ git rebase \
-      --strategy-option=theirs \
-      --exec 'poetry run ruff check --select ALL . --fix --unsafe-fixes --preview --show-fixes; poetry run ruff format .; git add src tests; git commit --amend --no-edit' \
-      origin/master
-  ```
-
-- poetry: 1.7.1 -> 1.8.2
-
-  See also: https://github.com/python-poetry/poetry/blob/1.8.2/CHANGELOG.md
-
-- ruff 0.2.2 -> 0.3.0 (#309)
-
-  Related formattings. Update CI to use `ruff check .` instead of `ruff .`.
-
-  See also: https://github.com/astral-sh/ruff/blob/v0.3.0/CHANGELOG.md
+```console
+$ ruff check --select ALL . --fix --unsafe-fixes --preview --show-fixes; ruff format .
+```
 
 ## cihai-cli 0.26.0 (2024-02-09)
 
+cihai-cli 0.26.0 brings the CLI onto the Unihan 15.1 data line through cihai
+0.31.0 and unihan-etl 0.33.1. Users get the current Unicode data compatibility
+without changing the `cihai info` or `cihai reverse` command model.
+
 ### What's new
 
-- cihai: 0.30.0 -> 0.31.0 (#308):
+#### Unihan 15.1 compatibility (#308)
 
-  Bump UNIHAN compatibility from 11.0.0 to [15.1.0](https://www.unicode.org/reports/tr38/tr38-35.html#History) (released 2023-09-01, revision 35).
-
-  - unihan-etl: 0.29.0 -> 0.33.1
-
-    - 0.30.1 -> 0.33: UNIHAN compatibility bumped to 15.1.0.
-    - 0.29.0 -> 0.30.1: Fix `kRSUnicode` double apostrophes.
+The cihai dependency now supports Unihan 15.1.0, released September 1, 2023 in
+[TR38 revision 35](https://www.unicode.org/reports/tr38/tr38-35.html#History).
+The underlying unihan-etl bump also includes the earlier `kRSUnicode` double
+apostrophe fix.
 
 ### Development
 
-- Strengthen linting (#307)
-
-  - Add flake8-commas (COM)
-
-    - https://docs.astral.sh/ruff/rules/#flake8-commas-com
-    - https://pypi.org/project/flake8-commas/
-
-  - Add flake8-builtins (A)
-
-    - https://docs.astral.sh/ruff/rules/#flake8-builtins-a
-    - https://pypi.org/project/flake8-builtins/
-
-  - Add flake8-errmsg (EM)
-
-    - https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
-    - https://pypi.org/project/flake8-errmsg/
+Ruff linting was strengthened with `flake8-commas`, `flake8-builtins`, and
+`flake8-errmsg` rule families. (#307)
 
 ## cihai-cli 0.25.0 (2023-12-09)
 
-_Maintenance only, no bug fixes, or new features_
-
-### Development
-
-- cihai: 0.29.0 -> 0.30.0
-
-  - pydocstyle docstrings
-  - Bug fixes for unused character utility functions
-
-### CI
-
-- Move CodeQL from advanced configuration file to GitHub's default
-- ci: Add pydocstyle rule to ruff (#304)
+cihai-cli 0.25.0 is a maintenance release for docstring coverage, CI cleanup,
+and the cihai 0.30.x dependency line.
 
 ### Documentation
 
-- Add docstrings to functions, methods, classes, and packages (#304)
+Functions, methods, classes, and packages gained docstrings. (#304)
+
+### Development
+
+Minimum `cihai~=0.30.0` (was `~=0.29.0`). The cihai release includes
+pydocstyle-oriented docstrings and fixes for unused character utility functions.
+
+The pytest configuration moved into `pyproject.toml`, and pydocstyle checks were
+added to Ruff. (#301, #304)
+
+CodeQL moved from an advanced configuration file to GitHub's default setup.
+(#304)
 
 ## cihai-cli 0.24.0 (2023-11-19)
 
-_Maintenance only, no bug fixes, or new features_
-
-### Packaging
-
-- Move pytest configuration to `pyproject.toml` (#301)
-- Add Python 3.12 to trove classifiers
-- Packaging (poetry): Fix development dependencies
-
-  Per [Poetry's docs on managing dependencies] and `poetry check`, we had it wrong: Instead of using extras, we should create these:
-
-  ```toml
-  [tool.poetry.group.group-name.dependencies]
-  dev-dependency = "1.0.0"
-  ```
-
-  Which we now do.
-
-  [Poetry's docs on managing dependencies]: https://python-poetry.org/docs/master/managing-dependencies/
+cihai-cli 0.24.0 is a maintenance release for Python 3.12 packaging metadata,
+Poetry dependency-group cleanup, and the switch from Black to Ruff formatting.
 
 ### Development
 
-- unihan-etl: 0.28.0 -> 0.29.0 (maintenance release)
-- ruff: Remove ERA / `eradicate` plugin
+Pytest configuration now lives in `pyproject.toml`, Python 3.12 appears in the
+package classifiers, and Poetry development dependencies use dependency groups
+instead of extras. (#301)
 
-  This rule had too many false positives to trust. Other ruff rules have been beneficial.
+Formatting moved from Black to [`ruff format`](https://docs.astral.sh/ruff/formatter/),
+keeping Black-compatible style while removing a separate formatter dependency.
+(#302)
 
-- Poetry: 1.6.1 -> 1.7.0
+Minimum `unihan-etl>=0.29.0` through the cihai dependency line.
 
-  See also: https://github.com/python-poetry/poetry/blob/1.7.0/CHANGELOG.md
+Poetry was bumped from 1.6.1 to 1.7.0, and the `eradicate` Ruff rule family was
+removed after too many false positives.
 
-- Move formatting from `black` to [`ruff format`] (#302)
-
-  This retains the same formatting style of `black` while eliminating a
-  dev dependency by using our existing rust-based `ruff` linter.
-
-  [`ruff format`]: https://docs.astral.sh/ruff/formatter/
-
-- CI: Update action packages to fix warnings
-
-  - [dorny/paths-filter]: 2.7.0 -> 2.11.1
-
-  [dorny/paths-filter]: https://github.com/dorny/paths-filter
+GitHub Actions dependencies were updated to clear workflow warnings, including
+`dorny/paths-filter` 2.11.1.
 
 ## cihai-cli 0.23.0 (2023-07-22)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.23.0 is a maintenance release that follows cihai 0.28.0 for pytest
+plugin updates.
 
 ### Development
 
-- cihai: 0.27.0 -> 0.28.0
-
-  Update pytest plugin
+Minimum `cihai~=0.28.0` (was `~=0.27.0`).
 
 ## cihai-cli 0.22.0 (2023-07-18)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.22.0 is a maintenance release that picks up cihai 0.27.0 and the
+unihan-etl pytest fixes beneath it.
 
 ### Development
 
-- cihai: 0.26.0 -> 0.27.0 (#300)
-
-  Includes unihan-etl 0.25.2 -> 0.27.0 pytest fixes
+Minimum `cihai~=0.27.0` (was `~=0.26.0`), including unihan-etl 0.27.0 pytest
+fixes. (#300)
 
 ## cihai-cli 0.21.2 (2023-07-18)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.21.2 is a maintenance release for Ruff-driven code-quality fixes.
 
 ### Development
 
-- Ruff: Code quality fixes (#299)
+Ruff fixes were applied across the project. (#299)
 
 ## cihai-cli 0.21.1 (2023-07-02)
 
-### Bug Fixes
+cihai-cli 0.21.1 restores the main user workflows after regressions in the
+previous release.
 
-- Fix `cihai info` and `cihai reverse` (#297, #298)
+### Fixes
+
+`cihai info` and `cihai reverse` were fixed. (#297, #298)
 
 ## cihai-cli 0.21.0 (2023-07-01)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.21.0 is a maintenance release for stricter Ruff enforcement and the
+cihai 0.26.x dependency line.
 
 ### Development
 
-- ruff: Increase code quality strictness, implement code improvements (#295)
-- cihai: 0.25.0 -> 0.26.0 (linting updates through stricter ruff settings)
+Ruff strictness increased and the resulting code improvements were applied.
+(#295)
 
-  unihan-etl: 0.24.0 -> 0.25.0 (linting improvements in the same way)
+Minimum `cihai~=0.26.0` (was `~=0.25.0`), including matching lint updates in
+unihan-etl 0.25.0.
 
 ## cihai-cli 0.20.0 (2023-06-25)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.20.0 is a dependency maintenance release. It follows cihai through
+0.25.0 and picks up the zhon 2.0 regular-expression warning fix through
+unihan-etl.
 
 ### Development
 
-- cihai: 0.23.0 -> 0.25.0 (#298)
-
-  - Subdependency unihan-etl: 0.23.1 -> 0.24.0
-
-    - Subdependency updated for zhon: 1.1.5 -> 2.0.0
-
-      [zhon 2.0's Release notes](https://github.com/tsroten/zhon/blob/v2.0.0/CHANGES.rst#v200-2023-06-24)
-
-      Fixes pytest warning related to regular expressions.
+Minimum `cihai~=0.25.0` (was `~=0.23.0`). The dependency chain includes
+unihan-etl 0.24.0 and zhon 2.0.0, which fixes pytest regular-expression
+warnings. (#298)
 
 ## cihai-cli 0.19.0 (2023-06-24)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.19.0 follows cihai and unihan-etl's dataclass-based configuration
+work.
 
 ### Development
 
-- cihai: 0.21.0 to 0.22.1
-
-  Sub-dependency unihan-etl to 0.21.1 -> 0.22.2, which has
-  {obj}`dataclasses.dataclass`-based configuration.
+Minimum `cihai~=0.22.1` (was `~=0.21.0`). The dependency chain includes
+unihan-etl 0.22.2 with `dataclasses.dataclass`-based configuration.
 
 ## cihai-cli 0.18.0 (2023-06-19)
 
+cihai-cli 0.18.0 follows cihai's pathlib and typing cleanup.
+
 ### Development
 
-- cihai: Bumps to 0.22.1
-
-  Reliance on {mod}`pathlib`-based file paths, typings.
+Minimum `cihai~=0.22.1`. This dependency line relies on `pathlib`-based paths
+and improved type annotations.
 
 ## cihai-cli 0.17.0 (2023-06-04)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.17.0 is the Python 3.8 baseline release. It drops Python 3.7,
+tightens typing, and follows cihai into its SQLAlchemy 2.0 dependency line.
 
 ### Breaking changes
 
-- **Python 3.7 Dropped**
+Python 3.7 support was dropped. Python 3.7 reached end of life on June 27, 2023,
+and Python 3.8 provides `typing.TypedDict` and `typing.Protocol` without
+`typing_extensions`. (#290)
 
-  Python 3.7 support has been dropped (#290)
+### Development
 
-  Its end-of-life is June 27th, 2023 and Python 3.8 will add support for
-  `typing.TypedDict` and `typing.Protocol` out of the box without needing
-  `typing_extensions`.
+Strict mypy compliance was added. (#277)
 
-### Internal improvements
+Tests moved from pytest's `tmpdir` / `py.path.local` fixture to `tmp_path` /
+`pathlib.Path`. (#292)
 
-- Typings: Add `--strict` mypy compliance (#277)
-- Move from pytest's `tmp_dir` (`py.path.local`) to `tmp_path` (`pathlib.Path`),
-  #292
-- Remove unnecessary use of `typing_extension`'s `TypedDict` (#292)
+Unnecessary `typing_extensions.TypedDict` imports were removed where the Python
+floor made stdlib `typing.TypedDict` available. `typing_extensions` remains
+needed for `NotRequired` until the project can require Python 3.11. (#292)
 
-  Note: `typing_extension`'s `TypedDict` is still
-  used for `NotRequired` `TypedDict`s until the minimum python version supports
-  them ([3.11](https://www.python.org/downloads/release/python-3110/) via [PEP-655](https://peps.python.org/pep-0655/))
-
-- cihai:
-
-  - Update 0.19.0 -> 0.20.0: Add mypy strict typings
-  - Update 0.20.0 -> 0.21.0: SQLAlchemy 2.0 (#292)
+Minimum `cihai~=0.21.0` includes strict typing work and the SQLAlchemy 2.0
+migration from the core library.
 
 ## cihai-cli 0.16.0 (2023-05-29)
 
-_Maintenance only, no bug fixes, or new features_
+cihai-cli 0.16.0 is the final Python 3.7-compatible release and the first
+release to consolidate linting and formatting on Ruff.
 
 ### Breaking changes
 
-0.16.0 will be the final Python 3.7 release.
+0.16.0 is the final release that supports Python 3.7.
 
-### Internal improvements
+### Development
 
-- Move formatting, import sorting, and linting to [ruff].
+Formatting, import sorting, and linting moved from isort, flake8, and Black-era
+tooling to [Ruff](https://ruff.rs).
 
-  This rust-based checker has dramatically improved performance. Linting and
-  formatting can be done almost instantly.
+Poetry was bumped from 1.4.0 to 1.5.0.
 
-  This change replaces isort, flake8 and flake8 plugins.
-
-- poetry: 1.4.0 -> 1.5.0
-
-  See also: https://github.com/python-poetry/poetry/releases/tag/1.5.0
-
-- Update cihai 0.18.3 -> 0.19.0 and unihan-etl 0.18.2 -> 0.19.1
-
-  Moved to linting ruff (no changes to the production package itself)
-
-[ruff]: https://ruff.rs
+Minimum `cihai~=0.19.0` and unihan-etl 0.19.1 carry the same Ruff migration in
+the dependency stack.
 
 ## cihai-cli 0.15.2 (2022-10-02)
 
-_Maintenance only, no bug fixes or new features_
-
-### Development
-
-- Update cihai 0.18.1 -> 0.18.3
-
-  - Sub-dependency updated: unihan-etl 0.18.1 -> 0.18.2
-
-    Typing update for `merge_dict`
+cihai-cli 0.15.2 is a maintenance release for the cihai 0.18.x line and docs
+navigation.
 
 ### Documentation
 
-- Add migrations page
-- Add back page on completions
+The migration page was added, and the completions page link was restored.
+
+### Development
+
+Minimum `cihai~=0.18.3` (was `~=0.18.1`), including unihan-etl 0.18.2 typing
+updates for `merge_dict`.
 
 ## cihai-cli 0.15.1 (2022-10-02)
 
-### Bug fix
+cihai-cli 0.15.1 fixes CLI help text descriptions.
 
-- CLI: Fix help text descriptions
+### Fixes
+
+Command help descriptions now render correctly.
 
 ## cihai-cli 0.15.0 (2022-10-02)
 
-### Internal
-
-- Move from click to {mod}`argparse` (#286)
-
-### Packaging
-
-- Drop click dependency (#286)
-
-## cihai-cli 0.14.0 (2022-10-01)
-
-### Packages
-
-- Update to cihai v0.18.1+ (kaptan dependency removed)
-
-## cihai-cli 0.13.1 (2022-10-01)
-
-### Infrastructure
-
-- CI speedups (#285)
-
-  - Split out release to separate job so the PyPI Upload docker image isn't pulled on normal runs
-  - Clean up CodeQL
-
-- Poetry: Bump 1.1.x to 1.2.x
-
-  - Fix click constraint for poetry 1.2 (was missing a comma)
-
-## cihai-cli 0.13.0 (2022-09-11)
-
-**This is a maintenance only release, no bugfixes or features.**
-
-### Development
-
-- Move to `src/` layout (#284)
-- Add [flake8-bugbear](https://github.com/PyCQA/flake8-bugbear) (#281)
-- Add [flake8-comprehensions](https://github.com/adamchainz/flake8-comprehensions) (#282)
-
-### Documentation
-
-- Render changelog in [`linkify_issues`] (~~#280~~, #283)
-- Fix Table of contents rendering with sphinx autodoc with [`sphinx_toctree_autodoc_fix`] (#283)
-- Test doctests in our docs via [`pytest_doctest_docutils`] (built on [`doctest_docutils`]) (#283)
-
-[`linkify_issues`]: https://gp-libs.git-pull.com/linkify_issues/
-[`sphinx_toctree_autodoc_fix`]: https://gp-libs.git-pull.com/sphinx_toctree_autodoc_fix/
-[`pytest_doctest_docutils`]: https://gp-libs.git-pull.com/doctest/pytest.html
-[`doctest_docutils`]: https://gp-libs.git-pull.com/doctest
-
-## cihai-cli 0.12.0 (2022-08-21)
-
-### Internal
-
-- cihai v0.16.0 (with strict typings from unihan-etl v0.17.x)
-
-## cihai-cli 0.11.0 (2022-08-20)
+cihai-cli 0.15.0 replaces Click with stdlib argparse. The command names remain
+focused on character lookup and reverse definition search, but the CLI no
+longer needs Click at runtime.
 
 ### Breaking changes
 
-The CLI version of `cihai` installed through `cihai-cli` again
+The command-line implementation moved from `click` to `argparse`. (#286)
 
-Before (cihai 0.9 to 0.14, cihai-cli 0.5 to 0.10):
+### Development
+
+The Click dependency was removed. (#286)
+
+## cihai-cli 0.14.0 (2022-10-01)
+
+cihai-cli 0.14.0 follows cihai 0.18.1 and removes the kaptan dependency from
+the installed stack.
+
+### Dependencies
+
+Minimum `cihai>=0.18.1`; kaptan is no longer installed through the cihai
+dependency chain.
+
+## cihai-cli 0.13.1 (2022-10-01)
+
+cihai-cli 0.13.1 speeds up CI and updates Poetry for the 1.2 dependency
+constraint model.
+
+### Development
+
+Release publishing moved into a separate job so normal CI does not pull the PyPI
+upload image. CodeQL was also cleaned up. (#285)
+
+Poetry moved from 1.1.x to 1.2.x, including the corrected Click constraint for
+Poetry 1.2.
+
+## cihai-cli 0.13.0 (2022-09-11)
+
+cihai-cli 0.13.0 is a project-structure and documentation-testing release. It
+moves to a `src/` layout, broadens lint coverage, and starts testing docs
+examples as part of the normal validation path.
+
+### Development
+
+The package moved to a `src/` layout. (#284)
+
+`flake8-bugbear` and `flake8-comprehensions` were added to the lint stack.
+(#281, #282)
+
+### Documentation
+
+The changelog now renders through `linkify_issues`, table-of-contents rendering
+was fixed for Sphinx autodoc pages, and docs doctests run through
+`pytest_doctest_docutils`. (#283)
+
+## cihai-cli 0.12.0 (2022-08-21)
+
+cihai-cli 0.12.0 follows cihai 0.16.0 and the strict typing work in unihan-etl
+0.17.x.
+
+### Development
+
+Minimum `cihai~=0.16.0`.
+
+## cihai-cli 0.11.0 (2022-08-20)
+
+cihai-cli 0.11.0 restores the separate `cihai-cli` distribution as the way to
+install the command-line frontend. This avoids making cihai's library package
+carry the CLI extra as the primary install path.
+
+### Breaking changes
+
+Install the CLI through `cihai-cli` again.
+
+Before, cihai 0.9 through 0.14 and cihai-cli 0.5 through 0.10 used the cihai
+extra:
 
 ```console
 $ pip install cihai[cli]
 ```
 
-After (cihai 0.15+, cihai-cli 0.11+):
+After cihai 0.15 and cihai-cli 0.11, install the CLI package directly:
 
 ```console
 $ pip install cihai-cli
 ```
 
-Modern uv-based workflows can either add the CLI to a project:
+Modern uv workflows can add the CLI to a project:
 
 ```console
 $ uv add cihai-cli
@@ -580,173 +569,231 @@ Install it as a user-wide tool:
 $ uv tool install cihai-cli
 ```
 
-Or run it on-demand:
+Or run it on demand:
 
 ```console
 $ uvx --from cihai-cli cihai --version
 ```
 
-This made deploying cihai + cihai-cli and pinning packages extremely laborious.
-
-We can reinvestigate this model in the future.
-
-via: [cihai#326](https://github.com/cihai/cihai/pull/326), **[cihai-cli#279](https://github.com/cihai/cihai-cli/pull/279)**
+See [cihai#326](https://github.com/cihai/cihai/pull/326) and
+[cihai-cli#279](https://github.com/cihai/cihai-cli/pull/279).
 
 ## cihai-cli 0.10.x (2022-08-20)
 
+cihai-cli 0.10.x removes Python 2 compatibility code left over after the
+earlier support drop.
+
 ### Breaking changes
 
-- Python 2 compatibility module and imports removed. Python 2.x was officially
-  dropped in 0.7.0 (2021-06-15) via #278
+Python 2 compatibility modules and imports were removed. Python 2.x had already
+been officially dropped in 0.7.0. (#278)
 
 ## cihai-cli 0.9.0 (2022-08-16)
 
-### Compatibility
+cihai-cli 0.9.0 updates Python compatibility, adds the first doctest path, and
+switches the documentation theme to Furo.
 
-- Remove python 3.6 support (#269)
-- Add python 3.10 support (#269)
+### Breaking changes
 
-### Development
+Python 3.6 support was removed. (#269)
 
-Infrastructure updates for static type checking and doctest examples.
+### What's new
 
-- Update poetry to 1.1
-  - CI: Use poetry 1.1.12 and `install-poetry.py` installer (#255 + #269)
-  - Relock poetry.lock at 1.1 (w/ 1.1.7's fix)
-- pyupgrade to python 3.7
-
-- Initial [doctests] support added, via #276
-
-  [doctests]: https://docs.python.org/3/library/doctest.html
-
-- Initial [mypy] validation, via #276
-
-  [mypy]: https://github.com/python/mypy
-
-- CI (tests, docs): Improve caching of python dependencies via
-  `action/setup-python`'s v3/4's new poetry caching, via #276
-
-- CI (docs): Skip if no `PUBLISH` condition triggered, via #276
-
-### Tests
-
-- Refactor `tmpdir` -> `tmp_path`
+Python 3.10 support was added. (#269)
 
 ### Documentation
 
-- Use `furo` theme
+Doctest support was added, and the docs moved to the Furo theme. (#276)
+
+### Development
+
+Poetry was updated to the 1.1 line, CI dependency caching was improved with
+`actions/setup-python`, and initial mypy validation was added. (#255, #269,
+#276)
+
+Tests moved from `tmpdir` to `tmp_path`.
 
 ## cihai-cli 0.8.1 (2021-06-16)
 
-- Update cihai to 0.12
+cihai-cli 0.8.1 updates the cihai dependency to 0.12.
+
+### Development
+
+Minimum `cihai~=0.12.0`.
 
 ## cihai-cli 0.8.0 (2021-06-16)
 
-- #252: Convert to markdown
+cihai-cli 0.8.0 converts project documentation to Markdown.
+
+### Documentation
+
+The documentation source moved to Markdown. (#252)
 
 ## cihai-cli 0.7.2 (2021-06-15)
 
-- Set cihai to 0.11.1+ to fix sqlalchemy issue
+cihai-cli 0.7.2 updates the cihai dependency to fix a SQLAlchemy issue.
+
+### Fixes
+
+Minimum `cihai>=0.11.1` for the SQLAlchemy fix.
 
 ## cihai-cli 0.7.1 (2021-06-15)
 
-- Fix README in packaging
+cihai-cli 0.7.1 fixes README packaging.
+
+### Fixes
+
+The README is included correctly in package metadata.
 
 ## cihai-cli 0.7.0 (2021-06-15)
 
-- Update `black` to 21.6b0
-- Update trove classifiers to 3.9
-- #251 Drop python 2.7 and 3.5. Remove deprecated `__future__` and modesets
+cihai-cli 0.7.0 removes legacy Python support and updates packaging metadata
+for the Python 3-only line.
+
+### Breaking changes
+
+Python 2.7 and Python 3.5 support were dropped, along with deprecated
+`__future__` imports and modesets. (#251)
+
+### Development
+
+Black was updated to 21.6b0, and trove classifiers were updated for Python 3.9.
 
 ## cihai-cli 0.6.0 (2020-08-09)
 
-- #249 Move packaging / publishing to poetry
-- #248 Self host docs
-- #248 Add metadata / icons / etc. for doc site
-- #248 Move travis -> github actions
-- #248 Overhaul Makefiles
+cihai-cli 0.6.0 is an infrastructure release for packaging, documentation
+hosting, and GitHub Actions.
+
+### Documentation
+
+The docs became self-hosted and gained site metadata and icons. (#248)
+
+### Development
+
+Packaging and publishing moved to Poetry, Travis CI moved to GitHub Actions,
+and Makefiles were overhauled. (#248, #249)
 
 ## cihai-cli 0.5.1 (2020-07-03)
 
-- #247 - Move from Pipfile to Poetry
-- Fixed bug in Python 2.x when showing help / "cihai"
+cihai-cli 0.5.1 continues the packaging migration and fixes a Python 2 help
+display bug.
+
+### Fixes
+
+Help output works again on Python 2.x.
+
+### Development
+
+Project dependency management moved from Pipfile to Poetry. (#247)
 
 ## cihai-cli 0.5.0 (2019-08-18)
 
-- Add `project_urls` to setup.py
-- Installation is now done via `pip --user install cihai[cli]`
-- README Fixed to use plain reStructuredText
-- Miscellaneous package updates for pytest, other support packages
-- Loosening of version requirements
+cihai-cli 0.5.0 updates package metadata and relaxes dependency constraints
+around the then-current `cihai[cli]` install model.
+
+### Development
+
+`project_urls` were added to `setup.py`, the README was fixed to use plain
+reStructuredText, and package requirements were loosened.
+
+The documented install path at the time was:
+
+```console
+$ pip --user install cihai[cli]
+```
+
+### Development
+
+Pytest and other support packages were updated.
 
 ## cihai-cli 0.5.0a (2018-09-08)
 
-- #91 `-V` / `-version` now shows the cihai backend version.
+cihai-cli 0.5.0a improves version reporting.
+
+### What's new
+
+`cihai -V` and `cihai -version` now show the cihai backend version. (#91)
 
 ## cihai-cli 0.4.1 (2018-07-21)
 
-- Update Sphinx 1.7.5. to 1.7.6
-- Update cihai 0.8.0 to 0.8.1
+cihai-cli 0.4.1 updates Sphinx and cihai to fix dependency issues around kaptan
+and PyYAML.
 
-  This should fix dependency issues with kaptan / pyyaml
+### Fixes
+
+Sphinx moved from 1.7.5 to 1.7.6, and cihai moved from 0.8.0 to 0.8.1.
 
 ## cihai-cli 0.4.0 (2018-06-24)
 
-- Add vietnamese phonetic to default output in `info` command
-- Switch tmuxp config to use pipenv
-- Add configuration / make tests for isort, flake8
-- Add _Pipfile_
-- Add `make sync_pipfile` task to sync _requirements/_.txt* files with *Pipfile\*
-- Base package updates
+cihai-cli 0.4.0 improves the default character detail output and modernizes the
+project's development stack for the Pipenv era.
 
-  - cihai 0.7.4 to 0.8.0
+### What's new
 
-- Developer package updates (linting / docs / testing)
+The `info` command now includes Vietnamese phonetic data in the default output.
 
-  New:
+### Documentation
 
-  - sphinx-click 1.2.0
-  - sphinxcontrib-napoleon 0.6.1
+Documentation moved to NumPy-style docstrings, and the license was updated from
+New BSD to MIT. Future commits and contributions are licensed to the cihai
+software foundation, including commits by Tony Narlock.
 
-  Updated:
+### Development
 
-  - isort 4.2.5 to 4.3.4
-  - flake8 3.3.0 to 3.5.0
-  - vulture 0.14 to 0.27
-  - sphinx 1.5.6 to 1.7.5
-  - alagitpull 0.0.4 to 0.0.21
-  - releases 1.3.1 to 1.6.0
-  - pytest 3.0.7 to 3.6.2
-
-- Move documentation over to numpy-style
-- Update LICENSE New BSD to MIT
-- All future commits and contributions are licensed to the _cihai software foundation_. This
-  includes commits by Tony Narlock (creator).
+Project tooling moved toward Pipenv, with tmuxp config updates, an added
+`Pipfile`, new isort/flake8 tests, a `make sync_pipfile` task, and package
+updates across Sphinx, pytest, releases, vulture, alagitpull, and lint tooling.
 
 ## cihai-cli 0.3.2 (2017-05-26)
 
-- Bump cihai version to 0.7.4
+cihai-cli 0.3.2 bumps the cihai dependency.
+
+### Development
+
+Minimum `cihai~=0.7.4`.
 
 ## cihai-cli 0.3.1 (2017-05-20)
 
-- Bump cihai version to 0.7.2
+cihai-cli 0.3.1 bumps the cihai dependency.
+
+### Development
+
+Minimum `cihai~=0.7.2`.
 
 ## cihai-cli 0.3.0 (2017-05-20)
 
-- Output human-friendly fields only by default
-- Use `-a` or `--all` to show all fields
-- Rename `lookup` command to `reverse`
-- Remove newlines, use click.echo for printing to CLI
-- Fix unicode issues on 2.7 in tests and cli
+cihai-cli 0.3.0 shapes the original CLI into the command vocabulary that still
+matters today: concise character details by default and reverse lookup by term.
+
+### Breaking changes
+
+The `lookup` command was renamed to `reverse`.
+
+### What's new
+
+The default output now shows human-friendly fields. Use `-a` or `--all` to show
+all fields.
+
+### Fixes
+
+Output no longer includes extra newlines, printing uses `click.echo`, and
+Unicode handling was fixed for Python 2.7 tests and CLI output.
 
 ## cihai-cli 0.2.1 (2017-05-20)
 
-- CLI variable tweaks
-- Fix package dependency
+cihai-cli 0.2.1 fixes early package and CLI variable issues.
+
+### Fixes
+
+CLI variables were adjusted and a package dependency issue was fixed.
 
 ## cihai-cli 0.2.0 (2017-05-20)
 
-- Initial project
+cihai-cli 0.2.0 is the initial project release.
+
+### What's new
+
+Initial command-line frontend for cihai.
 
 <!---
 vim: set filetype=markdown:
