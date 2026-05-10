@@ -702,8 +702,6 @@ The documented install path at the time was:
 $ pip --user install cihai[cli]
 ```
 
-### Development
-
 Pytest and other support packages were updated.
 
 ## cihai-cli 0.5.0a (2018-09-08)
