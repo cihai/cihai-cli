@@ -303,6 +303,7 @@ Commit subjects: `Scope(type[detail]): concise description`
 Body template:
 ```
 why: Reason or impact.
+
 what:
 - Key technical changes
 - Single topic only
