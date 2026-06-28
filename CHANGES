@@ -33,16 +33,22 @@ $ uv add cihai-cli --prerelease allow
 $ uvx --from 'cihai-cli' --prerelease allow cihai
 ```
 
-## cihai-cli 0.33.x (unreleased)
+## cihai-cli 0.34.x (unreleased)
 
 <!-- KEEP THIS PLACEHOLDER - DO NOT REMOVE OR MODIFY THIS LINE -->
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
-cihai-cli 0.33.x refreshes the documentation experience around the command-line
+## cihai-cli 0.33.0 (2026-06-28)
+
+cihai-cli 0.33.0 refreshes the documentation experience around the command-line
 workflow. The CLI reference becomes easier to scan, bookmark, and share, while
 the documentation site moves onto the shared gp-sphinx platform used across the
 git-pull ecosystem. The command surface itself is unchanged.
+
+### Dependencies
+
+Minimum `cihai~=0.37.0` (was `~=0.36.1`), bringing `unihan-etl` 0.42.0.
 
 ### What's new
 
