@@ -52,7 +52,7 @@ include = [
   { path = "tests", format = "sdist" },
 ]
 dependencies = [
-  "cihai~=0.36.1",
+  "cihai~=0.37.0",
   "PyYAML"
 ]
 
@@ -130,6 +130,8 @@ build-backend = "hatchling.build"
 # from any `exclude-newer` constraint (global or per-user) without
 # committing a date that would age into the lockfile. Mirrors the
 # pattern at vcspull/pyproject.toml for libvcs.
+cihai = false
+unihan-etl = false
 gp-libs = false
 gp-furo-theme = false
 gp-sphinx = false

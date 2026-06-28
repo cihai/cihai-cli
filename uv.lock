@@ -16,9 +16,10 @@ gp-sphinx = false
 sphinx-autodoc-sphinx = false
 sphinx-autodoc-api-style = false
 sphinx-autodoc-fastmcp = false
+unihan-etl = false
 sphinx-autodoc-pytest-fixtures = false
-sphinx-gp-llms = false
 sphinx-autodoc-argparse = false
+sphinx-gp-llms = false
 sphinx-ux-autodoc-layout = false
 sphinx-ux-badges = false
 gp-libs = false
@@ -26,6 +27,7 @@ sphinx-autodoc-docutils = false
 gp-furo-theme = false
 sphinx-gp-sitemap = false
 sphinx-fonts = false
+cihai = false
 sphinx-autodoc-typehints-gp = false
 sphinx-gp-opengraph = false
 sphinx-gp-theme = false
@@ -252,7 +254,7 @@ wheels = [
 
 [[package]]
 name = "cihai"
-version = "0.36.1"
+version = "0.37.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -260,9 +262,9 @@ dependencies = [
     { name = "sqlalchemy", extra = ["mypy"] },
     { name = "unihan-etl" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/67/12/9336c1e9d7f9549e7fc7b1e8f893c4018141a437536f1896a9b6ff8191da/cihai-0.36.1.tar.gz", hash = "sha256:4de73a73e583549b5ef8b827a28c8d9b003a7c49aa344105b2f8f47db57fc7bf", size = 268134, upload-time = "2026-01-24T20:16:49.051Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/39/166a9cebb2cb8f0038cfaefdbd898eb46ec6d4a9f64a44f62ee30414746c/cihai-0.37.0.tar.gz", hash = "sha256:e83ebc7b84990f24e930798a19ab3061c57f5af5492a3e890476dd831d9e4245", size = 292351, upload-time = "2026-06-28T13:59:42.523Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1e/81/1dc9d321fada6ffc5bfbc0512a3febcd107adfce94069b3795e5f951a796/cihai-0.36.1-py3-none-any.whl", hash = "sha256:db22398e3a311f9d1ca12186ed6975e88814b8db5753fb18f7da35a632f7a82e", size = 25415, upload-time = "2026-01-24T20:16:47.496Z" },
+    { url = "https://files.pythonhosted.org/packages/87/29/f1532d6d1e6577f35b81f05cbf8ee6a12ab2ef0da2c9c55dd620a549a213/cihai-0.37.0-py3-none-any.whl", hash = "sha256:f3473acfebb00e9e9f9f9b1eb2bc4edc1b51c8ee6e141b688951ddb483f4a1c2", size = 25304, upload-time = "2026-06-28T13:59:41.393Z" },
 ]
 
 [[package]]
@@ -324,7 +326,7 @@ testing = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cihai", specifier = "~=0.36.1" },
+    { name = "cihai", specifier = "~=0.37.0" },
     { name = "pyyaml" },
 ]
 
@@ -1883,7 +1885,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/6f/a4/691ab63b17505a260
 
 [[package]]
 name = "unihan-etl"
-version = "0.39.1"
+version = "0.42.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -1891,9 +1893,9 @@ dependencies = [
     { name = "unicodecsv" },
     { name = "zhon" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a9/a1/973607083630d67bb179ec946bd70d19bee9886cb1dd540216f3d8a271bb/unihan_etl-0.39.1.tar.gz", hash = "sha256:4625947d990f21284fc1f425b34c35b2601309b88d8d2e7194a127429f6daea4", size = 298060, upload-time = "2026-01-24T19:30:15.282Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5d/f1/7e29c1b5b7b45abdd657e16781c073d2104c9b09f7df5945913306ff1ece/unihan_etl-0.42.0.tar.gz", hash = "sha256:27e5c6a177576ed4b75d3bd59c535245fb661ea8974fcf03117f18b74e1c5df7", size = 342744, upload-time = "2026-06-28T13:40:11.118Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/85/86/82817fef8cbb68e6685ce8e1e0df1cb6fb339c85c99c4afe997ee76cfef4/unihan_etl-0.39.1-py3-none-any.whl", hash = "sha256:36c29133f7b1559355036cc5a787ba1597400c59e5b54c640987a467bbda2f23", size = 60435, upload-time = "2026-01-24T19:30:13.433Z" },
+    { url = "https://files.pythonhosted.org/packages/73/80/09c238e27e37710b5506962e3ce5cc13de14da71e16003f7ff8b6e38dc3f/unihan_etl-0.42.0-py3-none-any.whl", hash = "sha256:e03a668117b5907f1e75fe380fee8d7c8b7ff60bc3531a3cb8f4b5b327b201b1", size = 83558, upload-time = "2026-06-28T13:40:09.428Z" },
 ]
 
 [[package]]
