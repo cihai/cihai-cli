@@ -33,11 +33,22 @@ $ uv add cihai-cli --prerelease allow
 $ uvx --from 'cihai-cli' --prerelease allow cihai
 ```
 
-## cihai-cli 0.34.x (unreleased)
+## cihai-cli 0.35.x (unreleased)
 
 <!-- KEEP THIS PLACEHOLDER - DO NOT REMOVE OR MODIFY THIS LINE -->
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
+
+## cihai-cli 0.34.0 (2026-06-28)
+
+cihai-cli 0.34.0 tracks the latest cihai and unihan-etl releases. The `cihai`
+floor moves to `~=0.38.0`, which brings `unihan-etl` 0.43.0 and a sturdier
+first-run bootstrap: a corrupt or truncated cached UNIHAN archive is now
+re-fetched instead of crashing extraction. The command surface is unchanged.
+
+### Dependencies
+
+Minimum `cihai~=0.38.0` (was `~=0.37.0`), bringing `unihan-etl` 0.43.0.
 
 ## cihai-cli 0.33.0 (2026-06-28)
 
