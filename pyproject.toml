@@ -66,9 +66,9 @@ Repository = "https://github.com/cihai/cihai-cli"
 [dependency-groups]
 dev = [
   # Docs
-  "gp-sphinx==0.0.1a31",
-  "sphinx-autodoc-argparse==0.0.1a31",
-  "sphinx-autodoc-api-style==0.0.1a31",
+  "gp-sphinx==0.0.1a32",
+  "sphinx-autodoc-argparse==0.0.1a32",
+  "sphinx-autodoc-api-style==0.0.1a32",
   "gp-libs>=0.0.18",
   "sphinx-autobuild",
   # Testing
@@ -93,9 +93,9 @@ dev = [
 ]
 
 docs = [
-  "gp-sphinx==0.0.1a31",
-  "sphinx-autodoc-argparse==0.0.1a31",
-  "sphinx-autodoc-api-style==0.0.1a31",
+  "gp-sphinx==0.0.1a32",
+  "sphinx-autodoc-argparse==0.0.1a32",
+  "sphinx-autodoc-api-style==0.0.1a32",
   "gp-libs>=0.0.18",
   "sphinx-autobuild",
 ]
