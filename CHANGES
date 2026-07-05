@@ -39,6 +39,15 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
+### Documentation
+
+#### Clearer documentation links and examples (#354)
+
+Documentation pages now link readers from the first mention of key tools, API
+entry points, and command pages to the right reference. The quickstart and
+completion pages also keep shell examples copyable by moving explanatory text
+into prose, so readers can follow setup steps without editing copied commands.
+
 ## cihai-cli 0.34.0 (2026-06-28)
 
 cihai-cli 0.34.0 tracks the latest cihai and unihan-etl releases. The `cihai`
