@@ -2,7 +2,7 @@
 
 ## Formatting
 
-cihai-cli uses [ruff](https://github.com/astral-sh/ruff) for both linting and formatting.
+cihai-cli uses [Ruff](https://github.com/astral-sh/ruff) for both linting and formatting.
 
 ```console
 $ uv run ruff format .
@@ -22,7 +22,7 @@ $ uv run mypy
 
 ## Docstrings
 
-All public functions and methods use NumPy-style docstrings.
+All public functions and methods use [NumPy-style docstrings](https://numpydoc.readthedocs.io/en/latest/format.html).
 
 ## Imports
 

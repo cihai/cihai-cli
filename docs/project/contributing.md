@@ -1,6 +1,6 @@
 # Contributing
 
-cihai-cli follows the cihai project's contributing guidelines.
+cihai-cli follows the [cihai project](https://cihai.git-pull.com/)'s contributing guidelines.
 
 See the [cihai contributing guide](https://cihai.git-pull.com/contributing/) for
 development setup, running tests, and submitting pull requests.

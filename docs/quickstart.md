@@ -1,6 +1,6 @@
-(usage)=
+(quickstart)=
 
-# Usage
+# Quickstart
 
 cihai is designed to work out-of-the-box without configuration.
 
@@ -10,13 +10,13 @@ cihai is designed to work out-of-the-box without configuration.
 $ pip install --user cihai-cli
 ```
 
-Or manage it inside an existing project with uv:
+Or manage it inside an existing project with [uv]:
 
 ```console
 $ uv add cihai-cli
 ```
 
-Install the CLI as a user-wide tool with uv:
+Install the CLI as a user-wide tool with [uv]:
 
 ```console
 $ uv tool install cihai-cli
@@ -44,7 +44,12 @@ the 4th beta release of `1.10.0` before general availability.
 
   ```console
   $ pipx install --suffix=@next 'cihai-cli' --pip-args '\--pre' --force
-  // Usage: cihai@next info 好
+  ```
+
+  Run that prerelease command as `cihai@next`:
+
+  ```console
+  $ cihai@next info 好
   ```
 
 - [uv tool install][uv-tools]\:

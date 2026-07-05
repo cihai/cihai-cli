@@ -54,6 +54,7 @@ completion
     :func: create_parser
     :prog: cihai
     :nosubcommands:
+    :no-description:
 
     subparser_name : @replace
         See :ref:`cli-info`, :ref:`cli-reverse`
