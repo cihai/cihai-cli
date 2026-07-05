@@ -293,7 +293,7 @@ def setup_logger(
 
     Parameters
     ----------
-    logger : :py:class:`Logger`
+    logger : :class:`logging.Logger`
         Instance of logger, if one set up.
     """
     if not logger:

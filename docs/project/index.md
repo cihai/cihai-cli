@@ -16,7 +16,7 @@ How to get involved and submit changes.
 :::{grid-item-card} Code Style
 :link: code-style
 :link-type: doc
-Ruff, mypy, NumPy docstrings, import conventions.
+[Ruff](https://github.com/astral-sh/ruff), [mypy](https://mypy-lang.org/), [NumPy](https://numpydoc.readthedocs.io/en/latest/format.html) docstrings, import conventions.
 :::
 
 :::{grid-item-card} Releasing

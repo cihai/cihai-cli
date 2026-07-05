@@ -6,25 +6,27 @@
 
 # Completions
 
+Shell completion lets your shell suggest `cihai` commands and options as you type.
+
 ## cihai-cli 0.15+ (experimental)
 
 ```{note}
 See the [shtab library's documentation on shell completion](https://docs.iterative.ai/shtab/use/#cli-usage) for the most up to date way of connecting completion for cihai-cli.
 ```
 
-Provisional support for completions in cihai-cli 0.15+ are powered by [shtab](https://docs.iterative.ai/shtab/). This must be **installed separately**, as it's **not currently bundled with cihai-cli**.
+Provisional support for completions in cihai-cli 0.15+ is powered by [shtab](https://docs.iterative.ai/shtab/). This must be **installed separately**, as it's **not currently bundled with cihai-cli**.
 
 ```console
 $ pip install shtab --user
 ```
 
-Or manage it inside an existing project with uv:
+Or manage it inside an existing project with [uv]:
 
 ```console
 $ uv add --dev shtab
 ```
 
-Install `shtab` as a user-wide tool with uv:
+Install `shtab` as a user-wide tool with [uv]:
 
 ```console
 $ uv tool install shtab
@@ -35,6 +37,8 @@ Run it on-demand without installing:
 ```console
 $ uvx shtab
 ```
+
+Each shell command below points `shtab` at {func}`cihai_cli.cli.create_parser`, the parser factory used by cihai-cli.
 
 :::{tab} bash
 
@@ -75,10 +79,8 @@ cihai-cli 0.2 to 0.14 use [click](https://click.palletsprojects.com)'s completio
 
 _~/.bashrc_:
 
-```bash
-
-eval "$(_CIHAI_COMPLETE=bash_source cihai)"
-
+```console
+$ eval "$(_CIHAI_COMPLETE=bash_source cihai)"
 ```
 
 :::
@@ -87,10 +89,10 @@ eval "$(_CIHAI_COMPLETE=bash_source cihai)"
 
 _~/.zshrc_:
 
-```zsh
-
-eval "$(_CIHAI_COMPLETE=zsh_source cihai)"
-
+```console
+$ eval "$(_CIHAI_COMPLETE=zsh_source cihai)"
 ```
 
 :::
+
+[uv]: https://docs.astral.sh/uv/
