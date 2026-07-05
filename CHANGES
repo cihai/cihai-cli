@@ -1,7 +1,7 @@
 # Changelog
 
 You can test the unpublished version of cihai-cli before it's released, see
-[developmental releases](https://cihai-cli.git-pull.com/quickstart.html#developmental-releases).
+{ref}`developmental-releases`.
 
 [pip](https://pip.pypa.io/en/stable/):
 
@@ -44,9 +44,10 @@ _Notes on the upcoming release will go here._
 #### Clearer documentation links and examples (#354)
 
 Documentation pages now link readers from the first mention of key tools, API
-entry points, and command pages to the right reference. The quickstart and
-completion pages also keep shell examples copyable by moving explanatory text
-into prose, so readers can follow setup steps without editing copied commands.
+entry points, and command pages to the right reference. The {ref}`quickstart`
+page and {ref}`completion page <completions>` also keep shell examples copyable
+by moving explanatory text into prose, so readers can follow setup steps without
+editing copied commands.
 
 ## cihai-cli 0.34.0 (2026-06-28)
 

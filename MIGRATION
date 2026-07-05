@@ -29,11 +29,10 @@ _Notes on the upcoming release will be added here_
 
 **Completions have changed** (#286)
 
-Completions now use a different tool: [shtab]. See the [completions page] for more information.
+Completions now use a different tool: [shtab]. See {ref}`completions` for more information.
 
 If you were using earlier versions of cihai-cli (earlier than 0.15.0), you may need to uninstall the old completions, first.
 
-[completions page]: https://cihai-cli.git-pull.com/cli/completion.html
 [shtab]: https://docs.iterative.ai/shtab/
 
 <!---

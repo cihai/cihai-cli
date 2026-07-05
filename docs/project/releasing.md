@@ -2,7 +2,9 @@
 
 ## Release Process
 
-Releases are triggered by git tags and published to PyPI via OIDC trusted publishing.
+Releases are triggered by git tags and published to [PyPI] via [OIDC trusted
+publishing]. Agent-assisted release work stops at the release commit unless the
+user explicitly asks for tag handling.
 
 1. Update `CHANGES` with the release notes
 
@@ -11,19 +13,18 @@ Releases are triggered by git tags and published to PyPI via OIDC trusted publis
 3. Commit:
 
    ```console
-   $ git commit -m "cihai-cli <version>"
+   $ git commit -m "Tag v<version>"
    ```
 
-4. Tag:
+4. Push the release commit:
 
    ```console
-   $ git tag v<version>
+   $ git push
    ```
 
-5. Push:
-
-   ```console
-   $ git push && git push --tags
-   ```
+5. The release owner creates and pushes the `v<version>` tag
 
 6. CI builds and publishes to PyPI automatically via trusted publishing
+
+[OIDC trusted publishing]: https://docs.pypi.org/trusted-publishers/
+[PyPI]: https://pypi.org/project/cihai-cli/
