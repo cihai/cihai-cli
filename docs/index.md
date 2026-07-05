@@ -39,26 +39,42 @@ $ uv tool install cihai-cli
 
 ## At a glance
 
-Look up a CJK character:
+Use {ref}`cihai info <cihai-info>` to look up a CJK character:
 
 ```console
 $ cihai info 好
 ```
 
-```
+```yaml
 char: 好
+kCantonese: hou2 hou3
 kDefinition: good, excellent, fine; well
+kHangul: 호:0E
+kJapaneseOn: KOU
+kKorean: HO
 kMandarin: hǎo
+kTang: '*xɑ̀u *xɑ̌u'
+kVietnamese: háo
+ucn: U+597D
 ```
 
-Search definitions:
+Use {ref}`cihai reverse <cihai-reverse>` to search definitions:
 
 ```console
-$ cihai reverse library
+$ cihai reverse good
 ```
 
-```
-圕: library
+```yaml
+char: 好
+kCantonese: hou2 hou3
+kDefinition: good, excellent, fine; well
+kHangul: 호:0E
+kJapaneseOn: KOU
+kKorean: HO
+kMandarin: hǎo
+kTang: '*xɑ̀u *xɑ̌u'
+kVietnamese: háo
+ucn: U+597D
 ```
 
 Data is downloaded automatically on first use via [cihai](https://cihai.git-pull.com/).

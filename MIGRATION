@@ -3,18 +3,13 @@
 Migration and deprecation notes for cihai-cli are here, see {ref}`history` as
 well.
 
-```{admonition} Welcome on board! 👋
-1. 📌 For safety, **always** pin the package
-2. 📖 Check the migration notes _(You are here)_
-3. 📣 If you feel something got deprecated and it interrupted you - past, present, or future - voice your opinion on the [tracker].
+```{admonition} Before upgrading
+1. Pin the package before changing versions.
+2. Read the migration notes for the versions you are crossing.
+3. Report painful or surprising deprecations on the [tracker].
 
-   We want to make cihai-cli fun, reliable, and useful for users.
-
-   API changes can be painful.
-
-   If we can do something to draw the string, we'll do it. We're taking a balanced approach. That's why these notes are here!
-
-   (Please pin the package. 🙏)
+   API changes can be painful. These notes call out compatibility changes before
+   you run into them.
 
    [tracker]: https://github.com/cihai/cihai-cli/discussions
 ```

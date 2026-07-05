@@ -6,7 +6,7 @@
 
 # Completions
 
-Shell completion lets your shell suggest `cihai` commands and options as you type.
+Shell completion lets your shell suggest {ref}`cihai <cihai-main>` commands and options as you type.
 
 ## cihai-cli 0.15+ (experimental)
 
@@ -66,6 +66,8 @@ $ shtab --shell=tcsh -u cihai_cli.cli.create_parser \
 ```
 
 :::
+
+You can stop here if you are installing completions for cihai-cli 0.15 or newer.
 
 ## cihai-cli 0.2 to 0.14
 

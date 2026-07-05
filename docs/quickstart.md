@@ -98,7 +98,7 @@ via trunk (can break easily):
       --suffix=@master \
       --include-deps \
       --force \
-      'cihai-cli @ git+https://github.com/cihai/cihai.git@master'
+      'cihai-cli @ git+https://github.com/cihai/cihai-cli.git@master'
   ```
 
 [pip]: https://pip.pypa.io/en/stable/

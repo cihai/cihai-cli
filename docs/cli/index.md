@@ -2,6 +2,9 @@
 
 # CLI Reference
 
+This is the exact command syntax reference for `cihai`. Start with
+{ref}`quickstart` if you want install commands and first-run examples.
+
 ::::{grid} 1 1 2 2
 :gutter: 2 2 3 3
 

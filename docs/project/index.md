@@ -19,6 +19,12 @@ How to get involved and submit changes.
 [Ruff](https://github.com/astral-sh/ruff), [mypy](https://mypy-lang.org/), [NumPy](https://numpydoc.readthedocs.io/en/latest/format.html) docstrings, import conventions.
 :::
 
+:::{grid-item-card} Architecture
+:link: architecture
+:link-type: doc
+How the command, cihai library, Unihan bootstrap, and docs tests fit together.
+:::
+
 :::{grid-item-card} Releasing
 :link: releasing
 :link-type: doc
@@ -32,5 +38,6 @@ Release checklist and version policy.
 
 contributing
 code-style
+architecture
 releasing
 ```

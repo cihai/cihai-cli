@@ -427,7 +427,7 @@ cihai-cli 0.18.0 follows cihai's pathlib and typing cleanup.
 
 ### Development
 
-Minimum `cihai~=0.22.1`. This dependency line relies on `pathlib`-based paths
+Minimum `cihai~=0.22.1`. This dependency line relies on {mod}`pathlib`-based paths
 and improved type annotations.
 
 ## cihai-cli 0.17.0 (2023-06-04)
@@ -499,13 +499,14 @@ Command help descriptions now render correctly.
 
 ## cihai-cli 0.15.0 (2022-10-02)
 
-cihai-cli 0.15.0 replaces Click with stdlib argparse. The command names remain
-focused on character lookup and reverse definition search, but the CLI no
-longer needs Click at runtime.
+cihai-cli 0.15.0 replaces [Click](https://click.palletsprojects.com/) with
+stdlib {mod}`argparse`. The command names remain focused on character lookup
+and reverse definition search, but the CLI no longer needs Click at runtime.
 
 ### Breaking changes
 
-The command-line implementation moved from `click` to `argparse`. (#286)
+The command-line implementation moved from
+[Click](https://click.palletsprojects.com/) to {mod}`argparse`. (#286)
 
 ### Development
 

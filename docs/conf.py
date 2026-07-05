@@ -31,6 +31,7 @@ conf = merge_sphinx_config(
     light_logo="img/cihai.svg",
     dark_logo="img/cihai.svg",
     extra_extensions=[
+        "sphinx.ext.doctest",
         "sphinx_autodoc_api_style",
         "sphinx_autodoc_argparse.exemplar",
     ],
