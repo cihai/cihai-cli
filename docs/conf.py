@@ -15,6 +15,7 @@ project_root = cwd.parent
 src_root = project_root / "src"
 
 sys.path.insert(0, str(src_root))
+sys.path.insert(0, str(cwd / "_ext"))
 
 # package data
 about: dict[str, str] = {}
@@ -31,6 +32,7 @@ conf = merge_sphinx_config(
     light_logo="img/cihai.svg",
     dark_logo="img/cihai.svg",
     extra_extensions=[
+        "cihai_install",
         "sphinx.ext.doctest",
         "sphinx_autodoc_api_style",
         "sphinx_autodoc_argparse.exemplar",

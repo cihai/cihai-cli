@@ -27,14 +27,14 @@ Development setup, code style, and releases.
 
 ::::
 
-## Install
+## Run cihai
 
-```console
-$ pip install cihai-cli
-```
+Choose how you want to invoke the `cihai` command. The cooldown control only
+changes `uvx` commands because `uvx` can keep cihai-cli itself out of the
+cooldown window.
 
-```console
-$ uv tool install cihai-cli
+```{cihai-usage}
+:variant: compact
 ```
 
 ## At a glance

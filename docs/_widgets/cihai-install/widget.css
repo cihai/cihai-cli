@@ -1,0 +1,193 @@
+/* cihai install widget: compact command picker with cooldown controls. */
+
+.cihai-install {
+  border: 1px solid var(--color-background-border, var(--color-foreground-border, #cbd5e1));
+  border-radius: 0.25rem;
+  background: var(--color-background-primary);
+  margin: 1rem 0;
+  overflow: hidden;
+  font-size: 0.95em;
+}
+
+.cihai-install__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--color-background-border, var(--color-foreground-border, #cbd5e1));
+  background: var(--color-background-secondary);
+}
+
+.cihai-install__tab {
+  appearance: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--color-foreground-muted);
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0.45rem 0.9rem;
+  white-space: nowrap;
+}
+
+.cihai-install__tab:hover {
+  background: var(--color-background-hover, rgb(0 0 0 / 4%));
+  color: var(--color-foreground-primary);
+}
+
+.cihai-install__tab:focus-visible,
+.cihai-install__panel:focus-visible,
+.cihai-install__cooldown-label:focus-visible,
+.cihai-install__back:focus-visible,
+.cihai-install__cooldown-toggle:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+.cihai-install__tab[aria-selected="true"] {
+  border-bottom-color: var(--color-brand-primary);
+  background: var(--color-background-primary);
+  color: var(--color-brand-primary);
+}
+
+.cihai-install__cooldown-control {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-inline-start: auto;
+  padding: 0 0.7rem 0 0.5rem;
+  color: var(--color-foreground-secondary);
+  font-size: 0.9em;
+}
+
+.cihai-install__cooldown-toggle {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+}
+
+.cihai-install__cooldown-label,
+.cihai-install__back {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.cihai-install__cooldown-label {
+  border-bottom: 1px dashed transparent;
+}
+
+.cihai-install__cooldown-label:hover {
+  border-bottom-color: var(--color-foreground-muted);
+  color: var(--color-foreground-primary);
+}
+
+.cihai-install__body {
+  padding: 0.9rem 1rem;
+}
+
+.cihai-install__body[hidden],
+.cihai-install__panel[hidden] {
+  display: none !important;
+}
+
+.cihai-install__preamble {
+  margin: 0 0 0.4rem;
+  color: var(--color-foreground-secondary);
+  font-size: 0.93em;
+}
+
+.cihai-install__panel .highlight-console + .cihai-install__preamble {
+  margin-top: 0.8rem;
+}
+
+.cihai-install__cooldown-note {
+  margin: 0.55rem 0 0;
+  border-left: 2px solid var(--color-background-border, var(--color-foreground-border, #cbd5e1));
+  padding-left: 0.6rem;
+  color: var(--color-foreground-secondary);
+  font-size: 0.86em;
+}
+
+.cihai-install__settings-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.cihai-install__back {
+  border: 1px solid var(--color-background-border, var(--color-foreground-border, #cbd5e1));
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.55rem;
+  color: var(--color-foreground-secondary);
+  font-size: 0.86em;
+}
+
+.cihai-install__back:hover {
+  background: var(--color-background-hover, rgb(0 0 0 / 4%));
+  color: var(--color-foreground-primary);
+}
+
+.cihai-install__settings-title {
+  margin: 0;
+  color: var(--color-foreground-primary);
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.cihai-install__settings-help {
+  margin: 0 0 0.8rem;
+  color: var(--color-foreground-secondary);
+  font-size: 0.9em;
+}
+
+.cihai-install__settings-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.cihai-install__settings-mode {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cihai-install__cooldown-days-input {
+  width: 4.5em;
+  border: 1px solid var(--color-background-border, var(--color-foreground-border, #cbd5e1));
+  border-radius: 0.2rem;
+  background: var(--color-background-primary);
+  color: var(--color-foreground-primary);
+  font: inherit;
+  padding: 0.15rem 0.35rem;
+}
+
+.cihai-install__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.cihai-install--compact .cihai-install__tab {
+  padding: 0.35rem 0.75rem;
+}
+
+.cihai-install--compact .cihai-install__body {
+  padding: 0.75rem 0.85rem;
+}

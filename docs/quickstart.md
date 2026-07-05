@@ -5,28 +5,22 @@
 cihai-cli installs the `cihai` command and works out-of-the-box without
 configuration.
 
-## Installation
+## Run cihai
 
-```console
-$ pip install --user cihai-cli
+Choose how you want to invoke the command. `uvx` runs cihai-cli on demand,
+`pipx` runs it through an isolated tool environment, and `pip` means you already
+installed the `cihai` script into your user Python environment.
+
+```{cihai-usage}
 ```
 
-Or manage it inside an existing project with [uv]:
+## Installation options
 
-```console
-$ uv add cihai-cli
-```
+Pick the installer that matches how you want to run the command. `uvx` runs
+cihai-cli on demand, `pipx` installs an isolated command, and `pip` installs it
+into your user Python environment.
 
-Install the CLI as a user-wide tool with [uv]:
-
-```console
-$ uv tool install cihai-cli
-```
-
-Run it on-demand without installing:
-
-```console
-$ uvx --from cihai-cli cihai --version
+```{cihai-install}
 ```
 
 (developmental-releases)=
