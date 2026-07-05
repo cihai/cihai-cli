@@ -40,6 +40,7 @@ conf = merge_sphinx_config(
         "sqlalchemy": ("http://docs.sqlalchemy.org/en/latest/", None),
         "pandas": ("http://pandas.pydata.org/pandas-docs/stable", None),
         "cihai": ("https://cihai.git-pull.com/en/latest/", None),
+        "click": ("https://click.palletsprojects.com/en/stable/", None),
         "unihan-tabular": ("https://unihan-tabular.git-pull.com/en/latest/", None),
     },
     linkcode_resolve=make_linkcode_resolve(cihai_cli, about["__github__"]),

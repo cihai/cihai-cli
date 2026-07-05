@@ -419,7 +419,7 @@ work.
 ### Development
 
 Minimum `cihai~=0.22.1` (was `~=0.21.0`). The dependency chain includes
-unihan-etl 0.22.2 with `dataclasses.dataclass`-based configuration.
+unihan-etl 0.22.2 with {func}`dataclasses.dataclass`-based configuration.
 
 ## cihai-cli 0.18.0 (2023-06-19)
 
@@ -438,19 +438,20 @@ tightens typing, and follows cihai into its SQLAlchemy 2.0 dependency line.
 ### Breaking changes
 
 Python 3.7 support was dropped. Python 3.7 reached end of life on June 27, 2023,
-and Python 3.8 provides `typing.TypedDict` and `typing.Protocol` without
-`typing_extensions`. (#290)
+and Python 3.8 provides {class}`typing.TypedDict` and
+{class}`typing.Protocol` without `typing_extensions`. (#290)
 
 ### Development
 
 Strict mypy compliance was added. (#277)
 
 Tests moved from pytest's `tmpdir` / `py.path.local` fixture to `tmp_path` /
-`pathlib.Path`. (#292)
+{class}`pathlib.Path`. (#292)
 
 Unnecessary `typing_extensions.TypedDict` imports were removed where the Python
-floor made stdlib `typing.TypedDict` available. `typing_extensions` remains
-needed for `NotRequired` until the project can require Python 3.11. (#292)
+floor made stdlib {class}`typing.TypedDict` available. `typing_extensions`
+remains needed for `NotRequired` until the project can require Python 3.11.
+(#292)
 
 Minimum `cihai~=0.21.0` includes strict typing work and the SQLAlchemy 2.0
 migration from the core library.
@@ -801,7 +802,7 @@ all fields.
 
 ### Fixes
 
-Output no longer includes extra newlines, printing uses `click.echo`, and
+Output no longer includes extra newlines, printing uses {func}`click.echo`, and
 Unicode handling was fixed for Python 2.7 tests and CLI output.
 
 ## cihai-cli 0.2.1 (2017-05-20)

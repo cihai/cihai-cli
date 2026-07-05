@@ -2,7 +2,8 @@
 
 # Quickstart
 
-cihai is designed to work out-of-the-box without configuration.
+cihai-cli installs the `cihai` command and works out-of-the-box without
+configuration.
 
 ## Installation
 
@@ -45,7 +46,11 @@ the 4th beta release of `1.10.0` before general availability.
 - [pipx]\:
 
   ```console
-  $ pipx install --suffix=@next 'cihai-cli' --pip-args '\--pre' --force
+  $ pipx install \
+      --suffix=@next \
+      --pip-args '\--pre' \
+      --force \
+      'cihai-cli'
   ```
 
   Run that prerelease command as `cihai@next`:
@@ -89,7 +94,11 @@ via trunk (can break easily):
 - [pipx]\:
 
   ```console
-  $ pipx install --suffix=@master 'cihai-cli @ git+https://github.com/cihai/cihai.git@master' --include-deps --force
+  $ pipx install \
+      --suffix=@master \
+      --include-deps \
+      --force \
+      'cihai-cli @ git+https://github.com/cihai/cihai.git@master'
   ```
 
 [pip]: https://pip.pypa.io/en/stable/
