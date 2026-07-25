@@ -94,6 +94,37 @@ just design-docs    # update CSS/JS assets
 - Keep CLI output human-friendly YAML; avoid breaking existing flags/args.
 - Doctests: keep concise, narrative Examples blocks; move complex flows to `tests/examples/`.
 
+**Classes with fields** — `NamedTuple`, dataclasses — document every field in
+an `Attributes` section:
+
+```python
+class HelpTheme(t.NamedTuple):
+    """Color codes for help text elements.
+
+    Attributes
+    ----------
+    prog : str
+        Program name color (magenta + bold).
+    action : str
+        Subcommand/action color (cyan).
+    long_option : str
+        Long option color, e.g. ``--all`` (green).
+    short_option : str
+        Short option color, e.g. ``-a`` (green).
+    label : str
+        Value/label color (yellow).
+    heading : str
+        Section heading color (blue).
+    reset : str
+        ANSI reset code.
+    """
+```
+
+Autodoc renders every field whether or not you describe it, so an
+undocumented `NamedTuple` field ships to the API docs as "Alias for field
+number 0" and a dataclass field ships bare. Document all of them — a class
+with three fields and two documented still ships a stub for the third.
+
 ## Logging Standards
 
 These rules guide future logging changes; existing code may not yet conform.
