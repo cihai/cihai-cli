@@ -45,9 +45,7 @@ def test_uvx_cooldown_exemptions_are_runtime_packages_only() -> None:
     docs_only_packages = {
         package_name
         for package_name in repo_policy_packages
-        if package_name == "gp-libs"
-        or package_name.startswith("gp-")
-        or package_name.startswith("sphinx")
+        if package_name == "gp-libs" or package_name.startswith(("gp-", "sphinx"))
     }
 
     assert widget.EXCLUDE_NEWER_PACKAGES == ("cihai-cli", "cihai", "unihan-etl")
