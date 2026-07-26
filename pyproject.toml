@@ -82,7 +82,7 @@ dev = [
   "coverage",
   "pytest-cov",
   # Lint
-  "ruff",
+  "ruff>=0.16.0",
   "mypy",
   # Annotations
   "types-colorama",
@@ -112,7 +112,7 @@ coverage =[
   "pytest-cov",
 ]
 lint = [
-  "ruff",
+  "ruff>=0.16.0",
   "mypy",
 ]
 
@@ -170,7 +170,10 @@ ignore_missing_imports = true
 target-version = "py310"
 
 [tool.ruff.lint]
-select = [
+# `select` is deliberately unset: ruff 0.16 enables a curated default rule
+# set, and an explicit `select` would replace it rather than extend it.
+# `extend-select` layers this project's additional linters on top.
+extend-select = [
   "E", # pycodestyle
   "F", # pyflakes
   "I", # isort
@@ -187,7 +190,7 @@ select = [
   "PERF", # Perflint
   "RUF", # Ruff-specific rules
   "D", # pydocstyle
-  "FA100",  # future annotations
+  "FA100", # future annotations
 ]
 ignore = [
   "COM812", # missing trailing comma, ruff format conflict
@@ -210,6 +213,11 @@ convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
 "*/__init__.py" = ["F401"]
+"docs/conf.py" = [
+  # Sphinx reads version metadata by exec'ing the package's `__about__.py`,
+  # which keeps the docs build off an import of the package being documented.
+  "S102",
+]
 "src/cihai_cli/_colors.py" = ["D301"]  # Doctest needs real escape bytes, not raw strings
 
 [tool.pytest.ini_options]
