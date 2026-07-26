@@ -65,6 +65,15 @@ diagnostics CI does instead of whatever version each contributor happened to
 resolve. Ruff 0.16 also formats Python code blocks inside Markdown, which puts
 the fenced examples in `README.md` and the `docs/` pages under `ruff format`.
 
+#### Ruff's default rule set (#356)
+
+`ruff check` now runs ruff's own curated default rules alongside the linters
+this project selects. An explicit `select` replaces those defaults rather than
+adding to them, so the config uses `extend-select` and leaves `select` unset.
+Contributors get ruff's recommended baseline — flake8-bandit, flake8-pie,
+pylint and the rest of the default set — on top of the project's existing
+choices.
+
 ## cihai-cli 0.34.0 (2026-06-28)
 
 cihai-cli 0.34.0 tracks the latest cihai and unihan-etl releases. The `cihai`
