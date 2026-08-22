@@ -1,31 +1,7 @@
 # Code Style
 
-## Formatting
-
-cihai-cli uses [Ruff](https://github.com/astral-sh/ruff) for both linting and formatting.
-
-```console
-$ uv run ruff format .
-```
-
-```console
-$ uv run ruff check . --fix --show-fixes
-```
-
-## Type Checking
-
-Strict [mypy](https://mypy-lang.org/) is enforced.
-
-```console
-$ uv run mypy
-```
-
-## Docstrings
-
-All public functions and methods use [NumPy-style docstrings](https://numpydoc.readthedocs.io/en/latest/format.html).
-
-## Imports
-
-- Standard library: namespace imports (`import pathlib`, not `from pathlib import Path`)
-- Typing: `import typing as t`, access via `t.Optional`, `t.NamedTuple`, etc.
-- All files: `from __future__ import annotations`
+This page's content split into two files in the repository: formatting,
+linting, type checking, and import conventions moved to the workflow
+guide, [`.github/CONTRIBUTING.md`](https://github.com/cihai/cihai-cli/blob/master/.github/CONTRIBUTING.md#the-gates);
+docstring conventions moved to the prose guide,
+[`.github/WRITING.md`](https://github.com/cihai/cihai-cli/blob/master/.github/WRITING.md#docstrings).

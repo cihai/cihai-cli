@@ -1,28 +1,7 @@
 # Contributing
 
-cihai-cli follows the [cihai project](https://cihai.git-pull.com/)'s contributing guidelines.
-
-See the [cihai contributing guide](https://cihai.git-pull.com/contributing/) for
-development setup, running tests, and submitting pull requests.
-
-## Quick setup
-
-Clone and install in development mode:
-
-```console
-$ git clone https://github.com/cihai/cihai-cli.git
-```
-
-```console
-$ cd cihai-cli
-```
-
-```console
-$ uv sync --group dev
-```
-
-Run the tests:
-
-```console
-$ uv run pytest
-```
+Contributor documentation has moved to
+[`.github/CONTRIBUTING.md`](https://github.com/cihai/cihai-cli/blob/master/.github/CONTRIBUTING.md)
+and [`.github/WRITING.md`](https://github.com/cihai/cihai-cli/blob/master/.github/WRITING.md)
+in the repository, which GitHub also surfaces as the contributing guide when
+opening an issue or pull request.
