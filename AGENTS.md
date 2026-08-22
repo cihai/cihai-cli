@@ -1,561 +1,63 @@
 # AGENTS.md
 
-Guidance for AI agents (Cursor, Claude Code, Copilot, etc.) working in this repository.
-
-## CRITICAL REQUIREMENTS
-
-### Test Success
-- ALL tests must pass (unit, doctest, lint, type checks) before declaring work complete.
-- Do not describe code as "working" if any test fails.
-- Fix regressions rather than disabling or skipping tests unless explicitly approved.
-
-## Project Overview
-
-gp-libs is the shared tooling stack used across the git-pull ecosystem. This repository, `cihai-cli`, is a command-line interface built on top of the `cihai` library to explore the Unihan (CJK) character database. Key abilities:
-- Lookup CJK characters with `cihai info <char>` and YAML-formatted output.
-- Reverse search definitions with `cihai reverse <term>`.
-- Bootstraps and queries the Unihan dataset via `cihai` / `unihan-etl`.
-- Provides a small, typed argparse-based CLI (`src/cihai_cli/cli.py`) exposed as the `cihai` entry point.
-
-## Development Environment
-
-This project uses:
-- Python 3.10+
-- [uv](https://github.com/astral-sh/uv) for dependency and task execution
-- [ruff](https://github.com/astral-sh/ruff) for linting/formatting
-- [mypy](https://github.com/python/mypy) with strict settings
-- [pytest](https://docs.pytest.org/) (+ doctests) for testing
-- [gp-libs](https://github.com/gp-libs/gp-libs) for shared docs/testing helpers
-- Sphinx (Furo) for documentation
-
-## Common Commands
-
-### Setup
-```bash
-# Install dependencies (editable)
-uv pip install --editable .
-uv pip sync
-
-# Install with dev extras
-uv pip install --editable . -G dev
-```
-
-### Tests
-```bash
-just test           # or: uv run pytest
-uv run pytest tests/test_cli.py           # single file
-uv run pytest tests/test_cli.py::test_info_command  # single test
-
-just start          # run tests then watch with pytest-watcher
-uv run ptw .        # standalone watcher (doctests enabled by default)
-```
-
-### Linting & Types
-```bash
-just ruff           # uv run ruff check .
-just ruff-format    # uv run ruff format .
-uv run ruff check . --fix --show-fixes
-
-just mypy           # strict type checking
-```
-
-### Documentation
-```bash
-just build-docs     # build Sphinx HTML in docs/_build
-just start-docs     # autobuild + livereload
-just design-docs    # update CSS/JS assets
-```
-
-### Workflow (recommended)
-1) `uv run ruff format .`
-2) `uv run pytest`
-3) `uv run ruff check . --fix --show-fixes`
-4) `uv run mypy`
-5) `uv run pytest` (verify clean)
-
-## Code Architecture (quick map)
-- `src/cihai_cli/cli.py`: argparse entrypoint, implements `info` and `reverse` commands, logging setup.
-- `src/cihai_cli/__about__.py`: package metadata (`__version__`).
-- Tests: `tests/` (unit) plus doctests in `src/` and `docs/`.
-- Docs: `docs/` Sphinx project (Furo theme).
-
-## Testing Strategy
-- Pytest with doctests enabled (`addopts` in `pyproject.toml`).
-- Prefer real `cihai` / `unihan_etl` integration over heavy mocking; reuse fixtures where present.
-- Watch mode: `uv run ptw .` (used in `just start`).
-- Coverage via `pytest-cov`; configuration in `pyproject.toml`.
-- Prefer fixtures over mocks (`server`, `session`, etc. when available); use `tmp_path` over `tempfile`, `monkeypatch` over `unittest.mock`.
-
-## Coding Standards
-- `from __future__ import annotations` required; enforced by ruff.
-- Namespace imports for stdlib/typing (`import typing as t`); third-party packages may use `from X import Y`.
-- Docstrings follow NumPy style (see `tool.ruff.lint.pydocstyle`).
-- Python target version: 3.10 (`tool.ruff.target-version`).
-- Keep CLI output human-friendly YAML; avoid breaking existing flags/args.
-- Doctests: keep concise, narrative Examples blocks; move complex flows to `tests/examples/`.
-
-**Classes with fields** — `NamedTuple`, dataclasses — document every field in
-an `Attributes` section:
-
-```python
-class HelpTheme(t.NamedTuple):
-    """Color codes for help text elements.
-
-    Attributes
-    ----------
-    prog : str
-        Program name color (magenta + bold).
-    action : str
-        Subcommand/action color (cyan).
-    long_option : str
-        Long option color, e.g. ``--all`` (green).
-    short_option : str
-        Short option color, e.g. ``-a`` (green).
-    label : str
-        Value/label color (yellow).
-    heading : str
-        Section heading color (blue).
-    reset : str
-        ANSI reset code.
-    """
-```
-
-Autodoc renders every field whether or not you describe it, so an
-undocumented `NamedTuple` field ships to the API docs as "Alias for field
-number 0" and a dataclass field ships bare. Document all of them — a class
-with three fields and two documented still ships a stub for the third.
-
-## Logging Standards
-
-These rules guide future logging changes; existing code may not yet conform.
-
-### Logger setup
-
-- Use `logging.getLogger(__name__)` in every module
-- Add `NullHandler` in library `__init__.py` files
-- Never configure handlers, levels, or formatters in library code — that's the application's job
-
-### Structured context via `extra`
-
-Pass structured data on every log call where useful for filtering, searching, or test assertions.
-
-**Core keys** (stable, scalar, safe at any log level):
-
-| Key | Type | Context |
-|-----|------|---------|
-| `unihan_field` | `str` | UNIHAN field name |
-| `unihan_source_file` | `str` | source data file path |
-| `unihan_record_count` | `int` | records processed |
-| `cihai_command` | `str` | CLI command name |
-
-**Heavy/optional keys** (DEBUG only, potentially large):
-
-| Key | Type | Context |
-|-----|------|---------|
-| `unihan_stdout` | `list[str]` | subprocess stdout lines (truncate or cap; `%(unihan_stdout)s` produces repr) |
-| `unihan_stderr` | `list[str]` | subprocess stderr lines (same caveats) |
-
-Treat established keys as compatibility-sensitive — downstream users may build dashboards and alerts on them. Change deliberately.
-
-### Key naming rules
-
-- `snake_case`, not dotted; `unihan_` prefix
-- Prefer stable scalars; avoid ad-hoc objects
-- Heavy keys (`unihan_stdout`, `unihan_stderr`) are DEBUG-only; consider companion `unihan_stdout_len` fields or hard truncation (e.g. `stdout[:100]`)
-
-### Lazy formatting
-
-`logger.debug("msg %s", val)` not f-strings. Two rationales:
-- Deferred string interpolation: skipped entirely when level is filtered
-- Aggregator message template grouping: `"Running %s"` is one signature grouped ×10,000; f-strings make each line unique
-
-When computing `val` itself is expensive, guard with `if logger.isEnabledFor(logging.DEBUG)`.
-
-### stacklevel for wrappers
-
-Increment for each wrapper layer so `%(filename)s:%(lineno)d` and OTel `code.filepath` point to the real caller. Verify whenever call depth changes.
-
-### LoggerAdapter for persistent context
-
-For objects with stable identity (Dataset, Reader, Exporter), use `LoggerAdapter` to avoid repeating the same `extra` on every call. Lead with the portable pattern (override `process()` to merge); `merge_extra=True` simplifies this on Python 3.13+.
-
-### Log levels
-
-| Level | Use for | Examples |
-|-------|---------|----------|
-| `DEBUG` | Internal mechanics, data I/O | Field parsing, record transformation steps |
-| `INFO` | Data lifecycle, user-visible operations | Download completed, export finished, database bootstrapped |
-| `WARNING` | Recoverable issues, deprecation, user-actionable config | Missing optional field, deprecated data format |
-| `ERROR` | Failures that stop an operation | Download failed, parse error, database write failed |
-
-Config discovery noise belongs in `DEBUG`; only surprising/user-actionable config issues → `WARNING`.
-
-### Message style
-
-- Lowercase, past tense for events: `"download completed"`, `"parse error"`
-- No trailing punctuation
-- Keep messages short; put details in `extra`, not the message string
-
-### Exception logging
-
-- Use `logger.exception()` only inside `except` blocks when you are **not** re-raising
-- Use `logger.error(..., exc_info=True)` when you need the traceback outside an `except` block
-- Avoid `logger.exception()` followed by `raise` — this duplicates the traceback. Either add context via `extra` that would otherwise be lost, or let the exception propagate
-
-### Testing logs
-
-Assert on `caplog.records` attributes, not string matching on `caplog.text`:
-- Scope capture: `caplog.at_level(logging.DEBUG, logger="cihai_cli.cli")`
-- Filter records rather than index by position: `[r for r in caplog.records if hasattr(r, "unihan_field")]`
-- Assert on schema: `record.unihan_record_count == 100` not `"100 records" in caplog.text`
-- `caplog.record_tuples` cannot access extra fields — always use `caplog.records`
-
-### Avoid
-
-- f-strings/`.format()` in log calls
-- Unguarded logging in hot loops (guard with `isEnabledFor()`)
-- Catch-log-reraise without adding new context
-- `print()` for diagnostics
-- Logging secret env var values (log key names only)
-- Non-scalar ad-hoc objects in `extra`
-- Requiring custom `extra` fields in format strings without safe defaults (missing keys raise `KeyError`)
-
-## Documentation Standards
-
-### Code Blocks
-
-Code blocks are paste-and-run units: pasting one block runs exactly one
-intended action. Doctests and other executed examples are exempt — the test
-suite runs them, nobody pastes them.
-
-- **One command per block.** Multiple steps may share a block only when
-  explicitly chained with `&&`, `;`, or `\` continuations — the chain is
-  then one logical command.
-- **Explanations go in prose above the block**, never as `#` comments inside it.
-- **Command menus are per-command blocks with prose lead-ins**, not tables.
-- **Shell commands use the `console` tag with a `$ ` prefix.** This separates
-  interactive commands from scripts and enables prompt-aware copy.
-- **Split long commands with `\`** — one flag or flag+value pair per indented
-  continuation line, positional arguments last.
-
-Good:
-
-Show the last ten commits as a graph:
-
-```console
-$ git log \
-    --max-count=10 \
-    --graph \
-    --oneline
-```
-
-Bad:
-
-```console
-# Show the last ten commits as a graph
-$ git log --max-count=10 --graph --oneline
-```
-
-### Changelog Conventions
-
-These rules apply when authoring entries in `CHANGES`, which is rendered as the Sphinx changelog page. Modeled on Django's release-notes shape — deliverables get titles and prose, not bullets.
-
-**Release entry boilerplate.** Every release header is `## cihai-cli X.Y.Z (YYYY-MM-DD)`. The file opens with a `## cihai-cli X.Y.Z (unreleased)` placeholder block fenced by `<!-- KEEP THIS PLACEHOLDER ... -->` and `<!-- END PLACEHOLDER ... -->` HTML comments — new release entries land immediately below the END marker, never above it.
-
-**Open with a multi-sentence lead paragraph.** Plain prose, no italic. Open with the version as sentence subject (*"cihai-cli X.Y.Z ships …"*) so the lead is self-contained when excerpted. Two to four sentences telling the reader what shipped and who cares — user-visible takeaways, not internal mechanism. Cross-reference detail docs with `{ref}` to keep the lead compact.
-
-**Lead paragraphs are release-time material — off-limits to branches and PRs.** The unreleased entry carries no lead paragraph and no version summary: sections only (`### Breaking changes`, `### What's new` deliverables, `### Fixes`, …). Speaking for the release — what the version "is", "ships", or "focuses on" — is presumptuous before its scope is final; only the person cutting the release writes that, and only when the user explicitly asks to release. Never write or edit a lead from a feature branch, and never ask or imply that a release should happen.
-
-**Each deliverable is a section, not a bullet.** Inside `### What's new`, every distinct deliverable gets a `#### Deliverable title (#NN)` heading naming it in user vocabulary, followed by 1-3 prose paragraphs explaining what shipped. Don't wrap a paragraph in `- ` — bullets are for enumerable lists, not paragraph containers. Cross-link detail docs (`See {ref}\`foo\` for details.`) so prose stays focused.
-
-**The deliverable test.** Before writing an entry, ask: "What's the deliverable, in user vocabulary?" If you can't answer in one sentence, the entry isn't ready. Mechanism (helper internals, byte counters, schema-validation locations) belongs in PR descriptions and code comments, not the changelog.
-
-**Fixed subheadings**, in this order when present: `### Breaking changes`, `### Dependencies`, `### What's new`, `### Fixes`, `### Documentation`, `### Development`. Dev tooling (helper scripts, internal automation) lives under `### Development`. For breaking changes, show the migration path with concrete inline code (e.g. a `# Before` / `# After` fenced code block). Dependency floor bumps use the form ``Minimum `pkg>=X.Y.Z` (was `>=X.Y.W`)``.
-
-**PR refs `(#NN)`** sit in each deliverable's `####` heading.
-
-**When bullets are appropriate.** Catch-all sections (`### Fixes`, occasionally `### Documentation`) with 3+ genuinely small items use bullets — one line each, never paragraphs. If a bullet swells past two lines, promote it to a `#### Title (#NN)` heading with prose body.
-
-**Anti-patterns.**
-
-- Fragile metrics: token ceilings, third-party version pins, percent benchmarks, exact byte counts. Describe the *capability*, not the math.
-- Internal jargon: private symbols (leading-underscore identifiers), algorithm names exposed for the first time, backend scaffolding.
-- Walls of text dressed up as bullets.
-- Buried breaking changes — they get their own subheading at the top of the entry.
-
-**Always link autodoc'd APIs.** Any class, method, function, exception, or attribute that has its own rendered page must be cited via the appropriate role (`{class}`, `{meth}`, `{func}`, `{exc}`, `{attr}`) — never with plain backticks. Doc pages without explicit ref labels use `{doc}`. Plain backticks are correct for code syntax, env vars, parameter names, and file paths that aren't doc pages — anything without an autodoc destination.
-
-**MyST roles.** Class references use `{class}`, methods use `{meth}`, functions use `{func}`, exceptions use `{exc}`, attributes use `{attr}`, internal anchors use `{ref}`, doc-path links use `{doc}`.
-
-**Summarization style.** When a user asks "what changed in the latest version?" or similar, lead with the entry's lead paragraph (paraphrased if needed), followed by each `####` deliverable heading under `### What's new` with a one-sentence summary. Cite `(#NN)` only if the user asks for source links. Don't invent versions, dates, or numbers not present in `CHANGES`. Don't quote line numbers or file offsets — those shift as the file evolves.
-
-## Debugging Tips
-- Lean on `pytest -k <pattern> -vv` for focused failures.
-- For CLI behavior, run `uv run cihai info 好` or `uv run cihai reverse library`.
-- If Unihan DB is missing, CLI bootstraps automatically; avoid altering that flow unless required.
-- Stuck in loops? Pause, minimize to a minimal repro, document exact errors, and restate the hypothesis before another attempt.
-
-## Git Commit Standards
-
-Commit subjects: `Scope(type[detail]): concise description`
-
-Body template:
-```
-why: Reason or impact.
-
-what:
-- Key technical changes
-- Single topic only
-```
-
-Guidelines:
-- Subject ≤50 chars; body lines ≤72 chars; imperative mood.
-- One topic per commit; separate subject and body with a blank line.
-- Mark breaking changes with `BREAKING:` and include related issue refs when relevant.
-
-Common commit types:
-- **feat**: New features or enhancements
-- **fix**: Bug fixes
-- **refactor**: Code restructuring without functional change
-- **docs**: Documentation updates
-- **chore**: Maintenance (dependencies, tooling, config)
-- **test**: Test-related updates
-- **style**: Code style and formatting
-- **py(deps)**: Dependencies
-- **py(deps[dev])**: Dev dependencies
-- **ai(rules[AGENTS])**: AI rule updates
-- **ai(claude[rules])**: Claude Code rules (CLAUDE.md)
-- **ai(claude[command])**: Claude Code command changes
-
-#### Release commits
-
-Never create tags. Never push tags. The user handles tagging and tag
-pushes (tags trigger the CI publish workflow).
-
-Release commit subjects are plain and short: `Tag v<version>`. Put
-the detailed why/what in the commit body. Don't use the
-`Scope(type[detail]):` format for releases — don't bury the lede.
-
-## Notes & Docs Authoring
-- For `notes/**/*.md`, keep content concise and well-structured (headings, bullets, code fences).
-- Use clear link text `[Title](mdc:URL)` and avoid redundancy; follow llms.txt style when possible.
+cihai-cli is the command-line front end for the
+[cihai](https://cihai.git-pull.com) CJK-language library: `cihai info <char>`
+and `cihai reverse <term>` query the UNIHAN character database and print a
+YAML record.
+
+Follow the conventions already in the tree, and keep a change scoped to what
+was asked for.
+
+## What is here
+
+| Path | What it is |
+| ---- | ---------- |
+| `src/cihai_cli/cli.py` | argparse entry point: `create_parser`, `cli`, `command_info`, `command_reverse` |
+| `src/cihai_cli/_formatter.py` | Colorized `--help` formatter (`CihaiHelpFormatter`, `HelpTheme`) |
+| `src/cihai_cli/_colors.py` | `NO_COLOR`/`FORCE_COLOR`-aware ANSI styling (`Colors`, `style`) |
+| `src/cihai_cli/__about__.py` | Package metadata, `__version__` |
+| `tests/` | pytest suite: `test_cli.py`, `test_docs_examples.py`, `test_install_widget.py`, `fixtures/` |
+| `docs/` | Sphinx site (`gp-sphinx`/Furo): quickstart, generated CLI reference, project pages |
+| `CHANGES` | Changelog, rendered at `docs/history.md` |
+| `MIGRATION` | Deprecation/upgrade notes, rendered at `docs/migration.md` |
+| `justfile`, `docs/justfile` | Task runner: test, lint, and docs-build recipes |
+
+## Which policy applies
+
+- Documentation, user-facing text, `CHANGES`, release notes, commit messages,
+  docstrings, and source comments:
+  [.github/WRITING.md](.github/WRITING.md)
+- Environment, the gates, tests, documentation builds, releases, and pull
+  requests: [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md)
+
+Each of those is the single home for its subject. Where a rule seems to be
+stated twice, the file listed above is the one that governs.
+
+## Change discipline
+
+- Make the smallest coherent change that solves the verified problem; keep
+  unrelated cleanup out of it.
+- Reuse an existing file, helper, API, or test before adding a new one.
+- Add a file only for a durable boundary — a distinct responsibility,
+  independent reuse, or splitting an oversized module — not for a single-use
+  helper or a one-line re-export.
+- Add a test for every user-visible behaviour change, and a `CHANGES` entry
+  for every change to the public API, CLI, configuration, or output.
+- A passing gate is evidence only once it has been shown capable of failing.
+  Pair a new test with a deliberate break that proves it bites.
+
+cihai-cli is a thin front end over the `cihai` library; UNIHAN data comes
+through `cihai`'s `unihan_etl` dependency. On first use, `cihai` bootstraps
+the UNIHAN dataset automatically (downloads and builds a local database) —
+avoid altering that flow unless the change specifically targets it. The YAML
+record from `info`/`reverse` and status messages like "No records found" are
+emitted through `logging`, not `print`, and default to stderr; see
+[WRITING.md's CLI section](.github/WRITING.md#cli-help-text-and-error-messages)
+before changing what a command prints or how a test captures it.
 
 ## References
-- Project docs: https://cihai-cli.git-pull.com
-- Library docs: https://cihai.git-pull.com
-- Unihan dataset: https://www.unicode.org/charts/unihan.html
-- Shared tooling: https://github.com/gp-libs/gp-libs
 
-## Comments earn their maintenance cost
-
-A comment ships only if it passes all three gates. Fail any: delete or rewrite.
-Borderline: delete — borderline means the information is reconstructible, which
-is what makes deletion cheap.
-
-**Loss.** Three years from now, would losing this cost a maintainer real time
-rediscovering intent, an invariant, a constraint, or a failure mode the code and
-tests do not already make obvious?
-
-**Elite.** Would SQLite, Redis, the Go standard library, or CPython write this
-comment, at this length? Those projects state the constraint and stop. They do
-not argue with an imagined objector.
-
-**Upkeep.** Will it stay true without maintenance? A comment that hand-syncs a
-value the code owns — a count, an offset, a line reference, a duplicated
-constant — is false the first time that value moves.
-
-### Ceiling
-
-One or two lines. A comment reaching four is either carrying several facts, in
-which case split it, or arguing, in which case cut it to the fact.
-
-Rationale, alternatives weighed, and the story of how the code got here belong
-in the commit message: timestamped, attached to the exact diff, and free to
-maintain.
-
-A comment often holds both a constraint and the deliberation that found it. Keep
-the constraint, cut the deliberation. "Runs at most once per second" survives;
-"this is the right trade for now" does not.
-
-### Keep
-
-- Why over how: upstream quirks, protocol and compatibility constraints,
-  performance tradeoffs still part of the contract.
-- Invariants, preconditions, ordering, lifetime, and concurrency requirements
-  that types and tests cannot express.
-- Code that looks wrong but is not, so a later cleanup does not reintroduce the
-  bug.
-- A high-level sketch of an algorithm whose local operations do not reveal the
-  whole.
-
-### Delete
-
-- Narration of the next lines; code translated into English.
-- Restated names, types, defaults, or control flow.
-- Values duplicated from the code and hand-synced.
-- Justification, hedging, or apology for a choice.
-- Speculation about future requirements.
-- History version control already holds, including commented-out code.
-- Ticket and issue numbers. They say nothing to a reader without tracker access,
-  and they rot when the tracker moves. Unfinished work goes in the tracker, not
-  the source.
-- Transient observations — "currently", "for now", "the latest release" —
-  that go stale with no nearby edit.
-
-### The upkeep gate in practice
-
-It reaches values that track our own code. It does not reach frozen external
-facts.
-
-Bad (Delete):
-
-```python
-# There are 321 tests to complete for servers.
-```
-
-Good (Keep):
-
-```python
-# CPython < 3.11 has no ExceptionGroup, so this branch stays.
-```
-
-### Documentation exception
-
-Doctests, minimal usage examples, and param, return, and raises lines on public
-API are exempt from the loss gate — they serve the caller, not the maintainer.
-They are exempt from nothing else. Ceiling: a good man page entry.
-
-NumPy-style `Parameters`, `Returns`, and `Attributes` sections and executable
-doctests fall under this exception — autodoc ships every field whether or not
-you describe it, and a doctest that runs is also a test.
-
-## AI Slop Prevention
-
-Treat AI slop as **review-hostile noise**, not as proof that text or
-code is wrong. The goal is to maximize information density by removing
-artifacts that make the repository harder to trust or navigate.
-
-### The Anti-Slop Rubric
-
-Before committing, audit all AI-assisted changes for these noise
-patterns:
-
-- **AI Signatures:** Remove "Generated by", footers, conversational
-  filler ("Certainly!", "Here is..."), unexplained emojis (🤖, ✨), and
-  AI-tool metadata.
-- **Brittle References:** Avoid hard-coded line numbers, fragile
-  file/test counts, dated "as of" claims, bare SHAs, and local
-  absolute paths unless they are strict evidentiary artifacts (e.g.,
-  benchmark logs).
-- **Diff Narration:** Do not restate what moved, was renamed, or was
-  removed in artifacts the downstream reader holds: code, docstrings,
-  README, CHANGES, PR descriptions, or release notes. The diff and
-  commit message already carry this history.
-- **Branch-Internal Narrative:** Do not mention intermediate branch
-  states, abandoned approaches, or "no longer" behavior unless users
-  of a published release actually experienced the old state (**The
-  Published-Release Test**).
-- **Low-Value Scaffolding:** Remove ownerless TODOs (`TODO: revisit`),
-  unused future-proofing, debug artifacts, and defensive wrappers that
-  do not protect a currently reachable failure mode.
-- **Prose Inflation:** Replace generic AI "tells" like *comprehensive,
-  robust, seamless, production-ready, leverage, delve, tapestry,* and
-  *best practices* with concrete descriptions of behavior,
-  constraints, or trade-offs.
-- **Coded Labels:** Write rules, options, and findings as plain
-  imperatives. Don't tag them with codes like `[R1]`, `A1`, or
-  `Option B` in artifacts a human reads — the reader shouldn't have to
-  decode an index. Internal agent bookkeeping may use ids; shipped text
-  may not.
-
-### Durable Source Links
-
-Link to a pinned revision, never to trunk. A pinned permalink is not a
-brittle reference; an unlinked SHA dropped into prose is. `blob/master/…`
-links rot silently — the file moves, lines shift, and the anchor lands
-on unrelated code while still resolving.
-
-- Prefer a release tag (`blob/v1.4.0/…`). Most durable, and it tells
-  the reader which released version the claim held for.
-- Otherwise use a 7-char commit ref (`blob/9a29b1a/…`) reachable from
-  trunk. Use when there is no tag or the claim is about unreleased
-  code. Never a PR-head SHA — it can be rebased or garbage-collected.
-- Reserve `blob/master/…` for living documents meant to always show the
-  latest state, such as a contributing guide.
-- Line anchors (`#L120-L145`) are only safe on a pinned ref.
-
-### Preservation & Context
-
-Subjective cleanup must never remove load-bearing rationale. Adjudicate
-comments with the comment policy above; borderline cases are deleted, not
-kept.
-
-- **Preserve the "Why":** You MUST NOT delete comments that document
-  invariants, protocol constraints, platform quirks, security
-  boundaries, and upstream workarounds.
-- **Evidence is Immune:** Preserve exact counts, dates, and SHAs when
-  they serve as evidence in benchmark results, release notes, stack
-  traces, or lockfiles.
-- **Behavior Over Inventory:** A useful description explains what
-  changed for the *system or user*; it does not provide an inventory
-  of files or functions the diff already shows.
-
-### The Published-Release Test
-
-Long-running branches accumulate tactical decisions — renames,
-refactors, attempts-then-reverts. When deciding what counts as
-branch-internal, use trunk or the parent branch as the baseline — not
-intermediate states inside the current branch. Ask:
-
-> Did users of the most recently published release ever experience
-> this old name, old behavior, or bug?
-
-If the answer is **no**, it is branch-internal narrative. Move it to
-the commit message and describe only the final state in the artifact.
-
-**Keep in shipped artifacts:**
-- Deprecations and migration guides for symbols that actually shipped.
-- `### Fixes` entries for bugs that affected users of a published
-  release.
-- Comments explaining *why the current code looks this way*
-  (invariants, platform quirks) that make sense to a reader who never
-  saw the previous version.
-
-### Cleanup in Hindsight
-
-When applying these rules retroactively from inside a feature branch,
-first establish scope by diffing against the parent branch (or trunk)
-to identify which commits this branch actually introduced. Then:
-
-- **In-branch commits:** Prompt the user with two options: `fixup!`
-  commits with `git rebase --autosquash` to address each causal commit
-  at its source, or a single cleanup commit at branch tip.
-- **Trunk/Parent commits:** Default to leaving them alone. Act only on
-  explicit user instruction. If the user opts in, fold the cleanup
-  into a single commit at branch tip; do not rewrite shared history.
-- **Scope guard:** If cleaning prior slop would touch a colleague's
-  work or expand the branch beyond its stated goal, stay in lane:
-  protect the current goal and leave prior slop alone.
-
-### Change Discipline
-
-- Make the smallest coherent change that solves the verified problem;
-  keep unrelated cleanup out of it.
-- Reuse an existing file, component, helper, API, or test before adding
-  a new one. Modify in place when the change fits the file's
-  responsibility.
-- Keep new APIs private until a caller outside the module needs them.
-- Add a file only for a durable boundary — a distinct responsibility,
-  independent reuse, or splitting an oversized high-touch module — not
-  for a single-use helper or a one-line re-export.
-
-### Keep Instructions Lean
-
-Treat this file like code and prune it.
-
-- Delete a line whose removal would not cause a mistake.
-- Move multi-step procedures into skills, path-specific rules into
-  nested AGENTS.md files, and hard limits into hooks or CI.
-- Keep only non-obvious, broadly applicable defaults here. Anything a
-  reader can infer from the code, a manifest, or a linter does not
-  belong.
+- Docs: <https://cihai-cli.git-pull.com>
+- `cihai` library docs: <https://cihai.git-pull.com>
+- UNIHAN dataset: <https://www.unicode.org/charts/unihan.html>
+- Issues: <https://github.com/cihai/cihai-cli/issues>

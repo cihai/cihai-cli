@@ -2,8 +2,10 @@
 
 Command line interface to the [cihai](https://cihai.git-pull.com)
 [CJK](https://cihai.git-pull.com/glossary.html#term-cjk)-language library.
+`cihai info` and `cihai reverse` look up CJK characters and definitions in the
+UNIHAN database, bootstrapping it locally on first use.
 
-This project is under active development. Follow our progress and check back for updates!
+Requires Python 3.10 or newer.
 
 ## Installation
 
@@ -31,7 +33,7 @@ $ uvx --from cihai-cli cihai --version
 
 ### Developmental releases
 
-You can test the unpublished version of cihai-cli before its released.
+You can test the unpublished version of cihai-cli before it's released.
 
 - [pip](https://pip.pypa.io/en/stable/):
 
@@ -62,7 +64,8 @@ For more information see
 
 ## Character lookup
 
-See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation for full usage information.
+See [CLI](https://cihai-cli.git-pull.com/cli.html) in the documentation for
+full usage information.
 
 ```console
 $ cihai info 好
@@ -140,6 +143,10 @@ ucn: U+5ACF
 --------
 ```
 
+`cihai info` and `cihai reverse` log their result to stderr at `INFO` level,
+not stdout; raising `--log-level` above `INFO` silences it along with
+diagnostics. `--help` and `--version` print to stdout as usual.
+
 ## Developing
 
 ```console
@@ -150,7 +157,11 @@ $ git clone https://github.com/cihai/cihai-cli.git
 $ cd cihai-cli
 ```
 
-[Bootstrap your environment and learn more about contributing](https://cihai.git-pull.com/contributing/). We use the same conventions / tools across all cihai projects: `pytest`, `sphinx`, `mypy`, `ruff`, `tmuxp`, and file watcher helpers (e.g. `entr(1)`).
+[Bootstrap your environment and learn more about
+contributing](https://cihai.git-pull.com/contributing/), or read this
+repository's [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the exact gates.
+We use the same conventions / tools across all cihai projects: `pytest`,
+`sphinx`, `mypy`, `ruff`, `tmuxp`, and file watcher helpers (e.g. `entr(1)`).
 
 ## Python versions
 
