@@ -21,6 +21,13 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
+      - name: Test runtime dependencies
+        run: |
+          uv run --no-dev -p python${{ matrix.python-version }} -- python -c '
+          from cihai_cli import cli, __version__
+          print("cihai_cli version:", __version__)
+          '
+
       - name: Install dependencies
         run: uv sync --all-extras --dev
 
