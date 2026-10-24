@@ -61,9 +61,41 @@ class CihaiHelpFormatter(argparse.RawDescriptionHelpFormatter):
 
     The formatter detects lines ending with "examples:" as section headings,
     and lines starting with "cihai " as example commands to colorize.
+
+    Example colors come from :meth:`_example_theme`: argparse's own theme on
+    Python 3.14+, where argparse colors help itself, and the bound
+    ``_help_theme`` on older Pythons.
     """
 
-    _theme: HelpTheme | None = None
+    # cihai-cli's theme, bound by create_formatter(); used below Python 3.14.
+    # Never ``_theme``: argparse owns that name (an attribute on 3.14, a
+    # read-only property on 3.15).
+    _help_theme: HelpTheme | None = None
+
+    def _example_theme(self) -> HelpTheme | None:
+        """Return the theme that colors example sections.
+
+        On Python 3.14+ argparse decides whether help is colored
+        (``NO_COLOR``, ``FORCE_COLOR``, the output stream) and supplies the
+        palette as ``_theme``; examples follow it so they match the usage
+        line. Older argparse has no ``_theme``, so the bound theme is used.
+
+        Returns
+        -------
+        HelpTheme | None
+            Theme for example sections, or None for plain text.
+
+        Examples
+        --------
+        >>> import sys
+        >>> formatter = CihaiHelpFormatter("cihai")
+        >>> theme = formatter._example_theme()
+        >>> (theme is None) == (sys.version_info < (3, 14))
+        True
+        """
+        return t.cast(
+            "HelpTheme | None", getattr(self, "_theme", None) or self._help_theme
+        )
 
     def _fill_text(self, text: str, width: int, indent: str) -> str:
         """Format description text, colorizing example sections if theme is set.
@@ -82,7 +114,7 @@ class CihaiHelpFormatter(argparse.RawDescriptionHelpFormatter):
         str
             Formatted text with colorized examples if theme is enabled.
         """
-        theme = self._theme
+        theme = self._example_theme()
         if not text or theme is None:
             return super()._fill_text(text, width, indent)
 
@@ -169,7 +201,9 @@ def create_formatter(colors: Colors | None = None) -> type[CihaiHelpFormatter]:
     """Create a formatter class with theme bound.
 
     Uses a class factory pattern to inject the theme into the formatter
-    since argparse instantiates formatters internally.
+    since argparse instantiates formatters internally. The bound theme colors
+    examples below Python 3.14; from 3.14 argparse's own theme does (see
+    :meth:`CihaiHelpFormatter._example_theme`).
 
     Parameters
     ----------
@@ -185,8 +219,7 @@ def create_formatter(colors: Colors | None = None) -> type[CihaiHelpFormatter]:
     --------
     >>> from cihai_cli._colors import Colors, ColorMode
     >>> formatter_class = create_formatter(Colors(ColorMode.NEVER))
-    >>> formatter = formatter_class("cihai")
-    >>> formatter._theme is None
+    >>> formatter_class._help_theme is None
     True
     """
     from ._colors import ColorMode, Colors
@@ -196,11 +229,12 @@ def create_formatter(colors: Colors | None = None) -> type[CihaiHelpFormatter]:
 
     theme = HelpTheme.default() if colors.enabled else None
 
+    # A class attribute, not an ``__init__`` override: argparse constructs the
+    # formatter as ``formatter_class(prog=...)`` and its keywords differ
+    # between versions.
     class ThemedCihaiHelpFormatter(CihaiHelpFormatter):
         """CihaiHelpFormatter with bound theme."""
 
-        def __init__(self, prog: str, **kwargs: t.Any) -> None:
-            super().__init__(prog, **kwargs)
-            self._theme = theme
+        _help_theme = theme
 
     return ThemedCihaiHelpFormatter

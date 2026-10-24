@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
+import argparse
 import contextlib
+import sys
 import typing as t
 
 import pytest
 import yaml
 
+from cihai_cli._colors import ColorMode, Colors
+from cihai_cli._formatter import create_formatter
 from cihai_cli.cli import cli
 
 if t.TYPE_CHECKING:
@@ -131,3 +135,27 @@ def test_cli_reverse_help_contains_examples(
     output = capsys.readouterr().out
     assert "examples:" in output
     assert "cihai reverse" in output
+
+
+def test_help_example_color_follows_argparse(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """From Python 3.14 argparse decides example color; below, cihai's theme.
+
+    argparse 3.14+ colors help itself, so examples share its on/off decision
+    and palette with the usage line. The bound theme asks for color here and
+    ``NO_COLOR`` refuses it, so the examples show which side decided.
+    """
+    monkeypatch.delenv("NO_COLOR", raising=False)
+    monkeypatch.delenv("FORCE_COLOR", raising=False)
+    formatter_class = create_formatter(Colors(ColorMode.ALWAYS))
+    monkeypatch.setenv("NO_COLOR", "1")
+    parser = argparse.ArgumentParser(
+        prog="cihai",
+        description="info examples:\n  cihai info 好",
+        formatter_class=formatter_class,
+    )
+
+    example = next(line for line in parser.format_help().splitlines() if "好" in line)
+
+    assert ("\033[" in example) is (sys.version_info < (3, 14))
