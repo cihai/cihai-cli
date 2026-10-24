@@ -33,11 +33,18 @@ $ uv add cihai-cli --prerelease allow
 $ uvx --from 'cihai-cli' --prerelease allow cihai
 ```
 
-## cihai-cli 0.35.x (unreleased)
+## cihai-cli 0.36.x (unreleased)
 
 <!-- KEEP THIS PLACEHOLDER - DO NOT REMOVE OR MODIFY THIS LINE -->
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
+
+## cihai-cli 0.35.0 (2026-10-24)
+
+cihai-cli 0.35.0 runs on Python 3.15, where every `cihai` command in 0.34.0
+crashed before it started. Documentation pages now link key tools, API entry
+points, and commands to their reference pages, and setup examples can be
+copied as they are.
 
 ### Fixes
 
