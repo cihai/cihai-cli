@@ -39,6 +39,15 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
+### Fixes
+
+#### cihai runs on Python 3.15 (#360)
+
+cihai-cli 0.34.0 crashed on Python 3.15 before running any command, even
+`cihai --version`, with `AttributeError: 'NoneType' object has no attribute
+'reset'`. Every `cihai` command now works on Python 3.15, `cihai --help` looks
+the same as on Python 3.14, and PyPI lists Python 3.15 as supported.
+
 ### Documentation
 
 #### Clearer documentation links and examples (#354)
