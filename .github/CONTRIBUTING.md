@@ -62,7 +62,7 @@ a second, independent check: `tests/test_docs_examples.py` runs the literal
 
 CI (`.github/workflows/tests.yml`) runs `ruff check .`, `ruff format . --check`,
 `mypy .`, and `pytest --cov=./ --cov-report=xml` on every push and pull
-request, against Python 3.14. That is the order of record; every gate it runs
+request, against Python 3.15. That is the order of record; every gate it runs
 has to pass before a change is done.
 
 Before claiming a test or a gate works, show it failing. A gate that has
