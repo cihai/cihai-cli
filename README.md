@@ -5,7 +5,7 @@ Command line interface to the [cihai](https://cihai.git-pull.com)
 `cihai info` and `cihai reverse` look up CJK characters and definitions in the
 UNIHAN database, bootstrapping it locally on first use.
 
-Requires Python 3.10 or newer.
+Requires Python 3.11 or newer.
 
 ## Installation
 
@@ -172,7 +172,7 @@ We use the same conventions / tools across all cihai projects: `pytest`,
 - [Quickstart](https://cihai-cli.git-pull.com/quickstart.html)
 - Python [API](https://cihai-cli.git-pull.com/api.html)
 - [2017 roadmap](https://cihai.git-pull.com/design-and-planning/2017/spec.html)
-- Python support: >= 3.10, pypy
+- Python support: >= 3.11, pypy
 - Source: <https://github.com/cihai/cihai-cli>
 - Docs: <https://cihai-cli.git-pull.com>
 - Changelog: <https://cihai-cli.git-pull.com/history.html>
