@@ -78,7 +78,7 @@ skipping its test.
 - Every file starts with `from __future__ import annotations` — `ruff`'s
   `isort` config (`required-imports`) enforces it.
 - `mypy` runs with `strict = true` against `src/` and `tests/`
-  (`[tool.mypy]` in `pyproject.toml`), targeting Python 3.10.
+  (`[tool.mypy]` in `pyproject.toml`), targeting Python 3.11.
 
 ## Tests
 

@@ -39,6 +39,12 @@ $ uvx --from 'cihai-cli' --prerelease allow cihai
 _Notes on the upcoming release will go here._
 <!-- END PLACEHOLDER - ADD NEW CHANGELOG ENTRIES BELOW THIS LINE -->
 
+### Breaking changes
+
+#### Python 3.11 is now the minimum
+
+cihai-cli now requires Python 3.11 or newer. Python 3.10 reached end of life in October 2026.
+
 ## cihai-cli 0.35.0 (2026-10-24)
 
 cihai-cli 0.35.0 runs on Python 3.15, where every `cihai` command in 0.34.0
